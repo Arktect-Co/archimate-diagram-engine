@@ -1,0 +1,17 @@
+{
+  "name": "@arktect-co/archimate-diagram-engine",
+  "author": "diorbert",
+  "version": "1.0.0",
+  "description": "Archimate 3.x diagram renderer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Arktect-Co/archimate-diagram-engine.git"
+  },
+  "dependencies": {
+    "jointjs": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  }
+}
