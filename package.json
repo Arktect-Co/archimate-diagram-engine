@@ -1,7 +1,7 @@
 {
   "name": "@arktect-co/archimate-diagram-engine",
-  "author": "diorbert",
-  "version": "1.0.0",
+  "author": "diorbert.pereira",
+  "version": "0.1.0",
   "description": "Archimate 3.x diagram renderer",
   "repository": {
     "type": "git",
@@ -13,5 +13,10 @@
   "devDependencies": {},
   "scripts": {
     "test": "mocha"
-  }
+  },
+  "keywords": [
+    "architecture",
+    "archimate",
+    "diagram"
+  ]
 }

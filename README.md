@@ -9,7 +9,7 @@ This engine can be used for server-side as well for client-side diagram renderin
 Using npm:
 
 ``
-npm i --save https://github.com/Arktect-Co/archimate-diagram-engine.git
+npm i --save @arktect-co/archimate-diagram-engine
 ``
 
 ## Usage
