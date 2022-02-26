@@ -2,7 +2,7 @@
   "name": "@arktect-co/archimate-diagram-engine",
   "author": "diorbert.pereira",
   "repository": "github:Arktect-Co/archimate-diagram-engine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Archimate 3.x diagram renderer",
   "dependencies": {
     "jointjs": "^3.4.0"
