@@ -12,7 +12,13 @@ Using npm:
 npm i --save @arktect-co/archimate-diagram-engine
 ``
 
-## Usage
+Using Yarn:
+
+``
+yarn add @arktect-co/archimate-diagram-engine
+``
+
+## Usage Example
 
 ```js
 const joint = require("jointjs");
