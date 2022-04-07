@@ -24,7 +24,7 @@ describe('Diagram Rendering', () => {
                 })
             );
 
-            chai.expect(checkModelsEquality(referenceView, outputGraph)).to.true;
+            chai.expect(checkModelsEquality(referenceView, outputGraph.toJSON())).to.true;
         });
     });
 });
