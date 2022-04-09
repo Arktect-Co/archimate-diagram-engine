@@ -54,6 +54,7 @@ ViewRenderer.renderToGraph(
         style: 'hibrid',
         darkColor: 'black',
         lightColor: 'white',
+        textColor: 'black',
         defaultWidth: 140,
         defaultHeight: 50
     })
@@ -68,5 +69,6 @@ ViewRenderer.renderToGraph(
     * Element: Differentiate only between active, behaviour and passive elements.
 * **darkColor**: Color used for strokes (Hex colours are accepted).
 * **lightColor**: Color used to fulfill relationship arrow shapes (Hex colours are accepted).
+* **textColor**: Color used to fill texts
 * **defaultWidth**: Reference size for element's width
 * **defaultHeight**: Reference size for element's height
