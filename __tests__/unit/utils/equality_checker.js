@@ -19,8 +19,21 @@ function checkModelsEquality(viewInput, graphOutput) {
 
                 // Checking attributes equality
                 if (cell.attrs.label.textWrap.text !== node.name || cell.modelElementType !== node.type ||
-                    cell.size.width !== node.width || cell.size.height !== node.height) {
+                    cell.size.width !== node.width || cell.size.height !== node.height || cell.parent !== node.parent) {
                     return false;
+                }
+
+                // Verifying nested nodes
+                if (cell.embeds && cell.embeds.length > 0) {
+                    for (let j = 0; j < cell.embeds.length; j++) {
+                        const possibleChildId = cell.embeds[j];
+
+                        const childNode = viewInput.viewNodes.find(e => e.viewNodeId === possibleChildId);
+
+                        if(childNode && childNode.parent !== cell.id){
+                            return false;
+                        }
+                    }
                 }
             }
 
