@@ -3,16 +3,30 @@
   "author": "diorbert.pereira",
   "repository": "github:Arktect-Co/archimate-diagram-engine",
   "version": "0.1.2",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "@types/**/*"
+  ],
+  "types": "dist/@types/index.d.ts",
   "description": "Archimate 3.x diagram renderer",
   "dependencies": {
     "jointjs": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-typescript": "^7.22.5",
+    "babel-plugin-module-resolver": "^5.0.0",
     "chai": "^4.2.0",
-    "mocha": "^7.1.1"
+    "mocha": "^7.1.1",
+    "typescript": "^5.1.6",
+    "prettier": "3.0.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "npx babel lib --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored && tsc --watch"
   },
   "license": "MIT",
   "keywords": [
