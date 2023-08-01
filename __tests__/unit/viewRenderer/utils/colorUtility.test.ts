@@ -149,4 +149,11 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.PHYSICAL_ACTIVE);
     });
   });
+
+  it('should return color "PHYSICAL_PASSIVE" if type is color related', () => {
+    const type = NodeType.Material;
+    const hexColor = typeToHexColor(type, style);
+
+    expect(hexColor).to.equal(styleSetting.PHYSICAL_PASSIVE);
+  });
 });
