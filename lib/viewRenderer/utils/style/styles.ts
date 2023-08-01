@@ -22,7 +22,7 @@ const Themes = Object.freeze({
     OTHER: '#ffffff',
   },
 
-  COLOR_SCHEME_HIBRID: {
+  COLOR_SCHEME_HYBRID: {
     STRATEGY: '#ffd54f',
     MOTIVATIONAL: '#d1c4e9',
     BUSINESS_ACTIVE: '#ffeb3b',
@@ -69,4 +69,4 @@ const Themes = Object.freeze({
   },
 });
 
-module.exports = Themes;
+export default Themes;
