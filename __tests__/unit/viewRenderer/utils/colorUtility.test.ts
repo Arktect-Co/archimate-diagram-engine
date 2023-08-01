@@ -114,4 +114,22 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.TECHNOLOGY_ACTIVE);
     });
   });
+
+  it('should return color "TECHNOLOGY_BEHAVIOUR" if type is color related', () => {
+    const types = [
+      NodeType.InfrastructureFunction,
+      NodeType.InfrastructureService,
+      NodeType.TechnologyFunction,
+      NodeType.TechnologyService,
+      NodeType.TechnologyProcess,
+      NodeType.TechnologyInteraction,
+      NodeType.TechnologyEvent,
+    ];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.TECHNOLOGY_BEHAVIOUR);
+    });
+  });
 });
