@@ -60,6 +60,13 @@ describe('Archimate Domain Utils', () => {
       expect(pureSymbol).to.equal('');
     });
 
+    it('should return type if no glyph symbol exists for type', () => {
+      const type = NodeType.Equipment;
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal(NodeType.Equipment);
+    });
+
     it('should return the "role" value if the type is related to Glyph Symbol', () => {
       const type = NodeType.Stakeholder;
       const pureSymbol = typeToPureSymbol(type);
