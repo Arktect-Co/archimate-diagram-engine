@@ -26,4 +26,13 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.MOTIVATIONAL);
     });
   });
+  it('should return color "IMPLEMENTATION_PROJECT" if type is color related', () => {
+    const types = [NodeType.WorkPackage, NodeType.Deliverable, NodeType.ImplementationEvent];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.IMPLEMENTATION_PROJECT);
+    });
+  });
 });
