@@ -156,4 +156,19 @@ describe('colorUtility', () => {
 
     expect(hexColor).to.equal(styleSetting.PHYSICAL_PASSIVE);
   });
+
+  it('should return color "STRATEGY" if type is color related', () => {
+    const types = [
+      NodeType.Resource,
+      NodeType.Capability,
+      NodeType.CourseOfAction,
+      NodeType.ValueStream,
+    ];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.STRATEGY);
+    });
+  });
 });
