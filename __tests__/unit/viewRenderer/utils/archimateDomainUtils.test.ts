@@ -94,5 +94,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(pureSymbol).to.equal(GlyphSymbol.Process);
     });
+
+    it('should return the "domainservice" value if the type is related to Glyph Symbol', () => {
+      const type = NodeType.TechnologyService;
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal(GlyphSymbol.DomainService);
+    });
   });
 });
