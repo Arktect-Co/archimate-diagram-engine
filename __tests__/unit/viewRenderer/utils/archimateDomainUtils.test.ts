@@ -1,4 +1,7 @@
-import { typeToClassification } from '@lib/viewRenderer/utils/archimateDomainUtils';
+import {
+  typeToClassification,
+  typeToPureSymbol,
+} from '@lib/viewRenderer/utils/archimateDomainUtils';
 import { expect } from 'chai';
 import { NodeType } from '../../../../lib/common/enums/nodeType';
 import { NodeShapeClassification } from '../../../../lib/common/enums/nodeShapeClassification';
@@ -45,6 +48,15 @@ describe('Archimate Domain Utils', () => {
       const classification = typeToClassification(type);
 
       expect(classification).to.equal(NodeShapeClassification.ViewElement);
+    });
+  });
+
+  describe('typeToPureSymbol', () => {
+    it('should return an empty string if type not found', () => {
+      const type = 'unknown';
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal('');
     });
   });
 });
