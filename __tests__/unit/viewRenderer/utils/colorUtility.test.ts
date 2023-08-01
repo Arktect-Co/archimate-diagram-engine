@@ -46,4 +46,20 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.IMPLEMENTATION_ROADMAP);
     });
   });
+
+  it('should return color "BUSINESS_ACTIVE" if type is color related', () => {
+    const types = [
+      NodeType.BusinessCollaboration,
+      NodeType.BusinessActor,
+      NodeType.BusinessRole,
+      NodeType.BusinessInterface,
+      NodeType.Location,
+    ];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.BUSINESS_ACTIVE);
+    });
+  });
 });
