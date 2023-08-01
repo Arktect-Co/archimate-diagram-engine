@@ -80,5 +80,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(pureSymbol).to.equal(GlyphSymbol.Event);
     });
+
+    it('should return the "function" value if the type is related to Glyph Symbol', () => {
+      const type = NodeType.TechnologyFunction;
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal(GlyphSymbol.Function);
+    });
   });
 });
