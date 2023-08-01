@@ -108,5 +108,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(pureSymbol).to.equal(GlyphSymbol.Interface);
     });
+
+    it('should return the "collaboration" value if the type is related to Glyph Symbol', () => {
+      const type = NodeType.TechnologyCollaboration;
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal(GlyphSymbol.Collaboration);
+    });
   });
 });
