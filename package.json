@@ -25,10 +25,11 @@
     "mocha": "^7.1.1",
     "prettier": "2.8.3",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "test": "mocha --require ts-node/register ./__tests__/**/*.test.ts",
+    "test": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
     "build": "npx babel lib --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored && tsc --watch"
   },
   "license": "MIT",
