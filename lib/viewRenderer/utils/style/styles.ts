@@ -1,4 +1,33 @@
-const Themes = Object.freeze({
+export interface ThemeSchema {
+  STRATEGY: string;
+  MOTIVATIONAL: string;
+  BUSINESS_ACTIVE: string;
+  BUSINESS_PASSIVE: string;
+  BUSINESS_BEHAVIOUR: string;
+  APPLICATION_ACTIVE: string;
+  APPLICATION_PASSIVE: string;
+  APPLICATION_BEHAVIOUR: string;
+  TECHNOLOGY_ACTIVE: string;
+  TECHNOLOGY_PASSIVE: string;
+  TECHNOLOGY_BEHAVIOUR: string;
+  PHYSICAL_ACTIVE: string;
+  PHYSICAL_PASSIVE: string;
+  PHYSICAL_BEHAVIOUR: string;
+  IMPLEMENTATION_PROJECT: string;
+  IMPLEMENTATION_ROADMAP: string;
+  AND_JUNCTION: string;
+  OR_JUNCTION: string;
+  GROUPING: string;
+  OTHER: string;
+}
+
+interface Theme<T> {
+  COLOR_SCHEME_LAYERED: T;
+  COLOR_SCHEME_HYBRID: T;
+  COLOR_SCHEME_ELEMENT: T;
+}
+
+const Themes: Theme<ThemeSchema> = Object.freeze({
   COLOR_SCHEME_LAYERED: {
     STRATEGY: '#ffd54f',
     MOTIVATIONAL: '#d1c4e9',
