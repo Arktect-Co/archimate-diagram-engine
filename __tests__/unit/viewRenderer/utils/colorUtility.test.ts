@@ -171,4 +171,14 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.STRATEGY);
     });
   });
+
+  it('should return color "GROUPING" if type is color related', () => {
+    const types = [NodeType.Grouping, NodeType.Group];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.GROUPING);
+    });
+  });
 });
