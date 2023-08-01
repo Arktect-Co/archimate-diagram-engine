@@ -16,4 +16,11 @@ describe('styleUtility', () => {
 
     expect(theme).to.equal(themes.COLOR_SCHEME_LAYERED);
   });
+
+  it('should return the style setting of "hybrid"', () => {
+    const style: Style = 'hybrid';
+    const theme = getStyle(style);
+
+    expect(theme).to.equal(themes.COLOR_SCHEME_HYBRID);
+  });
 });
