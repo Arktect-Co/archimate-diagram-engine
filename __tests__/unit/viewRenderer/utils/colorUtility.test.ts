@@ -93,4 +93,25 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.BUSINESS_PASSIVE);
     });
   });
+
+  it('should return color "TECHNOLOGY_ACTIVE" if type is color related', () => {
+    const types = [
+      NodeType.Node,
+      NodeType.SystemSoftware,
+      NodeType.InfrastructureInterface,
+      NodeType.TechnologyInterface,
+      NodeType.TechnologyCollaboration,
+      NodeType.Network,
+      NodeType.CommunicationNetwork,
+      NodeType.CommunicationPath,
+      NodeType.Path,
+      NodeType.Device,
+    ];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.TECHNOLOGY_ACTIVE);
+    });
+  });
 });
