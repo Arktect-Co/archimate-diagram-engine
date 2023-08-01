@@ -62,4 +62,20 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.BUSINESS_ACTIVE);
     });
   });
+
+  it('should return color "BUSINESS_BEHAVIOUR" if type is color related', () => {
+    const types = [
+      NodeType.BusinessInteraction,
+      NodeType.BusinessProcess,
+      NodeType.BusinessFunction,
+      NodeType.BusinessService,
+      NodeType.BusinessEvent,
+    ];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.BUSINESS_BEHAVIOUR);
+    });
+  });
 });
