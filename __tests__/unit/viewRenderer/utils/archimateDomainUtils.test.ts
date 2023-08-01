@@ -32,5 +32,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(classification).to.equal(NodeShapeClassification.Behaviour);
     });
+
+    it('Should return the "implementation_and_migration" value if the type is related to classification', () => {
+      const type = NodeType.Gap;
+      const classification = typeToClassification(type);
+
+      expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
+    });
   });
 });
