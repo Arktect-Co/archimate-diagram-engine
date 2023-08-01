@@ -87,5 +87,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(pureSymbol).to.equal(GlyphSymbol.Function);
     });
+
+    it('should return the "process" value if the type is related to Glyph Symbol', () => {
+      const type = NodeType.TechnologyProcess;
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal(GlyphSymbol.Process);
+    });
   });
 });
