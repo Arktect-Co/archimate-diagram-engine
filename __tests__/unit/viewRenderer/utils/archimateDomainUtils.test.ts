@@ -17,31 +17,107 @@ describe('Archimate Domain Utils', () => {
     });
 
     it('should return the "motivational" value if the type is related to classification', () => {
-      const type = NodeType.Requirement;
-      const classification = typeToClassification(type);
+      const types = [
+        NodeType.Requirement,
+        NodeType.Principle,
+        NodeType.Constraint,
+        NodeType.Goal,
+        NodeType.Outcome,
+        NodeType.Driver,
+        NodeType.Assessment,
+        NodeType.Stakeholder,
+        NodeType.Value,
+        NodeType.Meaning,
+      ];
 
-      expect(classification).to.equal(NodeShapeClassification.Motivational);
+      types.forEach(type => {
+        const classification = typeToClassification(type);
+
+        expect(classification).to.equal(NodeShapeClassification.Motivational);
+      });
     });
 
     it('should return the "structure" value if the type is related to classification', () => {
-      const type = NodeType.Resource;
-      const classification = typeToClassification(type);
+      const types = [
+        NodeType.BusinessCollaboration,
+        NodeType.BusinessActor,
+        NodeType.BusinessRole,
+        NodeType.BusinessInterface,
+        NodeType.BusinessObject,
+        NodeType.Representation,
+        NodeType.Product,
+        NodeType.Contract,
+        NodeType.ApplicationComponent,
+        NodeType.ApplicationCollaboration,
+        NodeType.ApplicationInterface,
+        NodeType.DataObject,
+        NodeType.Node,
+        NodeType.SystemSoftware,
+        NodeType.InfrastructureInterface,
+        NodeType.TechnologyInterface,
+        NodeType.TechnologyCollaboration,
+        NodeType.Artifact,
+        NodeType.CommunicationNetwork,
+        NodeType.Path,
+        NodeType.Device,
+        NodeType.Material,
+        NodeType.Facility,
+        NodeType.Equipment,
+        NodeType.DistributionNetwork,
+        NodeType.Resource,
+      ];
 
-      expect(classification).to.equal(NodeShapeClassification.Structure);
+      types.forEach(type => {
+        const classification = typeToClassification(type);
+
+        expect(classification).to.equal(NodeShapeClassification.Structure);
+      });
     });
 
     it('should return the "behaviour" value if the type is related to classification', () => {
-      const type = NodeType.ValueStream;
-      const classification = typeToClassification(type);
+      const types = [
+        NodeType.BusinessInteraction,
+        NodeType.BusinessProcess,
+        NodeType.BusinessFunction,
+        NodeType.BusinessService,
+        NodeType.BusinessEvent,
+        NodeType.ApplicationInteraction,
+        NodeType.ApplicationFunction,
+        NodeType.ApplicationService,
+        NodeType.ApplicationProcess,
+        NodeType.ApplicationEvent,
+        NodeType.InfrastructureFunction,
+        NodeType.InfrastructureService,
+        NodeType.TechnologyFunction,
+        NodeType.TechnologyService,
+        NodeType.TechnologyProcess,
+        NodeType.TechnologyInteraction,
+        NodeType.Capability,
+        NodeType.CourseOfAction,
+        NodeType.ValueStream,
+      ];
 
-      expect(classification).to.equal(NodeShapeClassification.Behaviour);
+      types.forEach(type => {
+        const classification = typeToClassification(type);
+
+        expect(classification).to.equal(NodeShapeClassification.Behaviour);
+      });
     });
 
     it('should return the "implementation_and_migration" value if the type is related to classification', () => {
-      const type = NodeType.Gap;
-      const classification = typeToClassification(type);
+      const types = [
+        NodeType.Plateau,
+        NodeType.WorkPackage,
+        NodeType.Deliverable,
+        NodeType.ImplementationEvent,
+        NodeType.Gap,
+      ];
 
-      expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
+      types.forEach(type => {
+        const classification = typeToClassification(type);
+
+        expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
+      });
     });
 
     it('should return the "viewelement" value if the type is related to classification', () => {
@@ -61,73 +137,171 @@ describe('Archimate Domain Utils', () => {
     });
 
     it('should return type if no glyph symbol exists for type', () => {
-      const type = NodeType.Equipment;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.Requirement,
+        NodeType.Principle,
+        NodeType.Constraint,
+        NodeType.Goal,
+        NodeType.Driver,
+        NodeType.Assessment,
+        NodeType.Plateau,
+        NodeType.WorkPackage,
+        NodeType.Deliverable,
+        NodeType.Gap,
+        NodeType.BusinessActor,
+        NodeType.Representation,
+        NodeType.Location,
+        NodeType.Product,
+        NodeType.Contract,
+        NodeType.Value,
+        NodeType.Meaning,
+        NodeType.ApplicationComponent,
+        NodeType.Node,
+        NodeType.SystemSoftware,
+        NodeType.Artifact,
+        NodeType.CommunicationNetwork,
+        NodeType.Path,
+        NodeType.Device,
+        NodeType.Outcome,
+        NodeType.Material,
+        NodeType.Facility,
+        NodeType.Equipment,
+        NodeType.DistributionNetwork,
+        NodeType.CourseOfAction,
+        NodeType.Capability,
+        NodeType.Resource,
+        NodeType.ValueStream,
+        NodeType.Grouping,
+        NodeType.Group,
+      ];
 
-      expect(pureSymbol).to.equal(NodeType.Equipment);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(type);
+      });
     });
 
     it('should return the "role" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.Stakeholder;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [NodeType.Stakeholder, NodeType.BusinessRole];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Role);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Role);
+      });
     });
 
     it('should return the "object" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.DataObject;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [NodeType.BusinessObject, NodeType.DataObject];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Object);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Object);
+      });
     });
 
     it('should return the "event" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.ImplementationEvent;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessEvent,
+        NodeType.ApplicationEvent,
+        NodeType.TechnologyEvent,
+        NodeType.ImplementationEvent,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Event);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Event);
+      });
     });
 
     it('should return the "function" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.TechnologyFunction;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessFunction,
+        NodeType.ApplicationFunction,
+        NodeType.InfrastructureFunction,
+        NodeType.TechnologyFunction,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Function);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Function);
+      });
     });
 
     it('should return the "process" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.TechnologyProcess;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessProcess,
+        NodeType.ApplicationProcess,
+        NodeType.TechnologyProcess,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Process);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Process);
+      });
     });
 
     it('should return the "domainservice" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.TechnologyService;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessService,
+        NodeType.ApplicationService,
+        NodeType.InfrastructureService,
+        NodeType.TechnologyService,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.DomainService);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.DomainService);
+      });
     });
 
     it('should return the "interface" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.TechnologyInterface;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessInterface,
+        NodeType.ApplicationInterface,
+        NodeType.InfrastructureInterface,
+        NodeType.TechnologyInterface,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Interface);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Interface);
+      });
     });
 
     it('should return the "collaboration" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.TechnologyCollaboration;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessCollaboration,
+        NodeType.ApplicationCollaboration,
+        NodeType.TechnologyCollaboration,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Collaboration);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Collaboration);
+      });
     });
 
     it('should return the "interaction" value if the type is related to Glyph Symbol', () => {
-      const type = NodeType.ApplicationInteraction;
-      const pureSymbol = typeToPureSymbol(type);
+      const types = [
+        NodeType.BusinessInteraction,
+        NodeType.ApplicationInteraction,
+        NodeType.TechnologyInteraction,
+      ];
 
-      expect(pureSymbol).to.equal(GlyphSymbol.Interaction);
+      types.forEach(type => {
+        const pureSymbol = typeToPureSymbol(type);
+
+        expect(pureSymbol).to.equal(GlyphSymbol.Interaction);
+      });
     });
   });
 });
