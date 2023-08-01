@@ -6,6 +6,11 @@ import { NodeType } from '@lib/common/enums/nodeType';
  * @param type Node type
  * @param style types of style
  * @return Hexadecimal color
+ *
+ * @example
+ * const type = 'principle';
+ * const style = 'layered';
+ * const hexadecimal = typeToHexColor(type, style);
  */
 export const typeToHexColor = (type: string, style: Style): string => {
   const colorScheme = getStyle(style);
