@@ -78,4 +78,19 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.BUSINESS_BEHAVIOUR);
     });
   });
+
+  it('should return color "BUSINESS_PASSIVE" if type is color related', () => {
+    const types = [
+      NodeType.BusinessObject,
+      NodeType.Representation,
+      NodeType.Product,
+      NodeType.Contract,
+    ];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.BUSINESS_PASSIVE);
+    });
+  });
 });
