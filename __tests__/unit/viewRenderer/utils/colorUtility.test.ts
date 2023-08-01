@@ -7,6 +7,13 @@ const style = 'hybrid';
 const styleSetting = getStyle(style);
 
 describe('colorUtility', () => {
+  it('should return empty string if node type does not exist', () => {
+    const type = 'unknown';
+    const hexColor = typeToHexColor(type, style);
+
+    expect(hexColor).to.equal('');
+  });
+
   it('should return color "MOTIVATIONAL" if type is color related', () => {
     const types = [
       NodeType.Requirement,
