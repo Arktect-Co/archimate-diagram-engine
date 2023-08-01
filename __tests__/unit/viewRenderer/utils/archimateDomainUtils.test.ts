@@ -101,5 +101,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(pureSymbol).to.equal(GlyphSymbol.DomainService);
     });
+
+    it('should return the "interface" value if the type is related to Glyph Symbol', () => {
+      const type = NodeType.TechnologyInterface;
+      const pureSymbol = typeToPureSymbol(type);
+
+      expect(pureSymbol).to.equal(GlyphSymbol.Interface);
+    });
   });
 });
