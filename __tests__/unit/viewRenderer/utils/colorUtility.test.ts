@@ -132,4 +132,11 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.TECHNOLOGY_BEHAVIOUR);
     });
   });
+
+  it('should return color "TECHNOLOGY_PASSIVE" if type is color related', () => {
+    const type = NodeType.Artifact;
+    const hexColor = typeToHexColor(type, style);
+
+    expect(hexColor).to.equal(styleSetting.TECHNOLOGY_PASSIVE);
+  });
 });
