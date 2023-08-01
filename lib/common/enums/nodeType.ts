@@ -64,4 +64,6 @@ export enum NodeType {
   Grouping = 'grouping',
   Group = 'group',
   Location = 'location',
+  CommunicationPath = 'communicationpath',
+  Network = 'network',
 }
