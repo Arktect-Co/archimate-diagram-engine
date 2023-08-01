@@ -139,4 +139,14 @@ describe('colorUtility', () => {
 
     expect(hexColor).to.equal(styleSetting.TECHNOLOGY_PASSIVE);
   });
+
+  it('should return color "PHYSICAL_ACTIVE" if type is color related', () => {
+    const types = [NodeType.Facility, NodeType.Equipment, NodeType.DistributionNetwork];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.PHYSICAL_ACTIVE);
+    });
+  });
 });
