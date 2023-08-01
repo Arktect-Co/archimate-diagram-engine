@@ -18,5 +18,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(classification).to.equal(NodeShapeClassification.Motivational);
     });
+
+    it('Should return the "structure" value if the type is related to classification', () => {
+      const type = NodeType.Resource;
+      const classification = typeToClassification(type);
+
+      expect(classification).to.equal(NodeShapeClassification.Structure);
+    });
   });
 });
