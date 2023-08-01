@@ -26,6 +26,7 @@ describe('colorUtility', () => {
       expect(hexColor).to.equal(styleSetting.MOTIVATIONAL);
     });
   });
+
   it('should return color "IMPLEMENTATION_PROJECT" if type is color related', () => {
     const types = [NodeType.WorkPackage, NodeType.Deliverable, NodeType.ImplementationEvent];
 
@@ -33,6 +34,16 @@ describe('colorUtility', () => {
       const hexColor = typeToHexColor(type, style);
 
       expect(hexColor).to.equal(styleSetting.IMPLEMENTATION_PROJECT);
+    });
+  });
+
+  it('should return color "IMPLEMENTATION_ROADMAP" if type is color related', () => {
+    const types = [NodeType.Plateau, NodeType.Gap];
+
+    types.forEach(type => {
+      const hexColor = typeToHexColor(type, style);
+
+      expect(hexColor).to.equal(styleSetting.IMPLEMENTATION_ROADMAP);
     });
   });
 });
