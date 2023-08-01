@@ -1,5 +1,5 @@
 import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
-import { NodeType } from '../../../../lib/common/enums/nodeType';
+import { NodeType } from '@lib/common/enums/nodeType';
 import { expect } from 'chai';
 import { getStyle } from '@lib/viewRenderer/utils/styleUtility';
 
