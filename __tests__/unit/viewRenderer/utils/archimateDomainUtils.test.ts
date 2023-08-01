@@ -39,5 +39,12 @@ describe('Archimate Domain Utils', () => {
 
       expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
     });
+
+    it('Should return the "viewelement" value if the type is related to classification', () => {
+      const type = NodeType.Note;
+      const classification = typeToClassification(type);
+
+      expect(classification).to.equal(NodeShapeClassification.ViewElement);
+    });
   });
 });
