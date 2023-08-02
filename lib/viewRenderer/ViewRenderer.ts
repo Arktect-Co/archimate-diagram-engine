@@ -12,6 +12,44 @@ export class ViewRenderer {
    * @param nodes View Nodes
    * @param relationships Relationships of nodes
    * @param settings Node view settings
+   * @example
+   * import { ViewRenderer, ViewSettings } from '../../../index';
+   * import { dia, shapes } from 'jointjs';
+   *
+   * let outputGraph = new dia.Graph({}, {cellNamespace: shapes});
+   * let viewNodes = [
+   *     {
+   *         "identifier": "40eb5bd6-4d7c-4c27-98a8-602f935ed405",
+   *         "name": "Resource",
+   *         "type": "resource"
+   *     },
+   *     {
+   *         "identifier": "6be02ba1-0489-4ea4-b62b-a22d302cbefe",
+   *         "name": "Capability",
+   *         "type": "capability"
+   *     }
+   * ];
+   * let viewRelationships = [
+   *     {
+   *         "identifier": "bc8c928b-dafb-4e61-91b3-7c3e5b93a900",
+   *         "sourceId": "40eb5bd6-4d7c-4c27-98a8-602f935ed405",
+   *         "targetId": "6be02ba1-0489-4ea4-b62b-a22d302cbefe",
+   *         "type": "assignmentrelationship"
+   *     }
+   * ];
+   *
+   * ViewRenderer.renderToGraph(
+   *         outputGraph,
+   *         viewNodes,
+   *         viewRelationships,
+   *         new ViewSettings({
+   *           style: 'hybrid',
+   *           darkColor: 'black',
+   *           lightColor: 'white',
+   *           defaultWidth: 140,
+   *           defaultHeight: 50,
+   *         }),
+   *       );
    */
   static renderToGraph(
     graph: dia.Graph,
@@ -85,6 +123,39 @@ export class ViewRenderer {
    * @param nodes View Nodes
    * @param relationships Relationships of nodes
    * @param settings Node view settings
+   * @example
+   * let viewNodes = [
+   *     {
+   *         "identifier": "40eb5bd6-4d7c-4c27-98a8-602f935ed405",
+   *         "name": "Resource",
+   *         "type": "resource"
+   *     },
+   *     {
+   *         "identifier": "6be02ba1-0489-4ea4-b62b-a22d302cbefe",
+   *         "name": "Capability",
+   *         "type": "capability"
+   *     }
+   * ];
+   * let viewRelationships = [
+   *     {
+   *         "identifier": "bc8c928b-dafb-4e61-91b3-7c3e5b93a900",
+   *         "sourceId": "40eb5bd6-4d7c-4c27-98a8-602f935ed405",
+   *         "targetId": "6be02ba1-0489-4ea4-b62b-a22d302cbefe",
+   *         "type": "assignmentrelationship"
+   *     }
+   * ];
+   *
+   * ViewRenderer.render(
+   *         viewNodes,
+   *         viewRelationships,
+   *         new ViewSettings({
+   *           style: 'hybrid',
+   *           darkColor: 'black',
+   *           lightColor: 'white',
+   *           defaultWidth: 140,
+   *           defaultHeight: 50,
+   *         }),
+   *       );
    */
   static render(
     nodes: Array<ViewNode>,

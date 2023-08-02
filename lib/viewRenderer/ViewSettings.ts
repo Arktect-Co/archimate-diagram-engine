@@ -7,6 +7,9 @@ const stylesAvailable: Array<Style> = ['hybrid', 'layered', 'element'];
  * Verifies if the value is a natural number but excluding zero
  * @param value Value to be verified
  * @return {boolean} True if value is a number greater than zero
+ * @example
+ * const value = -1;
+ * const isNaturalNumber(value);
  */
 function isNaturalNumber(value: unknown): boolean {
   return typeof value === 'number' && value > 0;
@@ -14,6 +17,18 @@ function isNaturalNumber(value: unknown): boolean {
 
 /**
  * Setting of View Node
+ * @example
+ * const settings = new ViewSettings({
+ *       style: 'element',
+ *       darkColor: 'blue',
+ *       lightColor: 'white',
+ *       textColor: 'black',
+ *       textSize: 16,
+ *       defaultWidth: 100,
+ *       defaultHeight: 80,
+ *       borderWidth: 1,
+ *       edgeWidth: 1
+ *       });
  */
 export class ViewSettings implements Required<ViewSetting> {
   public style: Style;
