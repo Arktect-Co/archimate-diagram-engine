@@ -1,6 +1,7 @@
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import { expect } from 'chai';
+import { Style } from '@lib/model/ViewSetting';
 
 const defaultSettings = {
   style: SETTINGS_DEFAULT.STYLE,
@@ -27,5 +28,31 @@ describe('ViewSettings', () => {
     expect(setting.defaultHeight).to.equal(defaultSettings.defaultHeight);
     expect(setting.borderWidth).to.equal(defaultSettings.borderWidth);
     expect(setting.edgeWidth).to.equal(defaultSettings.edgeWidth);
+  });
+
+  it('Should return the settings informed in the constructor', () => {
+    const settings = {
+      style: 'element' as Style,
+      darkColor: 'blue',
+      lightColor: 'white',
+      textColor: 'black',
+      textSize: 16,
+      defaultWidth: 100,
+      defaultHeight: 80,
+      borderWidth: 1,
+      edgeWidth: 1,
+    };
+
+    const setting = new ViewSettings(settings);
+
+    expect(setting.style).to.equal(settings.style);
+    expect(setting.darkColor).to.equal(settings.darkColor);
+    expect(setting.lightColor).to.equal(settings.lightColor);
+    expect(setting.textColor).to.equal(settings.textColor);
+    expect(setting.textSize).to.equal(settings.textSize);
+    expect(setting.defaultWidth).to.equal(settings.defaultWidth);
+    expect(setting.defaultHeight).to.equal(settings.defaultHeight);
+    expect(setting.borderWidth).to.equal(settings.borderWidth);
+    expect(setting.edgeWidth).to.equal(settings.edgeWidth);
   });
 });
