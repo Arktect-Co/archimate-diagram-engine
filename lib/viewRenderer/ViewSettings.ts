@@ -38,7 +38,6 @@ export class ViewSettings implements Required<ViewSetting> {
    * @param [settings.defaultHeight = 50] Reference size for element's height
    * @param [settings.borderWidth = 0.8] Border width for elements
    * @param [settings.edgeWidth = 0.8] Width of the relationship stroke
-   *
    */
   constructor(settings: Partial<ViewSetting>) {
     const {
