@@ -1,4 +1,4 @@
-export interface BrendPoint {
+export interface BendPoint {
   x: number;
   y: number;
 }
@@ -11,5 +11,5 @@ export interface ViewRelationship {
   viewRelationshipId: string;
   type: string;
   isBidirectional?: boolean;
-  bendpoints: Array<BrendPoint>;
+  bendpoints: Array<BendPoint>;
 }
