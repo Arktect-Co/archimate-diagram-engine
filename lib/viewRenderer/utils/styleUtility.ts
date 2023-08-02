@@ -1,6 +1,5 @@
 import themes, { ThemeSchema } from '@lib/viewRenderer/utils/style/styles';
-
-export type Style = 'layered' | 'element' | 'hybrid';
+import { Style } from '@lib/model/ViewSetting';
 
 /**
  * Returns a style setting

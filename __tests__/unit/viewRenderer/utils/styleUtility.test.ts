@@ -1,6 +1,7 @@
-import { getStyle, Style } from '@lib/viewRenderer/utils/styleUtility';
+import { getStyle } from '@lib/viewRenderer/utils/styleUtility';
 import themes from '@lib/viewRenderer/utils/style/styles';
 import { expect } from 'chai';
+import { Style } from '@lib/model/ViewSetting';
 
 describe('styleUtility', () => {
   it('should return the "hybrid" style configuration if the informed style does not exist', () => {

@@ -1,5 +1,6 @@
-import { getStyle, Style } from '@lib/viewRenderer/utils/styleUtility';
+import { getStyle } from '@lib/viewRenderer/utils/styleUtility';
 import { NodeType } from '@lib/common/enums/nodeType';
+import { Style } from '@lib/model/ViewSetting';
 
 /**
  * Returns a hexadecimal color based on type
