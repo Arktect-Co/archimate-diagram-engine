@@ -20,7 +20,8 @@
     "strict": true,                                      /* Enable all strict type-checking options. */
     "noImplicitAny": false,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
     "skipLibCheck":true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "strictNullChecks":false
   },
   "include": ["./**/*"],
   "exclude": ["node_modules","**/*.test.ts","dist"]
