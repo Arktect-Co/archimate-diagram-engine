@@ -175,9 +175,20 @@ describe('NodeBuilder', () => {
       expect(node.attrs.label.textWrap.text).to.equal(attributes.name);
     });
 
-    it('should return an error message if name does not exist', () => {
+    it('should return an error message if name is not defined', () => {
       try {
         nodeBuilder.buildNode({ ...attributes, name: '' });
+      } catch (e) {
+        const { message } = e as Error;
+        expect(message).to.equal(
+          'Invalid node: Nodes must have viewNodeId, name and type defined.',
+        );
+      }
+    });
+
+    it('should return an error message if type is not defined', () => {
+      try {
+        nodeBuilder.buildNode({ ...attributes, type: '' });
       } catch (e) {
         const { message } = e as Error;
         expect(message).to.equal(
