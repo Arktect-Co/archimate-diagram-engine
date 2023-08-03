@@ -14,6 +14,11 @@ describe('NodeBuilder', () => {
     nodeBuilder = new NodeBuilder(graph, settings);
   });
 
+  afterEach(() => {
+    graph = null;
+    nodeBuilder = null;
+  });
+
   describe('buildShape', () => {
     const size = {
       width: 100,
@@ -29,6 +34,19 @@ describe('NodeBuilder', () => {
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a node with rectangular rounded shape if classification is "behaviour"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: NodeType.ValueStream,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.size).to.contain(size);
+      expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8 });
+      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'middle', refX: '42.5%' });
     });
   });
 });
