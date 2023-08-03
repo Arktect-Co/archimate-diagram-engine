@@ -5,6 +5,24 @@ import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
 import { typeToClassification } from '@lib/viewRenderer/utils/archimateDomainUtils';
 import { generateGlyph } from '@lib/glyphGenerator/GlyphGenerator';
 import { Style, ViewSetting } from '@lib/model/ViewSetting';
+import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
+import { NodeType } from '@lib/common/enums/nodeType';
+import { Connectors } from '@lib/common/enums/connectors';
+
+interface BasicNodeAttributes {
+  name: string;
+  type: string;
+  width: number;
+  height: number;
+}
+
+interface NodeAttributes extends BasicNodeAttributes {
+  modelElementId: string;
+  viewNodeId: string;
+  posX?: number;
+  posY?: number;
+  parentElement?: dia.Cell | null;
+}
 
 export class NodeBuilder {
   private readonly style: Style;
@@ -17,81 +35,82 @@ export class NodeBuilder {
     this.builder = new ShapeBuilder(settings);
   }
 
-  buildShape(name: string, type: string, width: number, height: number) {
-    const classification = typeToClassification(type);
-
-    const buildBasicRetangular = (type, attributes) => {
+  buildShape({ name, type, width, height }: BasicNodeAttributes) {
+    const buildBasicRetangular = (nodeType, attributes) => {
       return this.builder.buildBasicRetangular(name, {
         width,
         height,
-        fillColor: typeToHexColor(type, this.style),
+        fillColor: typeToHexColor(nodeType, this.style),
         ...attributes,
       });
     };
 
-    switch (classification) {
-      case 'structure':
-        return buildBasicRetangular(type, {});
-      case 'behaviour':
-        return this.builder.buildBasicRounded(name, {
+    const shapeClassification = {
+      [NodeShapeClassification.Structure]: (): shapes.standard.Rectangle =>
+        buildBasicRetangular(type, {}),
+      [NodeShapeClassification.Behaviour]: (): shapes.standard.Rectangle =>
+        this.builder.buildBasicRounded(name, {
           width,
           height,
           fillColor: typeToHexColor(type, this.style),
-        });
-      case 'implementation_and_migration':
-        return this.builder.buildBasicRounded(name, {
+        }),
+      [NodeShapeClassification.ImplementationAndMigration]: (): shapes.standard.Rectangle =>
+        this.builder.buildBasicRounded(name, {
           width,
           height,
           fillColor: typeToHexColor(type, this.style),
-        });
-      case 'motivational':
-        return this.builder.buildBasicOctagonal(name, {
+        }),
+      [NodeShapeClassification.Motivational]: (): shapes.standard.Polygon =>
+        this.builder.buildBasicOctagonal(name, {
           width,
           height,
           fillColor: typeToHexColor(type, this.style),
-        });
-      case 'grouping':
-        return buildBasicRetangular(type, {
+        }),
+      [NodeType.Grouping]: (): shapes.standard.Rectangle =>
+        buildBasicRetangular(type, {
           withDashedStroke: true,
           textAnchor: 'left',
           refX: '5%',
-        });
-      case 'group':
-        return buildBasicRetangular(type, {
+        }),
+      [NodeType.Group]: (): shapes.standard.Rectangle =>
+        buildBasicRetangular(type, {
           textAnchor: 'left',
           refX: '7%',
-        });
-      case 'viewelement':
-        return buildBasicRetangular(type, {
+        }),
+      [NodeShapeClassification.ViewElement]: (): shapes.standard.Rectangle =>
+        buildBasicRetangular(type, {
           textAnchor: 'left',
           refX: '7%',
-        });
-      case 'andjunction':
-        return this.builder.buildSmallCircle({
+        }),
+      [Connectors.AndJunction]: (): shapes.standard.Circle =>
+        this.builder.buildSmallCircle({
           fillColor: 'black',
-        });
-      case 'orjunction':
-        return this.builder.buildSmallCircle({
+        }),
+      [Connectors.OrJunction]: (): shapes.standard.Circle =>
+        this.builder.buildSmallCircle({
           fillColor: 'white',
-        });
-      default:
-        return buildBasicRetangular(type, {});
-    }
+        }),
+    };
+
+    const classification = typeToClassification(type);
+    const build = shapeClassification[classification];
+
+    return build ? build() : buildBasicRetangular(type, {});
   }
 
-  buildNode(
-    modelElementId: string,
-    viewNodeId: string,
-    name: string,
-    type: string,
-    width: number,
-    height: number,
-    posX?: number,
-    posY?: number,
-    parentElement?: dia.Cell | null,
-  ) {
+  buildNode({
+    modelElementId,
+    viewNodeId,
+    name,
+    type,
+    width,
+    height,
+    posX,
+    posY,
+    parentElement,
+  }: NodeAttributes) {
     if (viewNodeId && name && type) {
-      const shape = this.buildShape(name, type, width, height);
+      const shape = this.buildShape({ name, type, width, height });
       const x = posX ? Number(posX) : 0;
       const y = posY ? Number(posY) : 0;
 

@@ -71,17 +71,17 @@ export class ViewRenderer {
           parent = graph.getCell(parentId);
         }
 
-        nodeBuilder.buildNode(
-          node.modelNodeId,
-          node.viewNodeId,
-          node.name,
-          node.type,
-          node.width,
-          node.height,
-          node.x,
-          node.y,
-          parent,
-        );
+        nodeBuilder.buildNode({
+          modelElementId: node.modelNodeId,
+          viewNodeId: node.viewNodeId,
+          name: node.name,
+          type: node.type,
+          width: node.width,
+          height: node.height,
+          posX: node.x,
+          posY: node.y,
+          parentElement: parent,
+        });
       });
 
       let source = null,
