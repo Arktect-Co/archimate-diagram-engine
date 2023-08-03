@@ -4,6 +4,7 @@ import { ViewSettings } from '../../../../lib/viewRenderer/ViewSettings';
 import { NodeType } from '../../../../lib/common/enums/nodeType';
 import { expect } from 'chai';
 import { NodeShapeClassification } from '../../../../lib/common/enums/nodeShapeClassification';
+import { Connectors } from '../../../../lib/common/enums/connectors';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});
@@ -111,6 +112,18 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
       expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '7%' });
+    });
+
+    it('should return a node with circle shape if classification is "andjunction"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: Connectors.AndJunction,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Circle');
+      expect(nodeShape.attributes.size).to.contain({ width: 14, height: 14 });
+      expect(nodeShape.attributes.attrs.body).to.contain({ fill: 'black' });
     });
   });
 });
