@@ -196,5 +196,16 @@ describe('NodeBuilder', () => {
         );
       }
     });
+
+    it('should return an error message if viewNodeId is not defined', () => {
+      try {
+        nodeBuilder.buildNode({ ...attributes, type: '' });
+      } catch (e) {
+        const { message } = e as Error;
+        expect(message).to.equal(
+          'Invalid node: Nodes must have viewNodeId, name and type defined.',
+        );
+      }
+    });
   });
 });
