@@ -18,7 +18,7 @@ export class NodeBuilder {
   }
 
   buildShape(name: string, type: string, width: number, height: number) {
-    let classification = typeToClassification(type);
+    const classification = typeToClassification(type);
 
     const buildBasicRetangular = (type, attributes) => {
       return this.builder.buildBasicRetangular(name, {
@@ -91,7 +91,7 @@ export class NodeBuilder {
     parentElement?: dia.Cell | null,
   ) {
     if (viewNodeId && name && type) {
-      let shape = this.buildShape(name, type, width, height);
+      const shape = this.buildShape(name, type, width, height);
       const x = posX ? Number(posX) : 0;
       const y = posY ? Number(posY) : 0;
 
@@ -118,7 +118,7 @@ export class NodeBuilder {
       const svgData = generateGlyph(type);
 
       if (svgData !== '') {
-        let image = new shapes.standard.Image();
+        const image = new shapes.standard.Image();
 
         image.resize(16, 16);
         image.attr({
