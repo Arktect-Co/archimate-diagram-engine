@@ -61,5 +61,19 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.size).to.contain(size);
       expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'middle', refX: '42.5%' });
     });
+
+    it('should return a node with Octagonal shape if classification is "motivational"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: NodeType.Stakeholder,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Polygon');
+      expect(nodeShape.attributes.attrs.body).to.contain({
+        refPoints: '0,1 0.5,0 9.5,0 10,1 10,9 9.5,10 0.5,10 0,9',
+      });
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
   });
 });
