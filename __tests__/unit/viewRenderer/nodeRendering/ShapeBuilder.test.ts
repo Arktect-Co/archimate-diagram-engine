@@ -131,5 +131,41 @@ describe('ShapeBuilder', () => {
           fontSize: 12,
         });
     });
+
+    it('should return a basic rounded node', () => {
+      const { elementName, ...attributes } = shapeAttributes;
+      const size = { width: 100, height: 80 };
+      const rectangular = shapeBuilder
+        .buildBasicRounded(elementName, { ...attributes, ...size })
+        .toJSON();
+
+      expect(rectangular.type).to.equal('standard.Rectangle');
+      expect(rectangular.size).to.contain(size);
+      expect(rectangular.attrs.body).to.contain({
+        fill: attributes.fillColor,
+        stroke: attributes.strokeColor,
+        rx: 8,
+        ry: 8,
+        strokeWidth: 0.8,
+      });
+      expect(rectangular.attrs.label)
+        .to.deep.include({
+          textWrap: {
+            text: elementName,
+            width: '70%',
+            height: '100%',
+            ellipsis: true,
+          },
+        })
+        .contain({
+          fill: 'black',
+          textVerticalAnchor: 'top',
+          refX: attributes.refX,
+          refY: 10,
+          refWidth: '100%',
+          refHeight: '100%',
+          fontSize: 12,
+        });
+    });
   });
 });
