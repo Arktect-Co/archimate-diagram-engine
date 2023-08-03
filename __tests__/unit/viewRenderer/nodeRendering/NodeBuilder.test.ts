@@ -27,6 +27,17 @@ describe('NodeBuilder', () => {
       height: 80,
     };
 
+    it('should return a node with rectangular shape if no classification exist', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: 'unknown',
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
     it('should return a node with rectangular shape if classification is "structure"', () => {
       const nodeShape = nodeBuilder.buildShape({
         type: NodeType.ApplicationComponent,
