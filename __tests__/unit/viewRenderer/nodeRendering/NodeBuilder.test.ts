@@ -48,5 +48,18 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8 });
       expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'middle', refX: '42.5%' });
     });
+
+    it('should return a node with rectangular rounded shape if classification is "implementation_and_migration"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: NodeType.Gap,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8 });
+      expect(nodeShape.attributes.size).to.contain(size);
+      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'middle', refX: '42.5%' });
+    });
   });
 });
