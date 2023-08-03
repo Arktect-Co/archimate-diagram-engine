@@ -3,6 +3,7 @@ import { NodeBuilder } from '../../../../lib/viewRenderer/nodeRendering/NodeBuil
 import { ViewSettings } from '../../../../lib/viewRenderer/ViewSettings';
 import { NodeType } from '../../../../lib/common/enums/nodeType';
 import { expect } from 'chai';
+import { NodeShapeClassification } from '../../../../lib/common/enums/nodeShapeClassification';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});
@@ -85,6 +86,7 @@ describe('NodeBuilder', () => {
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
+      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '5%' });
     });
 
     it('should return a node with rectangular shape if classification is "group"', () => {
@@ -96,6 +98,19 @@ describe('NodeBuilder', () => {
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
+      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '7%' });
+    });
+
+    it('should return a node with rectangular shape if classification is "viewelement"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: NodeShapeClassification.ViewElement,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.size).to.contain(size);
+      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '7%' });
     });
   });
 });
