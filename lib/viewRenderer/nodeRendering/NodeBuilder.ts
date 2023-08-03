@@ -123,7 +123,7 @@ export class NodeBuilder {
         image.resize(16, 16);
         image.attr({
           image: {
-            'xlink:href': 'data:image/svg+xml;utf8,' + encodeURIComponent(svgData),
+            'xlink:href': `data:image/svg+xml;utf8,${encodeURIComponent(svgData)}`,
           },
         });
 
