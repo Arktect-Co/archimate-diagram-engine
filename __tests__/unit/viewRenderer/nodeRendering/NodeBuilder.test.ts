@@ -149,4 +149,30 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.attrs.body).to.contain({ fill: 'white' });
     });
   });
+
+  describe('buildNode', () => {
+    it('should build a node in graph', () => {
+      const attributes = {
+        width: 100,
+        height: 100,
+        type: NodeType.Node,
+        name: 'Node 1',
+        viewNodeId: '624f10ecd9f08d4030fe458f',
+        modelElementId: 'e2e60769-fea2-45e2-9355-66e092ec6934',
+        posX: 10,
+        posY: 10,
+        parentElement: undefined,
+      };
+      nodeBuilder.buildNode(attributes);
+
+      const node = graph.getCell(attributes.viewNodeId).toJSON();
+
+      expect(node.id).to.equal(attributes.viewNodeId);
+      expect(node.type).to.equal('standard.Rectangle');
+      expect(node.position).to.contain({ x: attributes.posX, y: attributes.posY });
+      expect(node.size).to.contain({ width: attributes.width, height: attributes.height });
+      expect(node.modelElementId).to.equal(attributes.modelElementId);
+      expect(node.attrs.label.textWrap.text).to.equal(attributes.name);
+    });
+  });
 });
