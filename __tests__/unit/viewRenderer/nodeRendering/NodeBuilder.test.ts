@@ -75,5 +75,27 @@ describe('NodeBuilder', () => {
       });
       expect(nodeShape.attributes.size).to.contain(size);
     });
+
+    it('should return a node with rectangular shape if classification is "grouping"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: NodeType.Grouping,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a node with rectangular shape if classification is "group"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: NodeType.Group,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
   });
 });
