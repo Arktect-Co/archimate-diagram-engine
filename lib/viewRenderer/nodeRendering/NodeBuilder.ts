@@ -119,6 +119,37 @@ export class NodeBuilder {
     return build ? build() : buildBasicRetangular(type, {});
   }
 
+  /**
+   * Build a node in graph
+   * @param attributes Node attributes
+   * @param attributes.modelElementId Model element identification
+   * @param attributes.viewNodeId View node identification
+   * @param attributes.name Node name
+   * @param attributes.type Node type
+   * @param attributes.width Node width
+   * @param attributes.height Node height
+   * @param attributes.posX Position of the node on the x-axis
+   * @param attributes.posY Position of the node on the y-axis
+   * @param attributes.parentElement Node parent
+   * @example
+   * import { dia } from 'jointjs';
+   * import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
+   * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+   *
+   * const graph = new dia.Graph({ cellNamespace: shapes });
+   * const nodeBuilder = new NodeBuilder(graph, new ViewSettings({}));
+   * nodeBuilder.buildNode({
+   *       width: 100,
+   *       height: 100,
+   *       type: 'node',
+   *       name: 'Node 1',
+   *       viewNodeId: '624f10ecd9f08d4030fe458f',
+   *       modelElementId: 'e2e60769-fea2-45e2-9355-66e092ec6934',
+   *       posX: 10,
+   *       posY: 10,
+   *       parentElement: undefined,
+   * });
+   */
   buildNode({
     modelElementId,
     viewNodeId,
@@ -129,7 +160,7 @@ export class NodeBuilder {
     posX,
     posY,
     parentElement,
-  }: NodeAttributes) {
+  }: NodeAttributes): void {
     if (viewNodeId && name && type) {
       const shape = this.buildShape({ name, type, width, height });
       const x = posX ? Number(posX) : 0;
