@@ -78,4 +78,19 @@ describe('ShapeBuilder', () => {
       strokeWidth: 0.8,
     });
   });
+
+  it('should return attributes without dashed stroke', () => {
+    const { body } = shapeBuilder.getAttributes({
+      ...shapeAttributes,
+      withDashedStroke: false,
+    });
+
+    expect(body).to.contain({
+      fill: shapeAttributes.fillColor,
+      stroke: shapeAttributes.strokeColor,
+      rx: 0,
+      ry: 0,
+      strokeWidth: 0.8,
+    });
+  });
 });
