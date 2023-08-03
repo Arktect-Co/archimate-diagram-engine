@@ -125,5 +125,17 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.size).to.contain({ width: 14, height: 14 });
       expect(nodeShape.attributes.attrs.body).to.contain({ fill: 'black' });
     });
+
+    it('should return a node with circle shape if classification is "orjunction"', () => {
+      const nodeShape = nodeBuilder.buildShape({
+        type: Connectors.OrJunction,
+        name: 'unknown',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Circle');
+      expect(nodeShape.attributes.size).to.contain({ width: 14, height: 14 });
+      expect(nodeShape.attributes.attrs.body).to.contain({ fill: 'white' });
+    });
   });
 });
