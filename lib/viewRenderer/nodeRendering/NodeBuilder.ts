@@ -35,6 +35,28 @@ export class NodeBuilder {
     this.builder = new ShapeBuilder(settings);
   }
 
+  /**
+   * Builds a node shape based on the node classification type and other given attributes
+   * @param attributes
+   * @param attributes.name Node name
+   * @param attributes.type Node type
+   * @param attributes.width Node width
+   * @param attributes.height Node height
+   * @return Node shape
+   * @example
+   * import { dia } from 'jointjs';
+   * import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
+   * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+   *
+   * const graph = new dia.Graph({ cellNamespace: shapes });
+   * const nodeBuilder = new NodeBuilder(graph, new ViewSettings({}));
+   * const rectangularShape = nodeBuilder.buildShape({
+   *         type: 'applicationcomponent',
+   *         name: 'Model Service',
+   *         width: 100,
+   *         height: 80,
+   * })
+   */
   buildShape({ name, type, width, height }: BasicNodeAttributes) {
     const buildBasicRetangular = (nodeType, attributes) => {
       return this.builder.buildBasicRetangular(name, {
@@ -46,47 +68,46 @@ export class NodeBuilder {
     };
 
     const shapeClassification = {
-      [NodeShapeClassification.Structure]: (): shapes.standard.Rectangle =>
-        buildBasicRetangular(type, {}),
-      [NodeShapeClassification.Behaviour]: (): shapes.standard.Rectangle =>
+      [NodeShapeClassification.Structure]: () => buildBasicRetangular(type, {}),
+      [NodeShapeClassification.Behaviour]: () =>
         this.builder.buildBasicRounded(name, {
           width,
           height,
           fillColor: typeToHexColor(type, this.style),
         }),
-      [NodeShapeClassification.ImplementationAndMigration]: (): shapes.standard.Rectangle =>
+      [NodeShapeClassification.ImplementationAndMigration]: () =>
         this.builder.buildBasicRounded(name, {
           width,
           height,
           fillColor: typeToHexColor(type, this.style),
         }),
-      [NodeShapeClassification.Motivational]: (): shapes.standard.Polygon =>
+      [NodeShapeClassification.Motivational]: () =>
         this.builder.buildBasicOctagonal(name, {
           width,
           height,
           fillColor: typeToHexColor(type, this.style),
         }),
-      [NodeType.Grouping]: (): shapes.standard.Rectangle =>
+      [NodeType.Grouping]: () =>
         buildBasicRetangular(type, {
           withDashedStroke: true,
           textAnchor: 'left',
           refX: '5%',
         }),
-      [NodeType.Group]: (): shapes.standard.Rectangle =>
+      [NodeType.Group]: () =>
         buildBasicRetangular(type, {
           textAnchor: 'left',
           refX: '7%',
         }),
-      [NodeShapeClassification.ViewElement]: (): shapes.standard.Rectangle =>
+      [NodeShapeClassification.ViewElement]: () =>
         buildBasicRetangular(type, {
           textAnchor: 'left',
           refX: '7%',
         }),
-      [Connectors.AndJunction]: (): shapes.standard.Circle =>
+      [Connectors.AndJunction]: () =>
         this.builder.buildSmallCircle({
           fillColor: 'black',
         }),
-      [Connectors.OrJunction]: (): shapes.standard.Circle =>
+      [Connectors.OrJunction]: () =>
         this.builder.buildSmallCircle({
           fillColor: 'white',
         }),

@@ -1,10 +1,10 @@
 import { dia, shapes } from 'jointjs';
-import { NodeBuilder } from '../../../../lib/viewRenderer/nodeRendering/NodeBuilder';
-import { ViewSettings } from '../../../../lib/viewRenderer/ViewSettings';
-import { NodeType } from '../../../../lib/common/enums/nodeType';
+import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
+import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+import { NodeType } from '@lib/common/enums/nodeType';
 import { expect } from 'chai';
-import { NodeShapeClassification } from '../../../../lib/common/enums/nodeShapeClassification';
-import { Connectors } from '../../../../lib/common/enums/connectors';
+import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
+import { Connectors } from '@lib/common/enums/connectors';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});
