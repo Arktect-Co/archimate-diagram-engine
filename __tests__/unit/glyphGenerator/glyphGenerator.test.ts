@@ -14,4 +14,10 @@ describe('glyphGenerator', () => {
 
     expect(glyph).to.equal(baseSvgDescription + mainSvgDescription);
   });
+
+  it('should return empty string if type does not contain glyph', () => {
+    const glyph = generateGlyph('unknow');
+
+    expect(glyph).to.equal('');
+  });
 });
