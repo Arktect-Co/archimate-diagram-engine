@@ -187,4 +187,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[GlyphSymbol.Interface]);
     expect(isMatch(GlyphSymbol.Interface, glyph)).to.equal(true);
   });
+
+  it('should return a "location" glyph', () => {
+    const glyph = getGlyph(NodeType.Location);
+
+    expect(glyph).to.equal(glyphs[NodeType.Location]);
+    expect(isMatch(NodeType.Location, glyph)).to.equal(true);
+  });
 });
