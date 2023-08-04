@@ -299,4 +299,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.SystemSoftware]);
     expect(isMatch(NodeType.SystemSoftware, glyph)).to.equal(true);
   });
+
+  it('should return a "value" glyph', () => {
+    const glyph = getGlyph(NodeType.Value);
+
+    expect(glyph).to.equal(glyphs[NodeType.Value]);
+    expect(isMatch(NodeType.Value, glyph)).to.equal(true);
+  });
 });
