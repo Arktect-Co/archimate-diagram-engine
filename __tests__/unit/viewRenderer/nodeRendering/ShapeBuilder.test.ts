@@ -204,5 +204,38 @@ describe('ShapeBuilder', () => {
           fontSize: 12,
         });
     });
+
+    it('should return a small circle node', () => {
+      const { fillColor, strokeColor } = shapeAttributes;
+      const size = { width: 14, height: 14 };
+      const octagonal = shapeBuilder.buildSmallCircle({ fillColor, strokeColor }).toJSON();
+
+      expect(octagonal.type).to.equal('standard.Circle');
+      expect(octagonal.size).to.contain(size);
+      expect(octagonal.attrs.body).to.contain({
+        fill: fillColor,
+        stroke: strokeColor,
+        rx: 0,
+        ry: 0,
+        strokeWidth: 0.8,
+      });
+      expect(octagonal.attrs.label)
+        .to.deep.include({
+          textWrap: {
+            text: '',
+            width: '70%',
+            height: '100%',
+            ellipsis: true,
+          },
+        })
+        .contain({
+          fill: 'black',
+          textVerticalAnchor: 'top',
+          refY: 10,
+          refWidth: '100%',
+          refHeight: '100%',
+          fontSize: 12,
+        });
+    });
   });
 });
