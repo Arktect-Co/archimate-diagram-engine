@@ -173,4 +173,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Grouping]);
     expect(isMatch('group', glyph)).to.equal(true);
   });
+
+  it('should return an "interaction" glyph', () => {
+    const glyph = getGlyph(GlyphSymbol.Interaction);
+
+    expect(glyph).to.equal(glyphs[GlyphSymbol.Interaction]);
+    expect(isMatch(GlyphSymbol.Interaction, glyph)).to.equal(true);
+  });
 });
