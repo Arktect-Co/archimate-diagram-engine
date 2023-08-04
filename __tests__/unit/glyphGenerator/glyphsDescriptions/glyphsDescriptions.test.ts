@@ -250,4 +250,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Principle]);
     expect(isMatch(NodeType.Principle, glyph)).to.equal(true);
   });
+
+  it('should return a "process" glyph', () => {
+    const glyph = getGlyph(GlyphSymbol.Process);
+
+    expect(glyph).to.equal(glyphs[GlyphSymbol.Process]);
+    expect(isMatch(GlyphSymbol.Process, glyph)).to.equal(true);
+  });
 });
