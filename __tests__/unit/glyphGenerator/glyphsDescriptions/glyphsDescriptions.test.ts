@@ -236,4 +236,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Path]);
     expect(isMatch(NodeType.Path, glyph)).to.equal(true);
   });
+
+  it('should return a "plateau" glyph', () => {
+    const glyph = getGlyph(NodeType.Plateau);
+
+    expect(glyph).to.equal(glyphs[NodeType.Plateau]);
+    expect(isMatch(NodeType.Plateau, glyph)).to.equal(true);
+  });
 });
