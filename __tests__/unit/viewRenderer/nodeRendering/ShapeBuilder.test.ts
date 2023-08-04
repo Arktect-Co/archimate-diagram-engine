@@ -1,6 +1,7 @@
 import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { expect } from 'chai';
+import { Position } from '@lib/common/enums/Position';
 
 describe('ShapeBuilder', () => {
   let shapeBuilder: ShapeBuilder = new ShapeBuilder(new ViewSettings({}));
@@ -10,7 +11,7 @@ describe('ShapeBuilder', () => {
     fillColor: 'white',
     elementName: 'Node 1',
     refX: '42.5%',
-    textAnchor: 'middle',
+    textAnchor: Position.Middle,
   };
   describe('getAttributes', () => {
     it('should return attributes', () => {
@@ -27,7 +28,7 @@ describe('ShapeBuilder', () => {
         })
         .contain({
           fill: 'black',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: Position.Top,
           textAnchor: shapeAttributes.textAnchor,
           refX: shapeAttributes.refX,
           refY: 10,
@@ -61,7 +62,7 @@ describe('ShapeBuilder', () => {
         })
         .contain({
           fill: 'black',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: Position.Top,
           textAnchor: shapeAttributes.textAnchor,
           refX: shapeAttributes.refX,
           refY: 10,
@@ -123,7 +124,7 @@ describe('ShapeBuilder', () => {
         })
         .contain({
           fill: 'black',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: Position.Top,
           refX: attributes.refX,
           refY: 10,
           refWidth: '100%',
@@ -159,7 +160,7 @@ describe('ShapeBuilder', () => {
         })
         .contain({
           fill: 'black',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: Position.Top,
           refX: attributes.refX,
           refY: 10,
           refWidth: '100%',
@@ -196,7 +197,7 @@ describe('ShapeBuilder', () => {
         })
         .contain({
           fill: 'black',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: Position.Top,
           refX: attributes.refX,
           refY: 10,
           refWidth: '100%',
@@ -230,7 +231,7 @@ describe('ShapeBuilder', () => {
         })
         .contain({
           fill: 'black',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: Position.Top,
           refY: 10,
           refWidth: '100%',
           refHeight: '100%',

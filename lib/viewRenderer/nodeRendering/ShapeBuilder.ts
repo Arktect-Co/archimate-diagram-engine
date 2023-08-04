@@ -1,6 +1,7 @@
 import { shapes, dia, attributes } from 'jointjs';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
+import { Position } from '@lib/common/enums/Position';
 
 export interface Attributes {
   body: attributes.SVGAttributes;
@@ -120,7 +121,7 @@ export class ShapeBuilder {
           ellipsis: true,
         },
         fill: this.textColor,
-        textVerticalAnchor: 'top',
+        textVerticalAnchor: Position.Top,
         textAnchor,
         refX,
         refY: 10,
@@ -168,7 +169,7 @@ export class ShapeBuilder {
     {
       width = this.defaultWidth,
       height = this.defaultHeight,
-      textAnchor = 'middle',
+      textAnchor = Position.Middle,
       refX = '42.5%',
       fillColor = this.lightColor,
       strokeColor = this.darkColor,
@@ -225,7 +226,7 @@ export class ShapeBuilder {
     {
       width = this.defaultWidth,
       height = this.defaultHeight,
-      textAnchor = 'middle',
+      textAnchor = Position.Middle,
       refX = '42.5%',
       fillColor = this.lightColor,
       strokeColor = this.darkColor,
@@ -282,7 +283,7 @@ export class ShapeBuilder {
     {
       width = this.defaultWidth,
       height = this.defaultHeight,
-      textAnchor = 'middle',
+      textAnchor = Position.Middle,
       refX = '42.5%',
       fillColor = this.lightColor,
       strokeColor = this.darkColor,

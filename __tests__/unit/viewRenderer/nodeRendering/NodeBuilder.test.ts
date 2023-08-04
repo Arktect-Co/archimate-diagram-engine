@@ -5,6 +5,7 @@ import { NodeType } from '@lib/common/enums/nodeType';
 import { expect } from 'chai';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { Connectors } from '@lib/common/enums/connectors';
+import { Position } from '@lib/common/enums/Position';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});
@@ -59,7 +60,10 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
       expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8 });
-      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'middle', refX: '42.5%' });
+      expect(nodeShape.attributes.attrs.label).to.contain({
+        textAnchor: Position.Middle,
+        refX: '42.5%',
+      });
     });
 
     it('should return a node with rectangular rounded shape if classification is "implementation_and_migration"', () => {
@@ -72,7 +76,10 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8 });
       expect(nodeShape.attributes.size).to.contain(size);
-      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'middle', refX: '42.5%' });
+      expect(nodeShape.attributes.attrs.label).to.contain({
+        textAnchor: Position.Middle,
+        refX: '42.5%',
+      });
     });
 
     it('should return a node with Octagonal shape if classification is "motivational"', () => {
@@ -98,7 +105,10 @@ describe('NodeBuilder', () => {
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
-      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '5%' });
+      expect(nodeShape.attributes.attrs.label).to.contain({
+        textAnchor: Position.Left,
+        refX: '5%',
+      });
     });
 
     it('should return a node with rectangular shape if classification is "group"', () => {
@@ -110,7 +120,10 @@ describe('NodeBuilder', () => {
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
-      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '7%' });
+      expect(nodeShape.attributes.attrs.label).to.contain({
+        textAnchor: Position.Left,
+        refX: '7%',
+      });
     });
 
     it('should return a node with rectangular shape if classification is "viewelement"', () => {
@@ -122,7 +135,10 @@ describe('NodeBuilder', () => {
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
       expect(nodeShape.attributes.size).to.contain(size);
-      expect(nodeShape.attributes.attrs.label).to.contain({ textAnchor: 'left', refX: '7%' });
+      expect(nodeShape.attributes.attrs.label).to.contain({
+        textAnchor: Position.Left,
+        refX: '7%',
+      });
     });
 
     it('should return a node with circle shape if classification is "andjunction"', () => {

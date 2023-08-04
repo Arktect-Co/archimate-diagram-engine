@@ -8,6 +8,7 @@ import { Style, ViewSetting } from '@lib/model/ViewSetting';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { Connectors } from '@lib/common/enums/connectors';
+import { Position } from '@lib/common/enums/Position';
 
 interface BasicNodeAttributes {
   name: string;
@@ -106,17 +107,17 @@ export class NodeBuilder {
       [NodeType.Grouping]: () =>
         buildBasicRectangular(type, {
           withDashedStroke: true,
-          textAnchor: 'left',
+          textAnchor: Position.Left,
           refX: '5%',
         }),
       [NodeType.Group]: () =>
         buildBasicRectangular(type, {
-          textAnchor: 'left',
+          textAnchor: Position.Left,
           refX: '7%',
         }),
       [NodeShapeClassification.ViewElement]: () =>
         buildBasicRectangular(type, {
-          textAnchor: 'left',
+          textAnchor: Position.Left,
           refX: '7%',
         }),
       [Connectors.AndJunction]: () =>
