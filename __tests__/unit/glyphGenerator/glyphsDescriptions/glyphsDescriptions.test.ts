@@ -1,8 +1,8 @@
-import { getGlyph } from '../../../../lib/glyphGenerator/glyphsDescriptions/glyphDescriptions';
+import { getGlyph } from '@lib/glyphGenerator/glyphsDescriptions/glyphDescriptions';
 import { expect } from 'chai';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { glyphs } from '@lib/glyphGenerator/glyphsDescriptions/glyphs';
-import { GlyphSymbol } from '../../../../lib/common/enums/glyphSymbol';
+import { GlyphSymbol } from '@lib/common/enums/glyphSymbol';
 
 const isMatch = (value: string, glyph: string): boolean => !!glyph.match(value);
 
