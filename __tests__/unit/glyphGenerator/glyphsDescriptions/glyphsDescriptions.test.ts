@@ -159,4 +159,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Goal]);
     expect(isMatch(NodeType.Goal, glyph)).to.equal(true);
   });
+
+  it('should return a "group" glyph', () => {
+    const glyph = getGlyph(NodeType.Group);
+
+    expect(glyph).to.equal(glyphs[NodeType.Group]);
+    expect(isMatch(NodeType.Group, glyph)).to.equal(true);
+  });
 });
