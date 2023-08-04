@@ -145,4 +145,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[GlyphSymbol.Function]);
     expect(isMatch(GlyphSymbol.Function, glyph)).to.equal(true);
   });
+
+  it('should return a "gap" glyph', () => {
+    const glyph = getGlyph(NodeType.Gap);
+
+    expect(glyph).to.equal(glyphs[NodeType.Gap]);
+    expect(isMatch(NodeType.Gap, glyph)).to.equal(true);
+  });
 });
