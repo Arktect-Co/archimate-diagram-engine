@@ -194,4 +194,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Location]);
     expect(isMatch(NodeType.Location, glyph)).to.equal(true);
   });
+
+  it('should return a "material" glyph', () => {
+    const glyph = getGlyph(NodeType.Material);
+
+    expect(glyph).to.equal(glyphs[NodeType.Material]);
+    expect(isMatch(NodeType.Material, glyph)).to.equal(true);
+  });
 });
