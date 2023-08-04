@@ -292,4 +292,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[GlyphSymbol.Role]);
     expect(isMatch(GlyphSymbol.Role, glyph)).to.equal(true);
   });
+
+  it('should return a "systemsoftware" glyph', () => {
+    const glyph = getGlyph(NodeType.SystemSoftware);
+
+    expect(glyph).to.equal(glyphs[NodeType.SystemSoftware]);
+    expect(isMatch(NodeType.SystemSoftware, glyph)).to.equal(true);
+  });
 });
