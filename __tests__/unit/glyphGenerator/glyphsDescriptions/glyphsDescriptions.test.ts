@@ -64,4 +64,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.Contract]);
   });
+
+  it('should return a "courseofaction" glyph', () => {
+    const glyph = getGlyph(NodeType.CourseOfAction);
+
+    expect(glyph).to.equal(glyphs[NodeType.CourseOfAction]);
+  });
 });
