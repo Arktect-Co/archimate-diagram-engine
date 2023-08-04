@@ -58,4 +58,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.Constraint]);
   });
+
+  it('should return a "contract" glyph', () => {
+    const glyph = getGlyph(NodeType.Contract);
+
+    expect(glyph).to.equal(glyphs[NodeType.Contract]);
+  });
 });
