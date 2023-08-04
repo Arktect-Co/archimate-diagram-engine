@@ -1,7 +1,7 @@
 import { shapes, dia, attributes } from 'jointjs';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
-import { Position } from '@lib/common/enums/Position';
+import { Position } from '@lib/common/enums/position';
 
 export interface Attributes {
   body: attributes.SVGAttributes;

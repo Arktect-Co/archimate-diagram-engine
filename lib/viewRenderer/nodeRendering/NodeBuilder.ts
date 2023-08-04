@@ -8,7 +8,7 @@ import { Style, ViewSetting } from '@lib/model/ViewSetting';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { Connectors } from '@lib/common/enums/connectors';
-import { Position } from '@lib/common/enums/Position';
+import { Position } from '@lib/common/enums/position';
 
 interface BasicNodeAttributes {
   name: string;
