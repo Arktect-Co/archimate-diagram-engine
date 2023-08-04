@@ -21,4 +21,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.Artifact]);
   });
+
+  it('should return a "assessment" glyph', () => {
+    const glyph = getGlyph(NodeType.Assessment);
+
+    expect(glyph).to.equal(glyphs[NodeType.Assessment]);
+  });
 });
