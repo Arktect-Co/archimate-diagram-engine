@@ -15,4 +15,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.ApplicationComponent]);
   });
+
+  it('should return a "artifact" glyph', () => {
+    const glyph = getGlyph(NodeType.Artifact);
+
+    expect(glyph).to.equal(glyphs[NodeType.Artifact]);
+  });
 });
