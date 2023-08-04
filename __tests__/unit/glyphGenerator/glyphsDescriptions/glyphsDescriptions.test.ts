@@ -46,4 +46,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[GlyphSymbol.Collaboration]);
   });
+
+  it('should return a "communicationnetwork" glyph', () => {
+    const glyph = getGlyph(NodeType.CommunicationNetwork);
+
+    expect(glyph).to.equal(glyphs[NodeType.CommunicationNetwork]);
+  });
 });
