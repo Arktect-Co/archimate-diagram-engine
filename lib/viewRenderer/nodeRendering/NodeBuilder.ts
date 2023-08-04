@@ -1,6 +1,6 @@
 import { dia, shapes } from 'jointjs';
 
-const ShapeBuilder = require('@lib/viewRenderer/nodeRendering/ShapeBuilder');
+import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
 import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
 import { typeToClassification } from '@lib/viewRenderer/utils/archimateDomainUtils';
 import { generateGlyph } from '@lib/glyphGenerator/GlyphGenerator';
@@ -26,7 +26,7 @@ interface NodeAttributes extends BasicNodeAttributes {
 
 export class NodeBuilder {
   private readonly style: Style;
-  private builder: any;
+  private builder: ShapeBuilder;
 
   constructor(private graph: dia.Graph, settings: ViewSetting) {
     const { style } = settings;
@@ -58,8 +58,8 @@ export class NodeBuilder {
    * })
    */
   buildShape({ name, type, width, height }: BasicNodeAttributes) {
-    const buildBasicRetangular = (nodeType, attributes) => {
-      return this.builder.buildBasicRetangular(name, {
+    const buildBasicRectangular = (nodeType, attributes) => {
+      return this.builder.buildBasicRectangular(name, {
         width,
         height,
         fillColor: typeToHexColor(nodeType, this.style),
@@ -68,7 +68,7 @@ export class NodeBuilder {
     };
 
     const shapeClassification = {
-      [NodeShapeClassification.Structure]: () => buildBasicRetangular(type, {}),
+      [NodeShapeClassification.Structure]: () => buildBasicRectangular(type, {}),
       [NodeShapeClassification.Behaviour]: () =>
         this.builder.buildBasicRounded(name, {
           width,
@@ -88,18 +88,18 @@ export class NodeBuilder {
           fillColor: typeToHexColor(type, this.style),
         }),
       [NodeType.Grouping]: () =>
-        buildBasicRetangular(type, {
+        buildBasicRectangular(type, {
           withDashedStroke: true,
           textAnchor: 'left',
           refX: '5%',
         }),
       [NodeType.Group]: () =>
-        buildBasicRetangular(type, {
+        buildBasicRectangular(type, {
           textAnchor: 'left',
           refX: '7%',
         }),
       [NodeShapeClassification.ViewElement]: () =>
-        buildBasicRetangular(type, {
+        buildBasicRectangular(type, {
           textAnchor: 'left',
           refX: '7%',
         }),
@@ -116,7 +116,7 @@ export class NodeBuilder {
     const classification = typeToClassification(type);
     const build = shapeClassification[classification];
 
-    return build ? build() : buildBasicRetangular(type, {});
+    return build ? build() : buildBasicRectangular(type, {});
   }
 
   /**
