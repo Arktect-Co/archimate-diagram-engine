@@ -306,4 +306,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Value]);
     expect(isMatch(NodeType.Value, glyph)).to.equal(true);
   });
+
+  it('should return a "valuestream" glyph', () => {
+    const glyph = getGlyph(NodeType.ValueStream);
+
+    expect(glyph).to.equal(glyphs[NodeType.ValueStream]);
+    expect(isMatch(NodeType.ValueStream, glyph)).to.equal(true);
+  });
 });
