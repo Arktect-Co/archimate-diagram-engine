@@ -21,6 +21,10 @@ interface Settings extends Partial<ShapeAttributes> {
   height?: number;
 }
 
+type ShapeColorOption = Partial<
+  Omit<ShapeAttributes, 'elementName' | 'withDashedStroke' | 'textAnchor' | 'refX'>
+>;
+
 /**
  * Class with functionality to create node shapes
  * @example
@@ -319,10 +323,7 @@ export class ShapeBuilder {
    *       fillColor: 'white',
    * });
    */
-  buildSmallCircle({
-    fillColor = this.darkColor,
-    strokeColor = this.darkColor,
-  }: Partial<Omit<ShapeAttributes, 'elementName' | 'withDashedStroke' | 'textAnchor' | 'refX'>>) {
+  buildSmallCircle({ fillColor = this.darkColor, strokeColor = this.darkColor }: ShapeColorOption) {
     const element = new shapes.standard.Circle();
     const attributes = this.getAttributes({
       elementName: '',
