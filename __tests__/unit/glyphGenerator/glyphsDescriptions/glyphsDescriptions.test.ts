@@ -257,4 +257,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[GlyphSymbol.Process]);
     expect(isMatch(GlyphSymbol.Process, glyph)).to.equal(true);
   });
+
+  it('should return a "product" glyph', () => {
+    const glyph = getGlyph(NodeType.Product);
+
+    expect(glyph).to.equal(glyphs[NodeType.Product]);
+    expect(isMatch(NodeType.Product, glyph)).to.equal(true);
+  });
 });
