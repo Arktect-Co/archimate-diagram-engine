@@ -180,4 +180,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[GlyphSymbol.Interaction]);
     expect(isMatch(GlyphSymbol.Interaction, glyph)).to.equal(true);
   });
+
+  it('should return an "interface" glyph', () => {
+    const glyph = getGlyph(GlyphSymbol.Interface);
+
+    expect(glyph).to.equal(glyphs[GlyphSymbol.Interface]);
+    expect(isMatch(GlyphSymbol.Interface, glyph)).to.equal(true);
+  });
 });
