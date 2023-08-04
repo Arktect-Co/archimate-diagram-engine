@@ -21,6 +21,14 @@ interface Settings extends Partial<ShapeAttributes> {
   height?: number;
 }
 
+/**
+ * Class with functionality to create node shapes
+ * @example
+ *  import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
+ *  import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+ *
+ *  const shapeBuilder = new ShapeBuilder(new ViewSettings({}));
+ */
 export class ShapeBuilder {
   private defaultWidth: number;
   private defaultHeight: number;
@@ -30,6 +38,17 @@ export class ShapeBuilder {
   private readonly textSize: number;
   private readonly borderWidth: number;
 
+  /**
+   *
+   * @param settings Settings
+   * @param [settings.darkColor = 'black'] Color used for strokes
+   * @param [settings.lightColor = 'white'] Color used to fulfill relationship arrow shapes
+   * @param [settings.textColor = 'black'] Color used to fill texts
+   * @param [settings.textSize = 12] Text font size
+   * @param [settings.defaultWidth = 140] Reference size for element's width
+   * @param [settings.defaultHeight = 50] Reference size for element's height
+   * @param [settings.borderWidth = 0.8] Border width for elements
+   */
   constructor(settings: Omit<Partial<ViewSetting>, 'style' | 'edgeWidth'>) {
     const {
       defaultWidth = SETTINGS_DEFAULT.WIDTH,

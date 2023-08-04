@@ -24,10 +24,26 @@ interface NodeAttributes extends BasicNodeAttributes {
   parentElement?: dia.Cell | null;
 }
 
+/**
+ * Class with functionality to build a node
+ *
+ * @example
+ * import { dia } from 'jointjs';
+ * import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
+ * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+ *
+ * const graph = new dia.Graph({ cellNamespace: shapes });
+ * const nodeBuilder = new NodeBuilder(graph, new ViewSettings({}));
+ */
 export class NodeBuilder {
   private readonly style: Style;
   private builder: ShapeBuilder;
 
+  /**
+   *
+   * @param graph Jointjs Graph model
+   * @param settings Node view settings
+   */
   constructor(private graph: dia.Graph, settings: ViewSetting) {
     const { style } = settings;
 
