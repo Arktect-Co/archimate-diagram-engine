@@ -33,4 +33,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.BusinessActor]);
   });
+
+  it('should return a "capability" glyph', () => {
+    const glyph = getGlyph(NodeType.Capability);
+
+    expect(glyph).to.equal(glyphs[NodeType.Capability]);
+  });
 });
