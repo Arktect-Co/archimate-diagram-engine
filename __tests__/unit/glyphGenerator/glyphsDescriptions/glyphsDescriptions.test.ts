@@ -117,4 +117,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Driver]);
     expect(isMatch(NodeType.Driver, glyph)).to.equal(true);
   });
+
+  it('should return a "equipment" glyph', () => {
+    const glyph = getGlyph(NodeType.Equipment);
+
+    expect(glyph).to.equal(glyphs[NodeType.Equipment]);
+    expect(isMatch(NodeType.Equipment, glyph)).to.equal(true);
+  });
 });
