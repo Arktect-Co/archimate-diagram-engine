@@ -166,4 +166,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Group]);
     expect(isMatch(NodeType.Group, glyph)).to.equal(true);
   });
+
+  it('should return a "grouping" glyph', () => {
+    const glyph = getGlyph(NodeType.Grouping);
+
+    expect(glyph).to.equal(glyphs[NodeType.Grouping]);
+    expect(isMatch('group', glyph)).to.equal(true);
+  });
 });
