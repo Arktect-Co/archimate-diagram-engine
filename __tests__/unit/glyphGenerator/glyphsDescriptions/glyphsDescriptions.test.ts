@@ -208,4 +208,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Meaning]);
     expect(isMatch(NodeType.Meaning, glyph)).to.equal(true);
   });
+
+  it('should return a "node" glyph', () => {
+    const glyph = getGlyph(NodeType.Node);
+
+    expect(glyph).to.equal(glyphs[NodeType.Node]);
+    expect(isMatch(NodeType.Node, glyph)).to.equal(true);
+  });
 });
