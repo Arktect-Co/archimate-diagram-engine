@@ -313,4 +313,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.ValueStream]);
     expect(isMatch(NodeType.ValueStream, glyph)).to.equal(true);
   });
+
+  it('should return a "workpackage" glyph', () => {
+    const glyph = getGlyph(NodeType.WorkPackage);
+
+    expect(glyph).to.equal(glyphs[NodeType.WorkPackage]);
+    expect(isMatch(NodeType.WorkPackage, glyph)).to.equal(true);
+  });
 });
