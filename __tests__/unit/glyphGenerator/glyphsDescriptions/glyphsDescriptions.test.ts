@@ -52,4 +52,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.CommunicationNetwork]);
   });
+
+  it('should return a "constraint" glyph', () => {
+    const glyph = getGlyph(NodeType.Constraint);
+
+    expect(glyph).to.equal(glyphs[NodeType.Constraint]);
+  });
 });
