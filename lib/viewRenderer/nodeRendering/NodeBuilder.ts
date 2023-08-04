@@ -3,7 +3,7 @@ import { dia, shapes } from 'jointjs';
 import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
 import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
 import { typeToClassification } from '@lib/viewRenderer/utils/archimateDomainUtils';
-import { generateGlyph } from '@lib/glyphGenerator/GlyphGenerator';
+import { generateGlyph } from '@lib/glyphGenerator/glyphGenerator';
 import { Style, ViewSetting } from '@lib/model/ViewSetting';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { NodeType } from '@lib/common/enums/nodeType';
