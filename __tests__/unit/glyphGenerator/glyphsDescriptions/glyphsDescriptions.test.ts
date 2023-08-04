@@ -264,4 +264,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Product]);
     expect(isMatch(NodeType.Product, glyph)).to.equal(true);
   });
+
+  it('should return a "representation" glyph', () => {
+    const glyph = getGlyph(NodeType.Representation);
+
+    expect(glyph).to.equal(glyphs[NodeType.Representation]);
+    expect(isMatch(NodeType.Representation, glyph)).to.equal(true);
+  });
 });
