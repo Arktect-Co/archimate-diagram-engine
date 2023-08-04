@@ -70,4 +70,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.CourseOfAction]);
   });
+
+  it('should return a "deliverable" glyph', () => {
+    const glyph = getGlyph(NodeType.Deliverable);
+
+    expect(glyph).to.equal(glyphs[NodeType.Deliverable]);
+  });
 });
