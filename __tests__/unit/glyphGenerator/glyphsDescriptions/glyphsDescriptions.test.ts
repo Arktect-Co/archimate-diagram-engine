@@ -14,310 +14,354 @@ describe('glyphsDescriptions', () => {
   });
 
   it('should return a "applicationcomponent" glyph', () => {
-    const glyph = getGlyph(NodeType.ApplicationComponent);
+    const type = NodeType.ApplicationComponent;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.ApplicationComponent]);
+    expect(glyph).to.equal(glyphs[type]);
     expect(isMatch('component', glyph)).to.equal(true);
   });
 
   it('should return a "artifact" glyph', () => {
-    const glyph = getGlyph(NodeType.Artifact);
+    const type = NodeType.Artifact;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Artifact]);
-    expect(isMatch(NodeType.Artifact, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "assessment" glyph', () => {
-    const glyph = getGlyph(NodeType.Assessment);
+    const type = NodeType.Assessment;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Assessment]);
-    expect(isMatch(NodeType.Assessment, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "businessactor" glyph', () => {
-    const glyph = getGlyph(NodeType.BusinessActor);
+    const type = NodeType.BusinessActor;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.BusinessActor]);
-    expect(isMatch(NodeType.BusinessActor, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "capability" glyph', () => {
-    const glyph = getGlyph(NodeType.Capability);
+    const type = NodeType.Capability;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Capability]);
-    expect(isMatch(NodeType.Capability, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "collaboration" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Collaboration);
+    const type = GlyphSymbol.Collaboration;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Collaboration]);
-    expect(isMatch(GlyphSymbol.Collaboration, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "communicationnetwork" glyph', () => {
-    const glyph = getGlyph(NodeType.CommunicationNetwork);
+    const type = NodeType.CommunicationNetwork;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.CommunicationNetwork]);
+    expect(glyph).to.equal(glyphs[type]);
     expect(isMatch('network', glyph)).to.equal(true);
   });
 
   it('should return a "constraint" glyph', () => {
-    const glyph = getGlyph(NodeType.Constraint);
+    const type = NodeType.Constraint;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Constraint]);
-    expect(isMatch(NodeType.Constraint, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "contract" glyph', () => {
-    const glyph = getGlyph(NodeType.Contract);
+    const type = NodeType.Contract;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Contract]);
-    expect(isMatch(NodeType.Contract, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "courseofaction" glyph', () => {
-    const glyph = getGlyph(NodeType.CourseOfAction);
+    const type = NodeType.CourseOfAction;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.CourseOfAction]);
+    expect(glyph).to.equal(glyphs[type]);
     expect(isMatch('courseaction', glyph)).to.equal(true);
   });
 
   it('should return a "deliverable" glyph', () => {
-    const glyph = getGlyph(NodeType.Deliverable);
+    const type = NodeType.Deliverable;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Deliverable]);
-    expect(isMatch(NodeType.Deliverable, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "device" glyph', () => {
-    const glyph = getGlyph(NodeType.Device);
+    const type = NodeType.Device;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Device]);
-    expect(isMatch(NodeType.Device, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "distributionnetwork" glyph', () => {
-    const glyph = getGlyph(NodeType.DistributionNetwork);
+    const type = NodeType.DistributionNetwork;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.DistributionNetwork]);
-    expect(isMatch(NodeType.DistributionNetwork, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "domainservice" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.DomainService);
+    const type = GlyphSymbol.DomainService;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.DomainService]);
+    expect(glyph).to.equal(glyphs[type]);
     expect(isMatch('service', glyph)).to.equal(true);
   });
 
   it('should return a "driver" glyph', () => {
-    const glyph = getGlyph(NodeType.Driver);
+    const type = NodeType.Driver;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Driver]);
-    expect(isMatch(NodeType.Driver, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "equipment" glyph', () => {
-    const glyph = getGlyph(NodeType.Equipment);
+    const type = NodeType.Equipment;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Equipment]);
-    expect(isMatch(NodeType.Equipment, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "event" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Event);
+    const type = GlyphSymbol.Event;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Event]);
-    expect(isMatch(GlyphSymbol.Event, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "facility" glyph', () => {
-    const glyph = getGlyph(NodeType.Facility);
+    const type = NodeType.Facility;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Facility]);
-    expect(isMatch(NodeType.Facility, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "function" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Function);
+    const type = GlyphSymbol.Function;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Function]);
-    expect(isMatch(GlyphSymbol.Function, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "gap" glyph', () => {
-    const glyph = getGlyph(NodeType.Gap);
+    const type = NodeType.Gap;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Gap]);
-    expect(isMatch(NodeType.Gap, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "goal" glyph', () => {
-    const glyph = getGlyph(NodeType.Goal);
+    const type = NodeType.Goal;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Goal]);
-    expect(isMatch(NodeType.Goal, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "group" glyph', () => {
-    const glyph = getGlyph(NodeType.Group);
+    const type = NodeType.Group;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Group]);
-    expect(isMatch(NodeType.Group, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "grouping" glyph', () => {
-    const glyph = getGlyph(NodeType.Grouping);
+    const type = NodeType.Grouping;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Grouping]);
+    expect(glyph).to.equal(glyphs[type]);
     expect(isMatch('group', glyph)).to.equal(true);
   });
 
   it('should return an "interaction" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Interaction);
+    const type = GlyphSymbol.Interaction;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Interaction]);
-    expect(isMatch(GlyphSymbol.Interaction, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return an "interface" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Interface);
+    const type = GlyphSymbol.Interface;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Interface]);
-    expect(isMatch(GlyphSymbol.Interface, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "location" glyph', () => {
-    const glyph = getGlyph(NodeType.Location);
+    const type = NodeType.Location;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Location]);
-    expect(isMatch(NodeType.Location, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "material" glyph', () => {
-    const glyph = getGlyph(NodeType.Material);
+    const type = NodeType.Material;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Material]);
-    expect(isMatch(NodeType.Material, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "meaning" glyph', () => {
-    const glyph = getGlyph(NodeType.Meaning);
+    const type = NodeType.Meaning;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Meaning]);
-    expect(isMatch(NodeType.Meaning, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "node" glyph', () => {
-    const glyph = getGlyph(NodeType.Node);
+    const type = NodeType.Node;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Node]);
-    expect(isMatch(NodeType.Node, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return an "object" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Object);
+    const type = GlyphSymbol.Object;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Object]);
-    expect(isMatch(GlyphSymbol.Object, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "outcome" glyph', () => {
-    const glyph = getGlyph(NodeType.Outcome);
+    const type = NodeType.Outcome;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Outcome]);
-    expect(isMatch(NodeType.Outcome, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "path" glyph', () => {
-    const glyph = getGlyph(NodeType.Path);
+    const type = NodeType.Path;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Path]);
-    expect(isMatch(NodeType.Path, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "plateau" glyph', () => {
-    const glyph = getGlyph(NodeType.Plateau);
+    const type = NodeType.Plateau;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Plateau]);
-    expect(isMatch(NodeType.Plateau, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "principle" glyph', () => {
-    const glyph = getGlyph(NodeType.Principle);
+    const type = NodeType.Principle;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Principle]);
-    expect(isMatch(NodeType.Principle, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "process" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Process);
+    const type = GlyphSymbol.Process;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Process]);
-    expect(isMatch(GlyphSymbol.Process, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "product" glyph', () => {
-    const glyph = getGlyph(NodeType.Product);
+    const type = NodeType.Product;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Product]);
-    expect(isMatch(NodeType.Product, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "representation" glyph', () => {
-    const glyph = getGlyph(NodeType.Representation);
+    const type = NodeType.Representation;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Representation]);
-    expect(isMatch(NodeType.Representation, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "requirement" glyph', () => {
-    const glyph = getGlyph(NodeType.Requirement);
+    const type = NodeType.Requirement;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Requirement]);
-    expect(isMatch(NodeType.Requirement, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "resource" glyph', () => {
-    const glyph = getGlyph(NodeType.Resource);
+    const type = NodeType.Resource;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Resource]);
-    expect(isMatch(NodeType.Resource, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "role" glyph', () => {
-    const glyph = getGlyph(GlyphSymbol.Role);
+    const type = GlyphSymbol.Role;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[GlyphSymbol.Role]);
-    expect(isMatch(GlyphSymbol.Role, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "systemsoftware" glyph', () => {
-    const glyph = getGlyph(NodeType.SystemSoftware);
+    const type = NodeType.SystemSoftware;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.SystemSoftware]);
-    expect(isMatch(NodeType.SystemSoftware, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "value" glyph', () => {
-    const glyph = getGlyph(NodeType.Value);
+    const type = NodeType.Value;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.Value]);
-    expect(isMatch(NodeType.Value, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "valuestream" glyph', () => {
-    const glyph = getGlyph(NodeType.ValueStream);
+    const type = NodeType.ValueStream;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.ValueStream]);
-    expect(isMatch(NodeType.ValueStream, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 
   it('should return a "workpackage" glyph', () => {
-    const glyph = getGlyph(NodeType.WorkPackage);
+    const type = NodeType.WorkPackage;
+    const glyph = getGlyph(type);
 
-    expect(glyph).to.equal(glyphs[NodeType.WorkPackage]);
-    expect(isMatch(NodeType.WorkPackage, glyph)).to.equal(true);
+    expect(glyph).to.equal(glyphs[type]);
+    expect(isMatch(type, glyph)).to.equal(true);
   });
 });
