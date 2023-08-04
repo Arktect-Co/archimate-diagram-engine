@@ -135,20 +135,57 @@ describe('ShapeBuilder', () => {
     it('should return a basic rounded node', () => {
       const { elementName, ...attributes } = shapeAttributes;
       const size = { width: 100, height: 80 };
-      const rectangular = shapeBuilder
+      const rounded = shapeBuilder
         .buildBasicRounded(elementName, { ...attributes, ...size })
         .toJSON();
 
-      expect(rectangular.type).to.equal('standard.Rectangle');
-      expect(rectangular.size).to.contain(size);
-      expect(rectangular.attrs.body).to.contain({
+      expect(rounded.type).to.equal('standard.Rectangle');
+      expect(rounded.size).to.contain(size);
+      expect(rounded.attrs.body).to.contain({
         fill: attributes.fillColor,
         stroke: attributes.strokeColor,
         rx: 8,
         ry: 8,
         strokeWidth: 0.8,
       });
-      expect(rectangular.attrs.label)
+      expect(rounded.attrs.label)
+        .to.deep.include({
+          textWrap: {
+            text: elementName,
+            width: '70%',
+            height: '100%',
+            ellipsis: true,
+          },
+        })
+        .contain({
+          fill: 'black',
+          textVerticalAnchor: 'top',
+          refX: attributes.refX,
+          refY: 10,
+          refWidth: '100%',
+          refHeight: '100%',
+          fontSize: 12,
+        });
+    });
+
+    it('should return a basic octagonal node', () => {
+      const { elementName, ...attributes } = shapeAttributes;
+      const size = { width: 100, height: 80 };
+      const octagonal = shapeBuilder
+        .buildBasicOctagonal(elementName, { ...attributes, ...size })
+        .toJSON();
+
+      expect(octagonal.type).to.equal('standard.Polygon');
+      expect(octagonal.size).to.contain(size);
+      expect(octagonal.attrs.body).to.contain({
+        fill: attributes.fillColor,
+        stroke: attributes.strokeColor,
+        rx: 0,
+        ry: 0,
+        strokeWidth: 0.8,
+        refPoints: '0,1 0.5,0 9.5,0 10,1 10,9 9.5,10 0.5,10 0,9',
+      });
+      expect(octagonal.attrs.label)
         .to.deep.include({
           textWrap: {
             text: elementName,
