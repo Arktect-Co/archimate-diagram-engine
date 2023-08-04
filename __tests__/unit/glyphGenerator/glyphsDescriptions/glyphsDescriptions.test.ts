@@ -131,4 +131,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[GlyphSymbol.Event]);
     expect(isMatch(GlyphSymbol.Event, glyph)).to.equal(true);
   });
+
+  it('should return a "facility" glyph', () => {
+    const glyph = getGlyph(NodeType.Facility);
+
+    expect(glyph).to.equal(glyphs[NodeType.Facility]);
+    expect(isMatch(NodeType.Facility, glyph)).to.equal(true);
+  });
 });
