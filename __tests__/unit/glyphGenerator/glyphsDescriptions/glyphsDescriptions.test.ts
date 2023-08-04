@@ -2,6 +2,7 @@ import { getGlyph } from '../../../../lib/glyphGenerator/glyphsDescriptions/glyp
 import { expect } from 'chai';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { glyphs } from '@lib/glyphGenerator/glyphsDescriptions/glyphs';
+import { GlyphSymbol } from '../../../../lib/common/enums/glyphSymbol';
 
 describe('glyphsDescriptions', () => {
   it('should return empty string if type does not contain glyph', () => {
@@ -38,5 +39,11 @@ describe('glyphsDescriptions', () => {
     const glyph = getGlyph(NodeType.Capability);
 
     expect(glyph).to.equal(glyphs[NodeType.Capability]);
+  });
+
+  it('should return a "collaboration" glyph', () => {
+    const glyph = getGlyph(GlyphSymbol.Collaboration);
+
+    expect(glyph).to.equal(glyphs[GlyphSymbol.Collaboration]);
   });
 });
