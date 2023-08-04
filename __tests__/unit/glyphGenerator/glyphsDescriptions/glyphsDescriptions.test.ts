@@ -76,4 +76,10 @@ describe('glyphsDescriptions', () => {
 
     expect(glyph).to.equal(glyphs[NodeType.Deliverable]);
   });
+
+  it('should return a "device" glyph', () => {
+    const glyph = getGlyph(NodeType.Device);
+
+    expect(glyph).to.equal(glyphs[NodeType.Device]);
+  });
 });
