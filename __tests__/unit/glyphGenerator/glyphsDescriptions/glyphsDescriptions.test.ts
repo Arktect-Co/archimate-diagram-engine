@@ -138,4 +138,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Facility]);
     expect(isMatch(NodeType.Facility, glyph)).to.equal(true);
   });
+
+  it('should return a "function" glyph', () => {
+    const glyph = getGlyph(GlyphSymbol.Function);
+
+    expect(glyph).to.equal(glyphs[GlyphSymbol.Function]);
+    expect(isMatch(GlyphSymbol.Function, glyph)).to.equal(true);
+  });
 });
