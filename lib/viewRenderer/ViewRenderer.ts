@@ -2,7 +2,7 @@ import { dia } from 'jointjs';
 import { ViewNode } from '@lib/model/ViewNode';
 import { ViewRelationship } from '@lib/model/ViewRelationship';
 import { ViewSetting } from '@lib/model/ViewSetting';
-import NodeBuilder from '@lib/viewRenderer/nodeRendering/NodeBuilder';
+import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
 import RelationshipBuilder from './relationshipRendering/RelationshipBuilder';
 
 export class ViewRenderer {
@@ -64,24 +64,24 @@ export class ViewRenderer {
 
     if (Array.isArray(nodes)) {
       nodes.forEach(node => {
-        let parentId = node.parent;
+        const parentId = node.parent;
         let parent = null;
 
         if (parentId !== undefined && parentId !== null) {
           parent = graph.getCell(parentId);
         }
 
-        nodeBuilder.buildNode(
-          node.modelNodeId,
-          node.viewNodeId,
-          node.name,
-          node.type,
-          node.width,
-          node.height,
-          node.x,
-          node.y,
-          parent,
-        );
+        nodeBuilder.buildNode({
+          modelElementId: node.modelNodeId,
+          viewNodeId: node.viewNodeId,
+          name: node.name,
+          type: node.type,
+          width: node.width,
+          height: node.height,
+          posX: node.x,
+          posY: node.y,
+          parentElement: parent,
+        });
       });
 
       let source = null,
@@ -162,7 +162,7 @@ export class ViewRenderer {
     relationships: Array<ViewRelationship>,
     settings: ViewSetting,
   ): dia.Graph {
-    let graph = new dia.Graph();
+    const graph = new dia.Graph();
 
     this.renderToGraph(graph, nodes, relationships, settings);
 

@@ -8,7 +8,7 @@ import referenceView from '../data/complete/reference_view.json';
 describe('Diagram Rendering', () => {
   describe('Complete Rendering', () => {
     it('Should create a mirrored JointJS graph from a view', async () => {
-      let outputGraph = new dia.Graph({}, { cellNamespace: shapes });
+      const outputGraph = new dia.Graph({}, { cellNamespace: shapes });
 
       ViewRenderer.renderToGraph(
         outputGraph,
