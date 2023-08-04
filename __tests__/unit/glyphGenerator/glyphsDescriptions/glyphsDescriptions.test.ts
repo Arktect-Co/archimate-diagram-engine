@@ -201,4 +201,11 @@ describe('glyphsDescriptions', () => {
     expect(glyph).to.equal(glyphs[NodeType.Material]);
     expect(isMatch(NodeType.Material, glyph)).to.equal(true);
   });
+
+  it('should return a "meaning" glyph', () => {
+    const glyph = getGlyph(NodeType.Meaning);
+
+    expect(glyph).to.equal(glyphs[NodeType.Meaning]);
+    expect(isMatch(NodeType.Meaning, glyph)).to.equal(true);
+  });
 });
