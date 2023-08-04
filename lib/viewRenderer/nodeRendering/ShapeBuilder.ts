@@ -152,8 +152,8 @@ export class ShapeBuilder {
       withDashedStroke = false,
     }: Settings,
   ) {
-    let element = new shapes.standard.Rectangle();
-    let attributes = this.getAttributes({
+    const element = new shapes.standard.Rectangle();
+    const attributes = this.getAttributes({
       elementName,
       fillColor: fillColor || this.lightColor,
       strokeColor: strokeColor || this.darkColor,
@@ -209,8 +209,8 @@ export class ShapeBuilder {
       withDashedStroke = false,
     }: Settings,
   ) {
-    let element = new shapes.standard.Rectangle();
-    let attributes = this.getAttributes({
+    const element = new shapes.standard.Rectangle();
+    const attributes = this.getAttributes({
       elementName,
       fillColor: fillColor || this.lightColor,
       strokeColor: strokeColor || this.darkColor,
@@ -266,8 +266,8 @@ export class ShapeBuilder {
       withDashedStroke = false,
     }: Settings,
   ) {
-    let element = new shapes.standard.Polygon();
-    let attributes = this.getAttributes({
+    const element = new shapes.standard.Polygon();
+    const attributes = this.getAttributes({
       elementName,
       fillColor: fillColor || this.lightColor,
       strokeColor: strokeColor || this.darkColor,
@@ -304,8 +304,8 @@ export class ShapeBuilder {
     fillColor = this.darkColor,
     strokeColor = this.darkColor,
   }: Partial<Omit<ShapeAttributes, 'elementName' | 'withDashedStroke' | 'textAnchor' | 'refX'>>) {
-    let element = new shapes.standard.Circle();
-    let attributes = this.getAttributes({
+    const element = new shapes.standard.Circle();
+    const attributes = this.getAttributes({
       elementName: '',
       fillColor: fillColor || this.lightColor,
       strokeColor: strokeColor || this.darkColor,

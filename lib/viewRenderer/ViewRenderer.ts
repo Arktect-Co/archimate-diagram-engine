@@ -64,7 +64,7 @@ export class ViewRenderer {
 
     if (Array.isArray(nodes)) {
       nodes.forEach(node => {
-        let parentId = node.parent;
+        const parentId = node.parent;
         let parent = null;
 
         if (parentId !== undefined && parentId !== null) {
@@ -162,7 +162,7 @@ export class ViewRenderer {
     relationships: Array<ViewRelationship>,
     settings: ViewSetting,
   ): dia.Graph {
-    let graph = new dia.Graph();
+    const graph = new dia.Graph();
 
     this.renderToGraph(graph, nodes, relationships, settings);
 
