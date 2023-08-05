@@ -111,4 +111,19 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.sourceMarker).to.contain(smallThinArrow);
     });
   });
+
+  describe('InfluenceRelationship', () => {
+    it('should return an influence relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildInfluenceRelationship();
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.strokeDasharray).to.equal(4);
+      expect(line.targetMarker).to.contain({
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -5 0 0 10 5 1 0 z',
+      });
+    });
+  });
 });
