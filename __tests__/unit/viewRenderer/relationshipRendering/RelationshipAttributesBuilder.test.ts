@@ -47,4 +47,25 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+
+  describe('AssignmentRelationship', () => {
+    it('should return an assignment relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildAssignmentRelationship();
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.targetMarker).to.contain({
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -5 0 0 10 5 z',
+      });
+      expect(line.sourceMarker).to.contain({
+        type: 'circle',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        fill: SETTINGS_DEFAULT.DARK_COLOR,
+        r: 4,
+        cx: 4,
+      });
+    });
+  });
 });
