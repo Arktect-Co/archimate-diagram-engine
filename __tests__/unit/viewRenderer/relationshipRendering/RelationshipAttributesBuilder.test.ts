@@ -68,4 +68,18 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+
+  describe('TriggeringRelationship', () => {
+    it('should return a triggering relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildTriggeringRelationship();
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.targetMarker).to.contain({
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -5 0 0 10 5 z',
+      });
+    });
+  });
 });
