@@ -14,7 +14,7 @@ import { dia } from 'jointjs';
  */
 export class RelationshipAttributesBuilder {
   private readonly darkColor: string;
-  private readonly edgeWidth: string;
+  private readonly edgeWidth: number;
   private builder: any;
 
   /**
