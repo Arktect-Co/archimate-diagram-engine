@@ -190,4 +190,21 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+  describe('AggregationRelationship', () => {
+    it('should return an aggregation relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildAggregationRelationship();
+
+      expect(line.strokeWidth).to.equal(1);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.sourceMarker).to.contain({
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+        d: 'M 10 -8 0 0 10 8 20 0 z',
+      });
+      expect(line.targetMarker).to.contain({
+        type: 'none',
+      });
+    });
+  });
 });
