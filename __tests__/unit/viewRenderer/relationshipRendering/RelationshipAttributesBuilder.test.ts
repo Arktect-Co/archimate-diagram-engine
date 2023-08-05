@@ -157,6 +157,7 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+
   describe('FlowRelationship', () => {
     it('should return a flow relationship', () => {
       const { line } = relationshipAttributesBuilder.buildFlowRelationship();
@@ -168,6 +169,24 @@ describe('RelationshipAttributesBuilder', () => {
         type: 'path',
         d: 'M 10 -5 0 0 10 5 z',
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      });
+    });
+  });
+
+  describe('CompositionRelationship', () => {
+    it('should return a composition relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildCompositionRelationship();
+
+      expect(line.strokeWidth).to.equal(1);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.sourceMarker).to.contain({
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        fill: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -8 0 0 10 8 20 0 z',
+      });
+      expect(line.targetMarker).to.contain({
+        type: 'none',
       });
     });
   });
