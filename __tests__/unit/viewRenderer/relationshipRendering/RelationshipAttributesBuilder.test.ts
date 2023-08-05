@@ -157,4 +157,18 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+  describe('FlowRelationship', () => {
+    it('should return a flow relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildFlowRelationship();
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.strokeDasharray).to.equal(4);
+      expect(line.targetMarker).to.contain({
+        type: 'path',
+        d: 'M 10 -5 0 0 10 5 z',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      });
+    });
+  });
 });
