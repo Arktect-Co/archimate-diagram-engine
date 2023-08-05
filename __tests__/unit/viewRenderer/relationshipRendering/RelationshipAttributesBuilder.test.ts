@@ -190,6 +190,7 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+
   describe('AggregationRelationship', () => {
     it('should return an aggregation relationship', () => {
       const { line } = relationshipAttributesBuilder.buildAggregationRelationship();
@@ -202,6 +203,19 @@ describe('RelationshipAttributesBuilder', () => {
         fill: SETTINGS_DEFAULT.LIGHT_COLOR,
         d: 'M 10 -8 0 0 10 8 20 0 z',
       });
+      expect(line.targetMarker).to.contain({
+        type: 'none',
+      });
+    });
+  });
+
+  describe('DefaultRelationship', () => {
+    it('should return a default relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildDefaultRelationship();
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.strokeDasharray).to.equal(3);
       expect(line.targetMarker).to.contain({
         type: 'none',
       });
