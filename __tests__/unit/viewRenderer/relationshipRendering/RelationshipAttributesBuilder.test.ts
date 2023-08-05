@@ -142,4 +142,19 @@ describe('RelationshipAttributesBuilder', () => {
       });
     });
   });
+
+  describe('SpecializationRelationship', () => {
+    it('should return a specialization relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildSpecializationRelationship();
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.targetMarker).to.contain({
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+        d: 'M 15 -9 0 0 15 9 z',
+      });
+    });
+  });
 });
