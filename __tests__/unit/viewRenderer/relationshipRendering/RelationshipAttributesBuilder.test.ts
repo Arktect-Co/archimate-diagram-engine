@@ -96,5 +96,19 @@ describe('RelationshipAttributesBuilder', () => {
         d: 'M 10 -5 0 0 10 5 1 0 z',
       });
     });
+
+    it('should return a bidirectional access relationship', () => {
+      const { line } = relationshipAttributesBuilder.buildAccessRelationship(true);
+      const smallThinArrow = {
+        type: 'path',
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -5 0 0 10 5 1 0 z',
+      };
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.strokeDasharray).to.equal(2);
+      expect(line.targetMarker).to.contain(smallThinArrow);
+      expect(line.sourceMarker).to.contain(smallThinArrow);
+    });
   });
 });
