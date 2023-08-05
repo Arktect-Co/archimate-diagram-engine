@@ -21,4 +21,14 @@ describe('RelationshipAttributesBuilder', () => {
       d: 'M 12 -6 0 0 z',
     });
   });
+
+  it('should return a bidirectional association relationship', () => {
+    const { line } = relationshipAttributesBuilder.buildAssociationRelationship(true);
+
+    expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+    expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+    expect(line.targetMarker).to.contain({
+      type: 'none',
+    });
+  });
 });
