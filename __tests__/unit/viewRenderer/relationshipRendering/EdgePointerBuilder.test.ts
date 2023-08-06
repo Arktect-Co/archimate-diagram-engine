@@ -113,4 +113,14 @@ describe('EdgePointerBuilder', () => {
       d: 'M 10 -5 0 0 10 5 1 0 z',
     });
   });
+
+  it('should return a half thin arrow Pointer', () => {
+    const edgePointer = builder.buildHalfThinArrowPointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Path,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      d: 'M 12 -6 0 0 z',
+    });
+  });
 });
