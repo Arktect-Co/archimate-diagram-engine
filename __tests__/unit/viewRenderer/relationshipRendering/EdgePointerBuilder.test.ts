@@ -1,7 +1,8 @@
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
+import { PointerType } from '@lib/common/enums/pointerType';
+import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import { expect } from 'chai';
-import { PointerType } from '../../../../lib/common/enums/pointerType';
 
 describe('EdgePointerBuilder', () => {
   const settings = new ViewSettings({});
@@ -12,6 +13,17 @@ describe('EdgePointerBuilder', () => {
 
     expect(edgePointer).to.contain({
       type: PointerType.None,
+    });
+  });
+
+  it('should return a triangle Pointer', () => {
+    const edgePointer = builder.buildTrianglePointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Path,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+      d: 'M 15 -9 0 0 15 9 z',
     });
   });
 });
