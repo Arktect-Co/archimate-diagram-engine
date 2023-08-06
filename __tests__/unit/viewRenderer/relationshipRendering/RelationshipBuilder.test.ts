@@ -4,11 +4,11 @@ import { RelationshipBuilder } from '@lib/viewRenderer/relationshipRendering/Rel
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { RelationshipType } from '@lib/common/enums/relationshipType';
 import { PointerType } from '@lib/common/enums/pointerType';
+import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
+import { ViewRelationship } from '@lib/model/ViewRelationship';
+import { ViewNode } from '@lib/model/ViewNode';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import referenceView from '../../data/complete/reference_view.json';
-import { NodeBuilder } from '../../../../lib/viewRenderer/nodeRendering/NodeBuilder';
-import { ViewRelationship } from '../../../../lib/model/ViewRelationship';
-import { ViewNode } from '../../../../lib/model/ViewNode';
 
 describe('RelationshipBuilder', () => {
   const viewRelationship: ViewRelationship = referenceView.viewRelationships[0];
@@ -169,9 +169,9 @@ describe('RelationshipBuilder', () => {
           isBidirectional: false,
         });
 
-        expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
         expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
         expect(line.strokeDasharray).to.equal(2);
+        expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
         expect(line.targetMarker).to.contain({
           type: PointerType.Path,
           stroke: SETTINGS_DEFAULT.DARK_COLOR,

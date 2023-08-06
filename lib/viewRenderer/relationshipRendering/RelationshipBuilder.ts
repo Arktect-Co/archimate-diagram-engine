@@ -22,7 +22,7 @@ interface RelationshipSettings extends BaseRelationshipSettings {
  * Relationship builder class
  * @example
  * import { dia } from 'jointjs';
- * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/relationshipBuilder";
+ * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/RelationshipBuilder";
  * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
  *
  * const graph = new dia.Graph({ cellNamespace: shapes });
@@ -48,7 +48,7 @@ export class RelationshipBuilder {
    * @param settings.isBidirectional Indicates whether the relationship is bidirectional or not
    * @example
    * import { dia } from 'jointjs';
-   * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/relationshipBuilder";
+   * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/RelationshipBuilder";
    * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
    *
    * const graph = new dia.Graph({ cellNamespace: shapes });
@@ -101,7 +101,7 @@ export class RelationshipBuilder {
    * @param settings.label Relationship label
    * @example
    * import { dia } from 'jointjs';
-   * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/relationshipBuilder";
+   * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/RelationshipBuilder";
    * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
    *
    * const graph = new dia.Graph({ cellNamespace: shapes });
