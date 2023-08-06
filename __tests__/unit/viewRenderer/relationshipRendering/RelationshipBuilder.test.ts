@@ -67,5 +67,20 @@ describe('RelationshipBuilder', () => {
         cx: 4,
       });
     });
+
+    it('should return triggering relationship attributes', () => {
+      const { line } = builder.getRelationshipAttributes({
+        type: RelationshipType.Triggering,
+        isBidirectional: false,
+      });
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.targetMarker).to.contain({
+        type: PointerType.Path,
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -5 0 0 10 5 z',
+      });
+    });
   });
 });
