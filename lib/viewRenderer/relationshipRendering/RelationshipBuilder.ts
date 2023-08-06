@@ -1,14 +1,22 @@
-const joint = require('jointjs');
-const { RelationshipAttributesBuilder } = require('./RelationshipAttributesBuilder');
-const { EdgePointerBuilder } = require('./EdgePointerBuilder');
+import { shapes, dia } from 'jointjs';
+import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipAttributesBuilder';
+import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
+import { ViewSetting } from '@lib/model/ViewSetting';
 
-class RelationshipBuilder {
-  constructor(graph, settings) {
+export class RelationshipBuilder {
+  private builder: RelationshipAttributesBuilder;
+
+  constructor(private readonly graph: dia.Graph, settings: ViewSetting) {
     this.graph = graph;
     this.builder = new RelationshipAttributesBuilder(settings, new EdgePointerBuilder(settings));
   }
 
-  getRelationshipAttributes(type, relationshipModelId, relationshipViewId, isBidirectional) {
+  getRelationshipAttributes(
+    type: string,
+    relationshipModelId: string,
+    relationshipViewId: string,
+    isBidirectional: boolean,
+  ) {
     switch (type) {
       case 'association':
         return this.builder.buildAssociationRelationship(isBidirectional);
@@ -40,19 +48,19 @@ class RelationshipBuilder {
   }
 
   buildRelationship(
-    type,
-    relationshipModelId,
-    relationshipViewId,
-    isBidirectional,
-    bendpoints,
-    sourceNode,
-    targetNode,
-    label,
+    type: string,
+    relationshipModelId: string,
+    relationshipViewId: string,
+    isBidirectional: boolean,
+    bendpoints: Array<{ x: number; y: number }>,
+    sourceNode: dia.Cell,
+    targetNode: dia.Cell,
+    label: string,
   ) {
     if (type && sourceNode && targetNode) {
       let vertices = [];
 
-      let link = new joint.shapes.standard.Link();
+      let link = new shapes.standard.Link();
 
       link.prop({
         id: relationshipViewId,
@@ -111,5 +119,3 @@ class RelationshipBuilder {
     }
   }
 }
-
-module.exports = RelationshipBuilder;
