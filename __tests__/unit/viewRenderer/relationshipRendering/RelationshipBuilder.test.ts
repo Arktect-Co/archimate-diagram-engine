@@ -114,5 +114,26 @@ describe('RelationshipBuilder', () => {
         d: 'M 10 -5 0 0 10 5 1 0 z',
       });
     });
+
+    it('should return realization relationship attributes', () => {
+      const types = [RelationshipType.Realisation, RelationshipType.Realization];
+
+      types.forEach(type => {
+        const { line } = builder.getRelationshipAttributes({
+          type,
+          isBidirectional: false,
+        });
+
+        expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+        expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+        expect(line.strokeDasharray).to.equal(2);
+        expect(line.targetMarker).to.contain({
+          type: PointerType.Path,
+          stroke: SETTINGS_DEFAULT.DARK_COLOR,
+          fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+          d: 'M 15 -9 0 0 15 9 z',
+        });
+      });
+    });
   });
 });
