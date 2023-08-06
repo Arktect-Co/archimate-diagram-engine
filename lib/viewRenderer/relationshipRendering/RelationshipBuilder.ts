@@ -3,6 +3,20 @@ import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRen
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
 import { ViewSetting } from '@lib/model/ViewSetting';
 
+interface BaseRelationshipSettings {
+  type: string;
+  isBidirectional: boolean;
+}
+
+interface RelationshipSettings extends BaseRelationshipSettings {
+  relationshipModelId: string;
+  relationshipViewId: string;
+  bendpoints: Array<{ x: number; y: number }>;
+  sourceNode: dia.Cell;
+  targetNode: dia.Cell;
+  label: string;
+}
+
 export class RelationshipBuilder {
   private builder: RelationshipAttributesBuilder;
 
@@ -11,12 +25,7 @@ export class RelationshipBuilder {
     this.builder = new RelationshipAttributesBuilder(settings, new EdgePointerBuilder(settings));
   }
 
-  getRelationshipAttributes(
-    type: string,
-    relationshipModelId: string,
-    relationshipViewId: string,
-    isBidirectional: boolean,
-  ) {
+  getRelationshipAttributes({ type, isBidirectional }: BaseRelationshipSettings) {
     switch (type) {
       case 'association':
         return this.builder.buildAssociationRelationship(isBidirectional);
@@ -68,12 +77,10 @@ export class RelationshipBuilder {
         relationshipType: type,
       });
       link.attr(
-        this.getRelationshipAttributes(
+        this.getRelationshipAttributes({
           type,
-          relationshipModelId,
-          relationshipViewId,
           isBidirectional,
-        ),
+        }),
       );
 
       link.appendLabel({
