@@ -255,5 +255,15 @@ describe('RelationshipBuilder', () => {
         expect(message).to.equal(errorMessage);
       }
     });
+
+    it('should return an error message if the targetNode is not defined', () => {
+      try {
+        builder.buildRelationship({ ...relationSettings, targetNode: undefined });
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).to.equal(errorMessage);
+      }
+    });
   });
 });
