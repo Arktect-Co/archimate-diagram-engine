@@ -3,7 +3,7 @@ import { ViewNode } from '@lib/model/ViewNode';
 import { ViewRelationship } from '@lib/model/ViewRelationship';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
-import { RelationshipBuilder } from './relationshipRendering/RelationshipBuilder';
+import { RelationshipBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipBuilder';
 
 export class ViewRenderer {
   /**
