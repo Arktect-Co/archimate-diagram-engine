@@ -26,5 +26,24 @@ describe('RelationshipBuilder', () => {
         d: 'M 12 -6 0 0 z',
       });
     });
+
+    it('should return serving relationship attributes', () => {
+      const types = [RelationshipType.Serving, RelationshipType.UsedBy];
+
+      types.forEach(type => {
+        const { line } = builder.getRelationshipAttributes({
+          type,
+          isBidirectional: false,
+        });
+
+        expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+        expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+        expect(line.targetMarker).to.contain({
+          type: PointerType.Path,
+          stroke: 'black',
+          d: 'M 12 -6 0 0 12 6 1 0 z',
+        });
+      });
+    });
   });
 });
