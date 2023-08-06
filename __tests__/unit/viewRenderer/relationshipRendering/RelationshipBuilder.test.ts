@@ -135,5 +135,21 @@ describe('RelationshipBuilder', () => {
         });
       });
     });
+
+    it('should return specialization relationship attributes', () => {
+      const { line } = builder.getRelationshipAttributes({
+        type: RelationshipType.Specialization,
+        isBidirectional: false,
+      });
+
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.targetMarker).to.contain({
+        type: PointerType.Path,
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+        d: 'M 15 -9 0 0 15 9 z',
+      });
+    });
   });
 });
