@@ -2,6 +2,7 @@ import { shapes, dia } from 'jointjs';
 import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipAttributesBuilder';
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
 import { ViewSetting } from '@lib/model/ViewSetting';
+import { RelationshipType } from '@lib/common/enums/relationshipType';
 
 interface BaseRelationshipSettings {
   type: string;
@@ -27,29 +28,29 @@ export class RelationshipBuilder {
 
   getRelationshipAttributes({ type, isBidirectional }: BaseRelationshipSettings) {
     switch (type) {
-      case 'association':
+      case RelationshipType.Association:
         return this.builder.buildAssociationRelationship(isBidirectional);
-      case 'serving':
-      case 'usedby':
+      case RelationshipType.Serving:
+      case RelationshipType.UsedBy:
         return this.builder.buildServingRelationship();
-      case 'assignment':
+      case RelationshipType.Assignment:
         return this.builder.buildAssignmentRelationship();
-      case 'triggering':
+      case RelationshipType.Triggering:
         return this.builder.buildTriggeringRelationship();
-      case 'access':
+      case RelationshipType.Access:
         return this.builder.buildAccessRelationship(isBidirectional);
-      case 'influence':
+      case RelationshipType.Influence:
         return this.builder.buildInfluenceRelationship();
-      case 'realization':
-      case 'realisation':
+      case RelationshipType.Realization:
+      case RelationshipType.Realisation:
         return this.builder.buildRealizationRelationship();
-      case 'specialization':
+      case RelationshipType.Specialization:
         return this.builder.buildSpecializationRelationship();
-      case 'flow':
+      case RelationshipType.Flow:
         return this.builder.buildFlowRelationship();
-      case 'composition':
+      case RelationshipType.Composition:
         return this.builder.buildCompositionRelationship();
-      case 'aggregation':
+      case RelationshipType.Aggregation:
         return this.builder.buildAggregationRelationship();
       default:
         return this.builder.buildDefaultRelationship();
