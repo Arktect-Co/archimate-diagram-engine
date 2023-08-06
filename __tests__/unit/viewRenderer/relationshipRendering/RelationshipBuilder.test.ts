@@ -186,5 +186,24 @@ describe('RelationshipBuilder', () => {
         type: PointerType.None,
       });
     });
+
+    it('should return aggregation relationship attributes', () => {
+      const { line } = builder.getRelationshipAttributes({
+        type: RelationshipType.Aggregation,
+        isBidirectional: false,
+      });
+
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.strokeWidth).to.equal(1);
+      expect(line.sourceMarker).to.contain({
+        type: PointerType.Path,
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+        d: 'M 10 -8 0 0 10 8 20 0 z',
+      });
+      expect(line.targetMarker).to.contain({
+        type: PointerType.None,
+      });
+    });
   });
 });
