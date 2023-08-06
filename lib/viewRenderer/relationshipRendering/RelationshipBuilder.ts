@@ -58,9 +58,9 @@ export class RelationshipBuilder {
     label: string,
   ) {
     if (type && sourceNode && targetNode) {
-      let vertices = [];
+      const vertices = [];
 
-      let link = new shapes.standard.Link();
+      const link = new shapes.standard.Link();
 
       link.prop({
         id: relationshipViewId,
@@ -102,7 +102,7 @@ export class RelationshipBuilder {
       link.connector('rounded');
 
       if (Array.isArray(bendpoints) && bendpoints.length > 0) {
-        let len = bendpoints.length;
+        const len = bendpoints.length;
 
         for (let i = 0; i < len; i++) {
           vertices.push(bendpoints[i]);
