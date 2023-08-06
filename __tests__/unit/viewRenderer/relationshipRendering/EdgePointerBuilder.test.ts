@@ -26,4 +26,15 @@ describe('EdgePointerBuilder', () => {
       d: 'M 15 -9 0 0 15 9 z',
     });
   });
+
+  it('should return a full triangle Pointer', () => {
+    const edgePointer = builder.buildFullTrianglePointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Path,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      fill: SETTINGS_DEFAULT.DARK_COLOR,
+      d: 'M 15 -9 0 0 15 9 z',
+    });
+  });
 });
