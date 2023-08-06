@@ -37,4 +37,16 @@ describe('EdgePointerBuilder', () => {
       d: 'M 15 -9 0 0 15 9 z',
     });
   });
+
+  it('should return a circular Pointer', () => {
+    const edgePointer = builder.buildCircularPointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Circle,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+      r: 4,
+      cx: 4,
+    });
+  });
 });
