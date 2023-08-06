@@ -61,4 +61,15 @@ describe('EdgePointerBuilder', () => {
       cx: 4,
     });
   });
+
+  it('should return a diamond Pointer', () => {
+    const edgePointer = builder.buildDiamondPointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Path,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+      d: 'M 10 -8 0 0 10 8 20 0 z',
+    });
+  });
 });
