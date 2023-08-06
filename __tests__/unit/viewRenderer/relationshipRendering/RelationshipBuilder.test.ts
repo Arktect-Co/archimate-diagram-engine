@@ -245,5 +245,15 @@ describe('RelationshipBuilder', () => {
         expect(message).to.equal(errorMessage);
       }
     });
+
+    it('should return an error message if the sourceNode is not defined', () => {
+      try {
+        builder.buildRelationship({ ...relationSettings, sourceNode: undefined });
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).to.equal(errorMessage);
+      }
+    });
   });
 });
