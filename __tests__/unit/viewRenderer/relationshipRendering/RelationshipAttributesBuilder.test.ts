@@ -1,6 +1,7 @@
 import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipAttributesBuilder';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
+import { PointerType } from '@lib/common/enums/pointerType';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import { expect } from 'chai';
 
@@ -17,7 +18,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: 'black',
         d: 'M 12 -6 0 0 z',
       });
@@ -29,7 +30,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.targetMarker).to.contain({
-        type: 'none',
+        type: PointerType.None,
       });
     });
   });
@@ -41,7 +42,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: 'black',
         d: 'M 12 -6 0 0 12 6 1 0 z',
       });
@@ -55,12 +56,12 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         d: 'M 10 -5 0 0 10 5 z',
       });
       expect(line.sourceMarker).to.contain({
-        type: 'circle',
+        type: PointerType.Circle,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         fill: SETTINGS_DEFAULT.DARK_COLOR,
         r: 4,
@@ -76,7 +77,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         d: 'M 10 -5 0 0 10 5 z',
       });
@@ -91,7 +92,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.strokeDasharray).to.equal(2);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         d: 'M 10 -5 0 0 10 5 1 0 z',
       });
@@ -100,7 +101,7 @@ describe('RelationshipAttributesBuilder', () => {
     it('should return a bidirectional access relationship', () => {
       const { line } = relationshipAttributesBuilder.buildAccessRelationship(true);
       const smallThinArrow = {
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         d: 'M 10 -5 0 0 10 5 1 0 z',
       };
@@ -120,7 +121,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.strokeDasharray).to.equal(4);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         d: 'M 10 -5 0 0 10 5 1 0 z',
       });
@@ -135,7 +136,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.strokeDasharray).to.equal(2);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         fill: SETTINGS_DEFAULT.LIGHT_COLOR,
         d: 'M 15 -9 0 0 15 9 z',
@@ -150,7 +151,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         fill: SETTINGS_DEFAULT.LIGHT_COLOR,
         d: 'M 15 -9 0 0 15 9 z',
@@ -166,7 +167,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.strokeDasharray).to.equal(4);
       expect(line.targetMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         d: 'M 10 -5 0 0 10 5 z',
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
       });
@@ -180,13 +181,13 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(1);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.sourceMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         fill: SETTINGS_DEFAULT.DARK_COLOR,
         d: 'M 10 -8 0 0 10 8 20 0 z',
       });
       expect(line.targetMarker).to.contain({
-        type: 'none',
+        type: PointerType.None,
       });
     });
   });
@@ -198,13 +199,13 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.strokeWidth).to.equal(1);
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.sourceMarker).to.contain({
-        type: 'path',
+        type: PointerType.Path,
         stroke: SETTINGS_DEFAULT.DARK_COLOR,
         fill: SETTINGS_DEFAULT.LIGHT_COLOR,
         d: 'M 10 -8 0 0 10 8 20 0 z',
       });
       expect(line.targetMarker).to.contain({
-        type: 'none',
+        type: PointerType.None,
       });
     });
   });
@@ -217,7 +218,7 @@ describe('RelationshipAttributesBuilder', () => {
       expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
       expect(line.strokeDasharray).to.equal(3);
       expect(line.targetMarker).to.contain({
-        type: 'none',
+        type: PointerType.None,
       });
     });
   });
