@@ -82,5 +82,21 @@ describe('RelationshipBuilder', () => {
         d: 'M 10 -5 0 0 10 5 z',
       });
     });
+
+    it('should return access relationship attributes', () => {
+      const { line } = builder.getRelationshipAttributes({
+        type: RelationshipType.Access,
+        isBidirectional: false,
+      });
+
+      expect(line.stroke).to.equal(SETTINGS_DEFAULT.DARK_COLOR);
+      expect(line.strokeWidth).to.equal(SETTINGS_DEFAULT.EDGE_WIDTH);
+      expect(line.strokeDasharray).to.equal(2);
+      expect(line.targetMarker).to.contain({
+        type: PointerType.Path,
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        d: 'M 10 -5 0 0 10 5 1 0 z',
+      });
+    });
   });
 });
