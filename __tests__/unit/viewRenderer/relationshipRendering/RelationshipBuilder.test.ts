@@ -5,6 +5,7 @@ import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { RelationshipType } from '@lib/common/enums/relationshipType';
 import { PointerType } from '@lib/common/enums/pointerType';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
+import referenceView from '../../data/complete/reference_view.json';
 
 describe('RelationshipBuilder', () => {
   const graph = new dia.Graph({ cellNamespace: shapes });
@@ -218,6 +219,31 @@ describe('RelationshipBuilder', () => {
       expect(line.targetMarker).to.contain({
         type: PointerType.None,
       });
+    });
+  });
+
+  describe('buildRelationship', () => {
+    const viewRelationship = referenceView.viewRelationships[2];
+    const relationSettings = {
+      type: RelationshipType.Flow,
+      relationshipModelId: viewRelationship.modelRelationshipId,
+      relationshipViewId: viewRelationship.viewRelationshipId,
+      isBidirectional: false,
+      bendpoints: viewRelationship.bendpoints,
+      sourceNode: graph.getCell(viewRelationship.sourceId),
+      targetNode: graph.getCell(viewRelationship.targetId),
+      label: '',
+    };
+    const errorMessage = `Invalid relationship: Relationships must have type, sourceNode and targetNode defined.`;
+
+    it('should return an error message if the type is not defined', () => {
+      try {
+        builder.buildRelationship({ ...relationSettings, type: '' });
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).to.equal(errorMessage);
+      }
     });
   });
 });
