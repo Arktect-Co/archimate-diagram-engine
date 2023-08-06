@@ -6,11 +6,41 @@ import { RelationshipType } from '@lib/common/enums/relationshipType';
 import { PointerType } from '@lib/common/enums/pointerType';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import referenceView from '../../data/complete/reference_view.json';
+import { NodeBuilder } from '../../../../lib/viewRenderer/nodeRendering/NodeBuilder';
+import { ViewRelationship } from '../../../../lib/model/ViewRelationship';
+import { ViewNode } from '../../../../lib/model/ViewNode';
 
 describe('RelationshipBuilder', () => {
+  const viewRelationship: ViewRelationship = referenceView.viewRelationships[0];
   const graph = new dia.Graph({ cellNamespace: shapes });
   const settings = new ViewSettings({});
   const builder = new RelationshipBuilder(graph, settings);
+
+  afterEach(() => {
+    graph.clear();
+    const nodeBuilder = new NodeBuilder(graph, settings);
+    const nodes: Array<ViewNode> = referenceView.viewNodes.filter(
+      node =>
+        node.viewNodeId === viewRelationship.sourceId ||
+        node.viewNodeId === viewRelationship.targetId,
+    );
+
+    if (Array.isArray(nodes)) {
+      nodes.forEach(node => {
+        nodeBuilder.buildNode({
+          modelElementId: node.modelNodeId,
+          viewNodeId: node.viewNodeId,
+          name: node.name,
+          type: node.type,
+          width: node.width,
+          height: node.height,
+          posX: node.x,
+          posY: node.y,
+          parentElement: undefined,
+        });
+      });
+    }
+  });
 
   describe('getRelationshipAttributes', () => {
     it('should return default relationship attributes', () => {
@@ -223,9 +253,8 @@ describe('RelationshipBuilder', () => {
   });
 
   describe('buildRelationship', () => {
-    const viewRelationship = referenceView.viewRelationships[2];
     const relationSettings = {
-      type: RelationshipType.Flow,
+      type: viewRelationship.type,
       relationshipModelId: viewRelationship.modelRelationshipId,
       relationshipViewId: viewRelationship.viewRelationshipId,
       isBidirectional: false,
@@ -264,6 +293,31 @@ describe('RelationshipBuilder', () => {
 
         expect(message).to.equal(errorMessage);
       }
+    });
+
+    it('should return a graph with a relationship', () => {
+      const linkType = 'standard.Link';
+      builder.buildRelationship({
+        ...relationSettings,
+        sourceNode: graph.getCell(viewRelationship.sourceId),
+        targetNode: graph.getCell(viewRelationship.targetId),
+      });
+
+      const relationship = graph.toJSON().cells.find(link => link.type === linkType);
+
+      expect(relationship).to.not.equal(undefined);
+      expect(relationship).to.not.equal(null);
+      expect(relationship.relationshipType).to.equal(RelationshipType.Realization);
+      expect(relationship.attrs.line).to.deep.contain({
+        stroke: SETTINGS_DEFAULT.DARK_COLOR,
+        strokeWidth: SETTINGS_DEFAULT.EDGE_WIDTH,
+        targetMarker: {
+          stroke: SETTINGS_DEFAULT.DARK_COLOR,
+          fill: SETTINGS_DEFAULT.LIGHT_COLOR,
+          d: 'M 15 -9 0 0 15 9 z',
+        },
+        strokeDasharray: 2,
+      });
     });
   });
 });
