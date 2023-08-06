@@ -95,12 +95,22 @@ describe('EdgePointerBuilder', () => {
   });
 
   it('should return a thin arrow Pointer', () => {
-    const edgePointer = builder.buildArrowPointer();
+    const edgePointer = builder.buildThinArrowPointer();
 
     expect(edgePointer).to.contain({
       type: PointerType.Path,
       stroke: SETTINGS_DEFAULT.DARK_COLOR,
       d: 'M 12 -6 0 0 12 6 1 0 z',
+    });
+  });
+
+  it('should return a small thin arrow Pointer', () => {
+    const edgePointer = builder.buildSmallThinArrowPointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Path,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      d: 'M 10 -5 0 0 10 5 1 0 z',
     });
   });
 });
