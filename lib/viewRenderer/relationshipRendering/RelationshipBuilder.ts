@@ -56,16 +56,16 @@ export class RelationshipBuilder {
     }
   }
 
-  buildRelationship(
-    type: string,
-    relationshipModelId: string,
-    relationshipViewId: string,
-    isBidirectional: boolean,
-    bendpoints: Array<{ x: number; y: number }>,
-    sourceNode: dia.Cell,
-    targetNode: dia.Cell,
-    label: string,
-  ) {
+  buildRelationship({
+    type,
+    relationshipModelId,
+    relationshipViewId,
+    isBidirectional,
+    bendpoints,
+    sourceNode,
+    targetNode,
+    label,
+  }: RelationshipSettings) {
     if (type && sourceNode && targetNode) {
       const vertices = [];
 

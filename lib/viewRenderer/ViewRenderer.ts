@@ -102,16 +102,16 @@ export class ViewRenderer {
         ) {
           // Relationships with embedded nodes should not be visible
           if (parent === null || parent !== source.id) {
-            relationshipBuilder.buildRelationship(
-              rel.type,
-              rel.modelRelationshipId,
-              rel.viewRelationshipId,
-              rel.isBidirectional,
-              rel.bendpoints,
-              source,
-              target,
-              '',
-            );
+            relationshipBuilder.buildRelationship({
+              type: rel.type,
+              relationshipModelId: rel.modelRelationshipId,
+              relationshipViewId: rel.viewRelationshipId,
+              isBidirectional: rel.isBidirectional,
+              bendpoints: rel.bendpoints,
+              sourceNode: source,
+              targetNode: target,
+              label: '',
+            });
           }
         }
       });
