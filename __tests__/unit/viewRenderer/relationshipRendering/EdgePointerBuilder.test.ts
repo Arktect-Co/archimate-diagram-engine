@@ -83,4 +83,14 @@ describe('EdgePointerBuilder', () => {
       d: 'M 10 -8 0 0 10 8 20 0 z',
     });
   });
+
+  it('should return an arrow Pointer', () => {
+    const edgePointer = builder.buildArrowPointer();
+
+    expect(edgePointer).to.contain({
+      type: PointerType.Path,
+      stroke: SETTINGS_DEFAULT.DARK_COLOR,
+      d: 'M 10 -5 0 0 10 5 z',
+    });
+  });
 });
