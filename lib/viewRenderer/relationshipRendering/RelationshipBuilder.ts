@@ -18,14 +18,45 @@ interface RelationshipSettings extends BaseRelationshipSettings {
   label: string;
 }
 
+/**
+ * Relationship builder class
+ * @example
+ * import { dia } from 'jointjs';
+ * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/relationshipBuilder";
+ * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+ *
+ * const graph = new dia.Graph({ cellNamespace: shapes });
+ * const settings = new ViewSettings({});
+ * const builder = new RelationshipBuilder(graph, settings);
+ */
 export class RelationshipBuilder {
   private builder: RelationshipAttributesBuilder;
 
+  /**
+   * @param graph Jointjs Graph model
+   * @param settings View settings
+   */
   constructor(private readonly graph: dia.Graph, settings: ViewSetting) {
     this.graph = graph;
     this.builder = new RelationshipAttributesBuilder(settings, new EdgePointerBuilder(settings));
   }
 
+  /**
+   * Returns a relationship attributes
+   * @param settings Basic relationship settings
+   * @param settings.type Relationship type
+   * @param settings.isBidirectional Indicates whether the relationship is bidirectional or not
+   * @example
+   * import { dia } from 'jointjs';
+   * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/relationshipBuilder";
+   * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+   *
+   * const graph = new dia.Graph({ cellNamespace: shapes });
+   * const settings = new ViewSettings({});
+   * const builder = new RelationshipBuilder(graph, settings);
+   *
+   * const relationshipAttributes = builder.getRelationshipAttributes({type: 'flow', isBidirectional: false});
+   */
   getRelationshipAttributes({ type, isBidirectional }: BaseRelationshipSettings) {
     switch (type) {
       case RelationshipType.Association:
@@ -57,6 +88,40 @@ export class RelationshipBuilder {
     }
   }
 
+  /**
+   * Builds a relationship
+   * @param settings Basic relationship settings
+   * @param settings.type Relationship type
+   * @param settings.relationshipModelId Relationship model identification
+   * @param settings.relationshipViewId Relationship view identification
+   * @param settings.isBidirectional Indicates whether the relationship is bidirectional or not
+   * @param settings.bendpoints Link vertices
+   * @param settings.sourceNode Source Node
+   * @param settings.targetNode Target Node
+   * @param settings.label Relationship label
+   * @example
+   * import { dia } from 'jointjs';
+   * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/relationshipBuilder";
+   * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+   *
+   * const graph = new dia.Graph({ cellNamespace: shapes });
+   * const settings = new ViewSettings({});
+   * const builder = new RelationshipBuilder(graph, settings);
+   *
+   * const sourceNode = graph.getCell("ac0358ea-5dd2-4086-b5ac-827801196ffb");
+   * const targetNode = graph.getCell("06ebe975");
+   *
+   * const relationshipAttributes = builder.buildRelationship({
+   *  type: 'flow',
+   *  isBidirectional: false,
+   *  relationshipModelId: "f43b1bb0-ed2e-42e0-b94a-786223b20beb",
+   *  relationshipViewId: "a4da7d5b-b482-45dc-87e3-161787e15435",
+   *  bendpoints: [{x: 432, y: 12}],
+   *  label: "",
+   *  sourceNode,
+   *  targetNode,
+   * });
+   */
   buildRelationship({
     type,
     relationshipModelId,
@@ -122,7 +187,7 @@ export class RelationshipBuilder {
       link.addTo(this.graph);
     } else {
       throw new Error(
-        `Invalid relationship: Relationships must have type, sourceNode and targetNode defined.`,
+        `"Invalid relationship": Relationships must have type, sourceNode and targetNode defined.`,
       );
     }
   }
