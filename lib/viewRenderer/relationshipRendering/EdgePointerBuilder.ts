@@ -1,6 +1,7 @@
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { attributes } from 'jointjs';
+import { PointerType } from '@lib/common/enums/pointerType';
 
 /**
  * Edge Pointer Builder
@@ -12,6 +13,7 @@ import { attributes } from 'jointjs';
  * const builder = new EdgePointerBuilder(settings);
  */
 export class EdgePointerBuilder {
+  private readonly baseType: string = PointerType.None;
   private readonly lightColor: string;
   private readonly darkColor: string;
 
@@ -40,7 +42,7 @@ export class EdgePointerBuilder {
    */
   buildBasePointer(): attributes.SVGAttributes {
     return {
-      type: 'none',
+      type: this.baseType,
     };
   }
 
@@ -56,7 +58,7 @@ export class EdgePointerBuilder {
    */
   buildTrianglePointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       fill: this.lightColor,
       d: 'M 15 -9 0 0 15 9 z', // White filled big arrow
@@ -75,7 +77,7 @@ export class EdgePointerBuilder {
    */
   buildFullTrianglePointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       fill: this.darkColor,
       d: 'M 15 -9 0 0 15 9 z', // White filled big arrow
@@ -94,7 +96,7 @@ export class EdgePointerBuilder {
    */
   buildCircularPointer(): attributes.SVGAttributes {
     return {
-      type: 'circle', // SVG Circle
+      type: PointerType.Circle, // SVG Circle
       stroke: this.darkColor,
       fill: this.lightColor,
       r: 4, // radius of the circle
@@ -114,7 +116,7 @@ export class EdgePointerBuilder {
    */
   buildFullCircularPointer(): attributes.SVGAttributes {
     return {
-      type: 'circle', // SVG Circle
+      type: PointerType.Circle, // SVG Circle
       stroke: this.darkColor,
       fill: this.darkColor,
       r: 4, // radius of the circle
@@ -134,7 +136,7 @@ export class EdgePointerBuilder {
    */
   buildDiamondPointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       fill: this.lightColor,
       d: 'M 10 -8 0 0 10 8 20 0 z', // White diamond
@@ -153,7 +155,7 @@ export class EdgePointerBuilder {
    */
   buildFullDiamondPointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       fill: this.darkColor,
       d: 'M 10 -8 0 0 10 8 20 0 z', // Black diamond
@@ -172,7 +174,7 @@ export class EdgePointerBuilder {
    */
   buildArrowPointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       d: 'M 10 -5 0 0 10 5 z', // Filled arrow
     };
@@ -190,7 +192,7 @@ export class EdgePointerBuilder {
    */
   buildThinArrowPointer() {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       d: 'M 12 -6 0 0 12 6 1 0 z', // Simple arrow
     };
@@ -208,7 +210,7 @@ export class EdgePointerBuilder {
    */
   buildSmallThinArrowPointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       d: 'M 10 -5 0 0 10 5 1 0 z', // Simple arrow - Smaller
     };
@@ -226,7 +228,7 @@ export class EdgePointerBuilder {
    */
   buildHalfThinArrowPointer(): attributes.SVGAttributes {
     return {
-      type: 'path',
+      type: PointerType.Path,
       stroke: this.darkColor,
       d: 'M 12 -6 0 0 z', // Half arrow
     };

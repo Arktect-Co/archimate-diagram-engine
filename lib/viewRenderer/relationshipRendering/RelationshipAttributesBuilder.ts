@@ -1,6 +1,7 @@
-import { SETTINGS_DEFAULT } from '@lib/common/constants';
-import { ViewSetting } from '@lib/model/ViewSetting';
 import { dia } from 'jointjs';
+import { ViewSetting } from '@lib/model/ViewSetting';
+import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
+import { SETTINGS_DEFAULT } from '@lib/common/constants';
 
 /**
  * Relationship Attributes Builder
@@ -15,7 +16,7 @@ import { dia } from 'jointjs';
 export class RelationshipAttributesBuilder {
   private readonly darkColor: string;
   private readonly edgeWidth: number;
-  private builder: any;
+  private builder: EdgePointerBuilder;
 
   /**
    * @param settings Relationship settings
