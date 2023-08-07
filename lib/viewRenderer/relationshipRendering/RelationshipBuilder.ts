@@ -3,6 +3,7 @@ import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRen
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { RelationshipType } from '@lib/common/enums/relationshipType';
+import { BendPoint } from '@lib/model/ViewRelationship';
 
 interface BaseRelationshipSettings {
   type: string;
@@ -12,7 +13,7 @@ interface BaseRelationshipSettings {
 interface RelationshipSettings extends BaseRelationshipSettings {
   relationshipModelId: string;
   relationshipViewId: string;
-  bendpoints: Array<{ x: number; y: number }>;
+  bendpoints: Array<BendPoint>;
   sourceNode: dia.Cell;
   targetNode: dia.Cell;
   label: string;
