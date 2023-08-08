@@ -6,16 +6,14 @@ interface Hash {
   relationships: string;
 }
 
-interface Vertical {
+interface AxisBounds {
   min: number;
   max: number;
 }
 
-interface Horizontal extends Vertical {}
-
 interface Bounds {
-  vertical: Vertical;
-  horizontal: Horizontal;
+  vertical: AxisBounds;
+  horizontal: AxisBounds;
 }
 
 export interface ReferenceView {
