@@ -19,23 +19,20 @@ export function checkModelsEquality(viewInput: ReferenceView, graphOutput: Graph
       Array.isArray(viewInput.viewRelationships) &&
       Array.isArray(graphOutput.cells)
     ) {
-      const cells = graphOutput.cells.reduce((accumulator = {}, currentValue): Data<Cell> => {
+      const cells = graphOutput.cells.reduce((accumulator, currentValue): Data<Cell> => {
         const key = currentValue.id;
 
         if (!accumulator[key]) accumulator[key] = currentValue;
 
         return accumulator;
       }, {});
-      const viewNodes = viewInput.viewNodes.reduce(
-        (accumulator = {}, currentValue): Data<ViewNode> => {
-          const key = currentValue.viewNodeId;
+      const viewNodes = viewInput.viewNodes.reduce((accumulator, currentValue): Data<ViewNode> => {
+        const key = currentValue.viewNodeId;
 
-          if (!accumulator[key]) accumulator[key] = currentValue;
+        if (!accumulator[key]) accumulator[key] = currentValue;
 
-          return accumulator;
-        },
-        {},
-      );
+        return accumulator;
+      }, {});
 
       for (let i = 0; i < viewInput.viewNodes.length; i++) {
         const node = viewInput.viewNodes[i];
