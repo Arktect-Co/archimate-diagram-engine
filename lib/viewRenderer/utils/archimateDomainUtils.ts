@@ -12,76 +12,72 @@ import { NodeType } from '@lib/common/enums/nodeType';
  * const classification = typeToClassification(type);
  */
 export const typeToClassification = (type: string): string => {
-  switch (type) {
-    case NodeType.Requirement:
-    case NodeType.Principle:
-    case NodeType.Constraint:
-    case NodeType.Goal:
-    case NodeType.Outcome:
-    case NodeType.Driver:
-    case NodeType.Assessment:
-    case NodeType.Stakeholder:
-    case NodeType.Value:
-    case NodeType.Meaning:
-      return NodeShapeClassification.Motivational;
-    case NodeType.BusinessCollaboration:
-    case NodeType.BusinessActor:
-    case NodeType.BusinessRole:
-    case NodeType.BusinessInterface:
-    case NodeType.BusinessObject:
-    case NodeType.Representation:
-    case NodeType.Product:
-    case NodeType.Contract:
-    case NodeType.ApplicationComponent:
-    case NodeType.ApplicationCollaboration:
-    case NodeType.ApplicationInterface:
-    case NodeType.DataObject:
-    case NodeType.Node:
-    case NodeType.SystemSoftware:
-    case NodeType.InfrastructureInterface:
-    case NodeType.TechnologyInterface:
-    case NodeType.TechnologyCollaboration:
-    case NodeType.Artifact:
-    case NodeType.CommunicationNetwork:
-    case NodeType.Path:
-    case NodeType.Device:
-    case NodeType.Material:
-    case NodeType.Facility:
-    case NodeType.Equipment:
-    case NodeType.DistributionNetwork:
-    case NodeType.Resource:
-      return NodeShapeClassification.Structure;
-    case NodeType.BusinessInteraction:
-    case NodeType.BusinessProcess:
-    case NodeType.BusinessFunction:
-    case NodeType.BusinessService:
-    case NodeType.BusinessEvent:
-    case NodeType.ApplicationInteraction:
-    case NodeType.ApplicationFunction:
-    case NodeType.ApplicationService:
-    case NodeType.ApplicationProcess:
-    case NodeType.ApplicationEvent:
-    case NodeType.InfrastructureFunction:
-    case NodeType.InfrastructureService:
-    case NodeType.TechnologyFunction:
-    case NodeType.TechnologyService:
-    case NodeType.TechnologyProcess:
-    case NodeType.TechnologyInteraction:
-    case NodeType.Capability:
-    case NodeType.CourseOfAction:
-    case NodeType.ValueStream:
-      return NodeShapeClassification.Behaviour;
-    case NodeType.Plateau:
-    case NodeType.WorkPackage:
-    case NodeType.Deliverable:
-    case NodeType.ImplementationEvent:
-    case NodeType.Gap:
-      return NodeShapeClassification.ImplementationAndMigration;
-    case NodeType.Note:
-      return NodeShapeClassification.ViewElement;
-    default:
-      return type;
-  }
+  const nodeTypeClassification = {
+    [NodeType.Requirement]: NodeShapeClassification.Motivational,
+    [NodeType.Principle]: NodeShapeClassification.Motivational,
+    [NodeType.Constraint]: NodeShapeClassification.Motivational,
+    [NodeType.Goal]: NodeShapeClassification.Motivational,
+    [NodeType.Outcome]: NodeShapeClassification.Motivational,
+    [NodeType.Driver]: NodeShapeClassification.Motivational,
+    [NodeType.Assessment]: NodeShapeClassification.Motivational,
+    [NodeType.Stakeholder]: NodeShapeClassification.Motivational,
+    [NodeType.Value]: NodeShapeClassification.Motivational,
+    [NodeType.Meaning]: NodeShapeClassification.Motivational,
+    [NodeType.BusinessCollaboration]: NodeShapeClassification.Structure,
+    [NodeType.BusinessActor]: NodeShapeClassification.Structure,
+    [NodeType.BusinessRole]: NodeShapeClassification.Structure,
+    [NodeType.BusinessInterface]: NodeShapeClassification.Structure,
+    [NodeType.BusinessObject]: NodeShapeClassification.Structure,
+    [NodeType.Representation]: NodeShapeClassification.Structure,
+    [NodeType.Product]: NodeShapeClassification.Structure,
+    [NodeType.Contract]: NodeShapeClassification.Structure,
+    [NodeType.ApplicationComponent]: NodeShapeClassification.Structure,
+    [NodeType.ApplicationCollaboration]: NodeShapeClassification.Structure,
+    [NodeType.ApplicationInterface]: NodeShapeClassification.Structure,
+    [NodeType.DataObject]: NodeShapeClassification.Structure,
+    [NodeType.Node]: NodeShapeClassification.Structure,
+    [NodeType.SystemSoftware]: NodeShapeClassification.Structure,
+    [NodeType.InfrastructureInterface]: NodeShapeClassification.Structure,
+    [NodeType.TechnologyInterface]: NodeShapeClassification.Structure,
+    [NodeType.TechnologyCollaboration]: NodeShapeClassification.Structure,
+    [NodeType.Artifact]: NodeShapeClassification.Structure,
+    [NodeType.CommunicationNetwork]: NodeShapeClassification.Structure,
+    [NodeType.Path]: NodeShapeClassification.Structure,
+    [NodeType.Device]: NodeShapeClassification.Structure,
+    [NodeType.Material]: NodeShapeClassification.Structure,
+    [NodeType.Facility]: NodeShapeClassification.Structure,
+    [NodeType.Equipment]: NodeShapeClassification.Structure,
+    [NodeType.DistributionNetwork]: NodeShapeClassification.Structure,
+    [NodeType.Resource]: NodeShapeClassification.Structure,
+    [NodeType.BusinessInteraction]: NodeShapeClassification.Behaviour,
+    [NodeType.BusinessProcess]: NodeShapeClassification.Behaviour,
+    [NodeType.BusinessFunction]: NodeShapeClassification.Behaviour,
+    [NodeType.BusinessService]: NodeShapeClassification.Behaviour,
+    [NodeType.BusinessEvent]: NodeShapeClassification.Behaviour,
+    [NodeType.ApplicationInteraction]: NodeShapeClassification.Behaviour,
+    [NodeType.ApplicationFunction]: NodeShapeClassification.Behaviour,
+    [NodeType.ApplicationService]: NodeShapeClassification.Behaviour,
+    [NodeType.ApplicationProcess]: NodeShapeClassification.Behaviour,
+    [NodeType.ApplicationEvent]: NodeShapeClassification.Behaviour,
+    [NodeType.InfrastructureFunction]: NodeShapeClassification.Behaviour,
+    [NodeType.InfrastructureService]: NodeShapeClassification.Behaviour,
+    [NodeType.TechnologyFunction]: NodeShapeClassification.Behaviour,
+    [NodeType.TechnologyService]: NodeShapeClassification.Behaviour,
+    [NodeType.TechnologyProcess]: NodeShapeClassification.Behaviour,
+    [NodeType.TechnologyInteraction]: NodeShapeClassification.Behaviour,
+    [NodeType.Capability]: NodeShapeClassification.Behaviour,
+    [NodeType.CourseOfAction]: NodeShapeClassification.Behaviour,
+    [NodeType.ValueStream]: NodeShapeClassification.Behaviour,
+    [NodeType.Plateau]: NodeShapeClassification.ImplementationAndMigration,
+    [NodeType.WorkPackage]: NodeShapeClassification.ImplementationAndMigration,
+    [NodeType.Deliverable]: NodeShapeClassification.ImplementationAndMigration,
+    [NodeType.ImplementationEvent]: NodeShapeClassification.ImplementationAndMigration,
+    [NodeType.Gap]: NodeShapeClassification.ImplementationAndMigration,
+    [NodeType.Note]: NodeShapeClassification.ViewElement,
+  };
+
+  const classification = nodeTypeClassification[type];
+  return classification ? classification : type;
 };
 
 /**
