@@ -12,7 +12,7 @@ interface Data<T> {
  * @param graphOutput JointJS graph exported to JSON
  * @return true if the graph is equal to the view
  */
-export function checkModelsEquality(viewInput: ReferenceView, graphOutput: GraphOutput): Boolean {
+export function checkModelsEquality(viewInput: ReferenceView, graphOutput: GraphOutput): boolean {
   try {
     if (
       Array.isArray(viewInput.viewNodes) &&
