@@ -5,7 +5,7 @@ import { ViewSetting } from '@lib/model/ViewSetting';
 import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
 import { RelationshipBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipBuilder';
 
-export class ViewRenderer {
+export const ViewRenderer = {
   /**
    * Converts all node and relationship views to graph
    * @param graph Jointjs Graph model
@@ -51,7 +51,7 @@ export class ViewRenderer {
    *         }),
    *       );
    */
-  static renderToGraph(
+  renderToGraph(
     graph: dia.Graph,
     nodes: Array<ViewNode>,
     relationships: Array<ViewRelationship>,
@@ -116,7 +116,7 @@ export class ViewRenderer {
         }
       });
     }
-  }
+  },
 
   /**
    * Render Graph
@@ -157,7 +157,7 @@ export class ViewRenderer {
    *         }),
    *       );
    */
-  static render(
+  render(
     nodes: Array<ViewNode>,
     relationships: Array<ViewRelationship>,
     settings: ViewSetting,
@@ -167,5 +167,5 @@ export class ViewRenderer {
     this.renderToGraph(graph, nodes, relationships, settings);
 
     return graph;
-  }
-}
+  },
+};
