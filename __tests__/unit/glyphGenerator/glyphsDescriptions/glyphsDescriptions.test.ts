@@ -4,7 +4,7 @@ import { NodeType } from '@lib/common/enums/nodeType';
 import { glyphs } from '@lib/glyphGenerator/glyphsDescriptions/glyphs';
 import { GlyphSymbol } from '@lib/common/enums/glyphSymbol';
 
-const isMatch = (value: string, glyph: string): boolean => !!glyph.match(value);
+const isMatch = (value: string, glyph: string): boolean => Boolean(glyph.match(value));
 
 describe('glyphsDescriptions', () => {
   it('should return empty string if type does not contain glyph', () => {
