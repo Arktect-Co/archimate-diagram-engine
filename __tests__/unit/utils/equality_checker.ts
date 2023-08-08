@@ -34,8 +34,7 @@ export function checkModelsEquality(viewInput: ReferenceView, graphOutput: Graph
         return accumulator;
       }, {});
 
-      for (let i = 0; i < viewInput.viewNodes.length; i++) {
-        const node = viewInput.viewNodes[i];
+      for (const node of viewInput.viewNodes) {
         const cell = cells[node.viewNodeId];
 
         // If not found, then is different
@@ -56,9 +55,7 @@ export function checkModelsEquality(viewInput: ReferenceView, graphOutput: Graph
 
         // Verifying nested nodes
         if (cell.embeds && cell.embeds.length > 0) {
-          for (let j = 0; j < cell.embeds.length; j++) {
-            const possibleChildId = cell.embeds[j];
-
+          for (const possibleChildId of cell.embeds) {
             const childNode = viewNodes[possibleChildId];
 
             if (childNode && childNode.parent !== cell.id) {
@@ -68,8 +65,7 @@ export function checkModelsEquality(viewInput: ReferenceView, graphOutput: Graph
         }
       }
 
-      for (let i = 0; i < viewInput.viewRelationships.length; i++) {
-        const rel = viewInput.viewRelationships[i];
+      for (const rel of viewInput.viewRelationships) {
         const cell = cells[rel.viewRelationshipId];
 
         // If not found, then is different
