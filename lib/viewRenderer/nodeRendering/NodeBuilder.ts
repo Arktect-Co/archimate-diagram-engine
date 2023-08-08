@@ -221,7 +221,7 @@ export class NodeBuilder {
         image.position(width - 24, 8, { parentRelative: true });
       }
     } else {
-      throw new Error(`Invalid node: Nodes must have viewNodeId, name and type defined.`);
+      throw new Error('Invalid node: Nodes must have viewNodeId, name and type defined.');
     }
   }
 }

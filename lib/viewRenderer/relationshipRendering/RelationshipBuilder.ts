@@ -188,7 +188,7 @@ export class RelationshipBuilder {
       link.addTo(this.graph);
     } else {
       throw new Error(
-        `Invalid relationship: Relationships must have type, sourceNode and targetNode defined.`,
+        'Invalid relationship: Relationships must have type, sourceNode and targetNode defined.',
       );
     }
   }
