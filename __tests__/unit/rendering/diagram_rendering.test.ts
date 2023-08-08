@@ -25,7 +25,7 @@ describe('Diagram Rendering', () => {
 
       const isModelsEquality = checkModelsEquality(referenceView, outputGraph.toJSON());
 
-      expect(isModelsEquality).to.true;
+      expect(isModelsEquality).to.equal(true);
     });
   });
 });
