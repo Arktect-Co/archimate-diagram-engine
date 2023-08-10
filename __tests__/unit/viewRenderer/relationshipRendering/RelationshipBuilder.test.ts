@@ -263,7 +263,8 @@ describe('RelationshipBuilder', () => {
       targetNode: graph.getCell(viewRelationship.targetId),
       label: '',
     };
-    const errorMessage = `Invalid relationship: Relationships must have type, sourceNode and targetNode defined.`;
+    const errorMessage =
+      'Invalid relationship: Relationships must have type, sourceNode and targetNode defined.';
 
     it('should return an error message if the type is not defined', () => {
       try {

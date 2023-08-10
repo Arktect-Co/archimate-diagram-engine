@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { Position } from '../../../../lib/common/enums/position';
 
 describe('ShapeBuilder', () => {
-  let shapeBuilder: ShapeBuilder = new ShapeBuilder(new ViewSettings({}));
+  const shapeBuilder: ShapeBuilder = new ShapeBuilder(new ViewSettings({}));
 
   const shapeAttributes = {
     strokeColor: 'black',
