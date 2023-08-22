@@ -1,4 +1,4 @@
-import { glyphs } from '@lib/glyphGenerator/glyphsDescriptions/glyphs';
+import { glyphs } from './glyphs';
 
 /**
  * Returns a Glyph

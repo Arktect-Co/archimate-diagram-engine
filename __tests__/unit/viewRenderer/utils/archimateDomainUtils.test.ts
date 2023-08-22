@@ -1,11 +1,11 @@
 import {
   typeToClassification,
   typeToPureSymbol,
-} from '@lib/viewRenderer/utils/archimateDomainUtils';
+} from '../../../../src/lib/viewRenderer/utils/archimateDomainUtils';
 import { expect } from 'chai';
-import { NodeType } from '@lib/common/enums/nodeType';
-import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
-import { GlyphSymbol } from '@lib/common/enums/glyphSymbol';
+import { NodeType } from '../../../../src/lib/common/enums/nodeType';
+import { NodeShapeClassification } from '../../../../src/lib/common/enums/nodeShapeClassification';
+import { GlyphSymbol } from '../../../../src/lib/common/enums/glyphSymbol';
 
 describe('Archimate Domain Utils', () => {
   describe('typeToClassification', () => {

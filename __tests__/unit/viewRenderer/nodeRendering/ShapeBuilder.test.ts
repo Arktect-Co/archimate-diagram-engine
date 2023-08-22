@@ -1,7 +1,7 @@
 import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { expect } from 'chai';
-import { Position } from '../../../../lib/common/enums/position';
+import { Position } from '@lib/common/enums/position';
 
 describe('ShapeBuilder', () => {
   const shapeBuilder: ShapeBuilder = new ShapeBuilder(new ViewSettings({}));

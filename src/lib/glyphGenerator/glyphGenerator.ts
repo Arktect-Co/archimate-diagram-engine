@@ -1,5 +1,5 @@
-import { typeToPureSymbol } from '@lib/viewRenderer/utils/archimateDomainUtils';
-import { getGlyph } from '@lib/glyphGenerator/glyphsDescriptions/glyphDescriptions';
+import { typeToPureSymbol } from '../viewRenderer/utils/archimateDomainUtils';
+import { getGlyph } from './glyphsDescriptions/glyphDescriptions';
 
 /**
  * Generates a Glyph based on the node type

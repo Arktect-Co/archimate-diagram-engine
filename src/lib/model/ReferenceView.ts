@@ -1,5 +1,5 @@
-import { ViewNode } from '@lib/model/ViewNode';
-import { ViewRelationship } from '@lib/model/ViewRelationship';
+import { ViewNode } from './ViewNode';
+import { ViewRelationship } from './ViewRelationship';
 
 interface Hash {
   elements: string;

@@ -1,7 +1,7 @@
-import { ReferenceView } from '@lib/model/ReferenceView';
-import { Cell, GraphOutput } from '@lib/model/GraphOutput';
-import { ViewNode } from '@lib/model/ViewNode';
-import { ViewRelationship } from '@lib/model/ViewRelationship';
+import { ReferenceView } from '../../../src/lib/model/ReferenceView';
+import { Cell, GraphOutput } from '../../../src/lib/model/GraphOutput';
+import { ViewNode } from '../../../src/lib/model/ViewNode';
+import { ViewRelationship } from '../../../src/lib/model/ViewRelationship';
 
 interface Data<T> {
   [key: string]: T;

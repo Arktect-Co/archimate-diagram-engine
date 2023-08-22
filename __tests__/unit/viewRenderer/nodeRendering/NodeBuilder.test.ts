@@ -5,7 +5,7 @@ import { NodeType } from '@lib/common/enums/nodeType';
 import { expect } from 'chai';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { Connectors } from '@lib/common/enums/connectors';
-import { Position } from '../../../../lib/common/enums/position';
+import { Position } from '@lib/common/enums/position';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});

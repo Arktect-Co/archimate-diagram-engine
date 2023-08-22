@@ -1,7 +1,7 @@
-import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
-import { NodeType } from '@lib/common/enums/nodeType';
+import { typeToHexColor } from '../../../../src/lib/viewRenderer/utils/colorUtility';
+import { NodeType } from '../../../../src/lib/common/enums/nodeType';
 import { expect } from 'chai';
-import { getStyle } from '@lib/viewRenderer/utils/styleUtility';
+import { getStyle } from '../../../../src/lib/viewRenderer/utils/styleUtility';
 
 const style = 'hybrid';
 const styleSetting = getStyle(style);
