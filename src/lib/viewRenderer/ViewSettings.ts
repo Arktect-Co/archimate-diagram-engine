@@ -67,7 +67,9 @@ export class ViewSettings implements Required<ViewSetting> {
       edgeWidth = SETTINGS_DEFAULT.EDGE_WIDTH,
     } = settings;
 
-    this.style = stylesAvailable.includes(style) ? style : SETTINGS_DEFAULT.STYLE;
+    this.style = stylesAvailable.includes(style as Style)
+      ? (style as Style)
+      : (SETTINGS_DEFAULT.STYLE as Style);
     this.darkColor = darkColor;
     this.lightColor = lightColor;
     this.textColor = textColor;
