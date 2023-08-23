@@ -66,6 +66,18 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.IMPLEMENTATION_PROJECT);
       expect(nodeShape.attributes.size).to.contain(size);
     });
+
+    it('should return a basic Octagonal shape if node type is a "Meaning"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Meaning,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Polygon');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.MOTIVATIONAL);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
   });
 
   describe('buildShape', () => {
