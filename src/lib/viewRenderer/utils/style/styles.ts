@@ -18,6 +18,7 @@ export interface ThemeSchema {
   AND_JUNCTION: string;
   OR_JUNCTION: string;
   GROUPING: string;
+  LOCATION: string;
   OTHER: string;
 }
 
@@ -48,6 +49,7 @@ const Themes: Theme<ThemeSchema> = Object.freeze({
     AND_JUNCTION: '#000000',
     OR_JUNCTION: '#ffffff',
     GROUPING: '#f5f5f5',
+    LOCATION: '#EFD1E4',
     OTHER: '#ffffff',
   },
 
@@ -71,6 +73,7 @@ const Themes: Theme<ThemeSchema> = Object.freeze({
     AND_JUNCTION: '#000000',
     OR_JUNCTION: '#ffffff',
     GROUPING: '#f5f5f5',
+    LOCATION: '#EFD1E4',
     OTHER: '#ffffff',
   },
 
@@ -94,6 +97,7 @@ const Themes: Theme<ThemeSchema> = Object.freeze({
     AND_JUNCTION: '#000000',
     OR_JUNCTION: '#ffffff',
     GROUPING: '#f5f5f5',
+    LOCATION: '#EFD1E4',
     OTHER: '#ffffff',
   },
 });

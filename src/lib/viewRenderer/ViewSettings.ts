@@ -1,7 +1,8 @@
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
-import { ViewSetting, Style } from '@lib/model/ViewSetting';
+import { ViewSetting, Style, Version } from '@lib/model/ViewSetting';
 
 const stylesAvailable: Array<Style> = ['hybrid', 'layered', 'element'];
+const versionAvailable: Array<Version> = ['<=3.1', '3.2'];
 
 /**
  * Verifies if the value is a natural number but excluding zero
@@ -31,6 +32,7 @@ function isNaturalNumber(value: unknown): boolean {
  *       });
  */
 export class ViewSettings implements Required<ViewSetting> {
+  public archimateVersion: Version;
   public style: Style;
   public darkColor: string;
   public lightColor: string;
@@ -56,6 +58,7 @@ export class ViewSettings implements Required<ViewSetting> {
    */
   constructor(settings: Partial<ViewSetting>) {
     const {
+      archimateVersion = SETTINGS_DEFAULT.ARCHIMATE_VERSION,
       style = SETTINGS_DEFAULT.STYLE,
       darkColor = SETTINGS_DEFAULT.DARK_COLOR,
       lightColor = SETTINGS_DEFAULT.LIGHT_COLOR,
@@ -67,6 +70,9 @@ export class ViewSettings implements Required<ViewSetting> {
       edgeWidth = SETTINGS_DEFAULT.EDGE_WIDTH,
     } = settings;
 
+    this.archimateVersion = versionAvailable.includes(archimateVersion as Version)
+      ? (archimateVersion as Version)
+      : (SETTINGS_DEFAULT.ARCHIMATE_VERSION as Version);
     this.style = stylesAvailable.includes(style as Style)
       ? (style as Style)
       : (SETTINGS_DEFAULT.STYLE as Style);
