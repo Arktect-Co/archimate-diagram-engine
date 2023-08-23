@@ -6,6 +6,7 @@ import { expect } from 'chai';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { Connectors } from '@lib/common/enums/connectors';
 import { Position } from '@lib/common/enums/position';
+import Themes from '../../../../src/lib/viewRenderer/utils/style/styles';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});
@@ -21,13 +22,29 @@ describe('NodeBuilder', () => {
     graph = null;
     nodeBuilder = null;
   });
+  const size = {
+    width: 100,
+    height: 80,
+  };
+
+  describe('ArchiMate 3.2 buildShape', () => {
+    const colors = Themes['COLOR_SCHEME_HYBRID'];
+    const nodeBuilderV3 = new NodeBuilder(graph, new ViewSettings({ archimateVersion: '3.2' }));
+
+    it('should return a basic rectangular shape if node type is a "Gap"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Gap,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.IMPLEMENTATION_PROJECT);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+  });
 
   describe('buildShape', () => {
-    const size = {
-      width: 100,
-      height: 80,
-    };
-
     it('should return a node with rectangular shape if no classification exist', () => {
       const nodeShape = nodeBuilder.buildShape({
         type: 'unknown',
