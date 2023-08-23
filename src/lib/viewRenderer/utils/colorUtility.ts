@@ -23,7 +23,7 @@ interface Setting {
  */
 export const typeToHexColor = (
   type: string,
-  { style, archimateVersion = ArchimateVersion.LessThanEqualV3_1 }: Setting,
+  { style, archimateVersion = ArchimateVersion.LessThanOrEqualV3_1 }: Setting,
 ): string => {
   const colorScheme = getStyle(style);
   const nodeTypeColor = {
@@ -96,7 +96,7 @@ export const typeToHexColor = (
   };
 
   const versionColors = {
-    [ArchimateVersion.LessThanEqualV3_1]: nodeTypeColor,
+    [ArchimateVersion.LessThanOrEqualV3_1]: nodeTypeColor,
     [ArchimateVersion.V3_2]: {
       ...nodeTypeColor,
       [NodeType.Location]: colorScheme.LOCATION,
