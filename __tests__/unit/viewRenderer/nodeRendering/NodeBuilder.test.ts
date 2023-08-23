@@ -67,6 +67,18 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.size).to.contain(size);
     });
 
+    it('should return a basic rectangular shape if node type is a "Contract"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Contract,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.BUSINESS_PASSIVE);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
     it('should return a basic Octagonal shape if node type is a "Meaning"', () => {
       const nodeShape = nodeBuilderV3.buildShape({
         type: NodeType.Meaning,
