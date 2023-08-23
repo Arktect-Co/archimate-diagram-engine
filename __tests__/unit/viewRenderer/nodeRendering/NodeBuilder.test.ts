@@ -90,6 +90,22 @@ describe('NodeBuilder', () => {
       expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.MOTIVATIONAL);
       expect(nodeShape.attributes.size).to.contain(size);
     });
+
+    it('should return a basic Octagonal shape if node type is a "Work package"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.WorkPackage,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body).to.contain({
+        rx: 8,
+        ry: 8,
+        fill: colors.IMPLEMENTATION_PROJECT,
+      });
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
   });
 
   describe('buildShape', () => {
