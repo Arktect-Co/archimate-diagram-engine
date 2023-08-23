@@ -217,7 +217,7 @@ export class NodeBuilder {
       }
 
       // Creating element icon
-      const svgData = generateGlyph(type);
+      const svgData = generateGlyph(type, this.archimateVersion);
 
       if (svgData !== '') {
         const image = new shapes.standard.Image();
