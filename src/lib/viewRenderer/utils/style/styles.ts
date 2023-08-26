@@ -1,0 +1,105 @@
+export interface ThemeSchema {
+  STRATEGY: string;
+  MOTIVATIONAL: string;
+  BUSINESS_ACTIVE: string;
+  BUSINESS_PASSIVE: string;
+  BUSINESS_BEHAVIOUR: string;
+  APPLICATION_ACTIVE: string;
+  APPLICATION_PASSIVE: string;
+  APPLICATION_BEHAVIOUR: string;
+  TECHNOLOGY_ACTIVE: string;
+  TECHNOLOGY_PASSIVE: string;
+  TECHNOLOGY_BEHAVIOUR: string;
+  PHYSICAL_ACTIVE: string;
+  PHYSICAL_PASSIVE: string;
+  PHYSICAL_BEHAVIOUR: string;
+  IMPLEMENTATION_PROJECT: string;
+  IMPLEMENTATION_ROADMAP: string;
+  AND_JUNCTION: string;
+  OR_JUNCTION: string;
+  GROUPING: string;
+  LOCATION: string;
+  OTHER: string;
+}
+
+interface Theme<T> {
+  COLOR_SCHEME_LAYERED: T;
+  COLOR_SCHEME_HYBRID: T;
+  COLOR_SCHEME_ELEMENT: T;
+}
+
+const Themes: Theme<ThemeSchema> = Object.freeze({
+  COLOR_SCHEME_LAYERED: {
+    STRATEGY: '#ffd54f',
+    MOTIVATIONAL: '#d1c4e9',
+    BUSINESS_ACTIVE: '#fff9c4',
+    BUSINESS_PASSIVE: '#fff9c4',
+    BUSINESS_BEHAVIOUR: '#fff9c4',
+    APPLICATION_ACTIVE: '#e1f5fe',
+    APPLICATION_PASSIVE: '#e1f5fe',
+    APPLICATION_BEHAVIOUR: '#e1f5fe',
+    TECHNOLOGY_ACTIVE: '#c8e6c9',
+    TECHNOLOGY_PASSIVE: '#c8e6c9',
+    TECHNOLOGY_BEHAVIOUR: '#c8e6c9',
+    PHYSICAL_ACTIVE: '#b2dfdb',
+    PHYSICAL_PASSIVE: '#b2dfdb',
+    PHYSICAL_BEHAVIOUR: '#b2dfdb',
+    IMPLEMENTATION_PROJECT: '#ffccbc',
+    IMPLEMENTATION_ROADMAP: '#a7ffeb',
+    AND_JUNCTION: '#000000',
+    OR_JUNCTION: '#ffffff',
+    GROUPING: '#f5f5f5',
+    LOCATION: '#EFD1E4',
+    OTHER: '#ffffff',
+  },
+
+  COLOR_SCHEME_HYBRID: {
+    STRATEGY: '#ffd54f',
+    MOTIVATIONAL: '#d1c4e9',
+    BUSINESS_ACTIVE: '#ffeb3b',
+    BUSINESS_PASSIVE: '#fff59d',
+    BUSINESS_BEHAVIOUR: '#ffff8d',
+    APPLICATION_ACTIVE: '#81d4fa',
+    APPLICATION_PASSIVE: '#e1f5fe',
+    APPLICATION_BEHAVIOUR: '#b3e5fc',
+    TECHNOLOGY_ACTIVE: '#69f0ae',
+    TECHNOLOGY_PASSIVE: '#c8e6c9',
+    TECHNOLOGY_BEHAVIOUR: '#b9f6ca',
+    PHYSICAL_ACTIVE: '#4db6ac',
+    PHYSICAL_PASSIVE: '#b2dfdb',
+    PHYSICAL_BEHAVIOUR: '#80cbc4',
+    IMPLEMENTATION_PROJECT: '#ffccbc',
+    IMPLEMENTATION_ROADMAP: '#a7ffeb',
+    AND_JUNCTION: '#000000',
+    OR_JUNCTION: '#ffffff',
+    GROUPING: '#f5f5f5',
+    LOCATION: '#EFD1E4',
+    OTHER: '#ffffff',
+  },
+
+  COLOR_SCHEME_ELEMENT: {
+    STRATEGY: '#ffd54f',
+    MOTIVATIONAL: '#d1c4e9',
+    BUSINESS_ACTIVE: '#e1f5fe',
+    BUSINESS_PASSIVE: '#c8e6c9',
+    BUSINESS_BEHAVIOUR: '#fff59d',
+    APPLICATION_ACTIVE: '#b3e5fc',
+    APPLICATION_PASSIVE: '#b9f6ca',
+    APPLICATION_BEHAVIOUR: '#ffff8d',
+    TECHNOLOGY_ACTIVE: '#81d4fa',
+    TECHNOLOGY_PASSIVE: '#69f0ae',
+    TECHNOLOGY_BEHAVIOUR: '#ffeb3b',
+    PHYSICAL_ACTIVE: '#29b6f6',
+    PHYSICAL_PASSIVE: '#00c853',
+    PHYSICAL_BEHAVIOUR: '#ffd600',
+    IMPLEMENTATION_PROJECT: '#ffccbc',
+    IMPLEMENTATION_ROADMAP: '#a7ffeb',
+    AND_JUNCTION: '#000000',
+    OR_JUNCTION: '#ffffff',
+    GROUPING: '#f5f5f5',
+    LOCATION: '#EFD1E4',
+    OTHER: '#ffffff',
+  },
+});
+
+export default Themes;
