@@ -1,6 +1,8 @@
 export type Style = 'layered' | 'element' | 'hybrid';
+export type Version = '<=3.1' | '3.2';
 
 export interface ViewSetting {
+  archimateVersion: Version;
   /**
    * Color style for nodes
    */

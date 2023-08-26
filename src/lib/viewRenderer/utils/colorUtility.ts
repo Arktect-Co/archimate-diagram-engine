@@ -1,11 +1,19 @@
 import { getStyle } from '@lib/viewRenderer/utils/styleUtility';
 import { NodeType } from '@lib/common/enums/nodeType';
-import { Style } from '@lib/model/ViewSetting';
+import { Style, Version } from '@lib/model/ViewSetting';
+import { ArchimateVersion } from '@lib/common/enums/archimateVersion';
+
+interface Setting {
+  style: Style;
+  archimateVersion?: Version;
+}
 
 /**
  * Returns a hexadecimal color based on type
  * @param type Node type
- * @param style types of style
+ * @param setting
+ * @param setting.style types of style
+ * @param setting.archimateVersion Archimate version
  * @return Hexadecimal color
  *
  * @example
@@ -13,7 +21,10 @@ import { Style } from '@lib/model/ViewSetting';
  * const style = 'layered';
  * const hexadecimal = typeToHexColor(type, style);
  */
-export const typeToHexColor = (type: string, style: Style): string => {
+export const typeToHexColor = (
+  type: string,
+  { style, archimateVersion = ArchimateVersion.LessThanOrEqualV3_1 }: Setting,
+): string => {
   const colorScheme = getStyle(style);
   const nodeTypeColor = {
     [NodeType.Requirement]: colorScheme.MOTIVATIONAL,
@@ -84,7 +95,17 @@ export const typeToHexColor = (type: string, style: Style): string => {
     [NodeType.Group]: colorScheme.GROUPING,
   };
 
-  const color = nodeTypeColor[type];
+  const versionColors = {
+    [ArchimateVersion.LessThanOrEqualV3_1]: nodeTypeColor,
+    [ArchimateVersion.V3_2]: {
+      ...nodeTypeColor,
+      [NodeType.Location]: colorScheme.LOCATION,
+      [NodeType.Plateau]: colorScheme.IMPLEMENTATION_PROJECT,
+      [NodeType.Gap]: colorScheme.IMPLEMENTATION_PROJECT,
+    },
+  };
+
+  const color = versionColors[archimateVersion][type];
 
   return color ? color : '';
 };

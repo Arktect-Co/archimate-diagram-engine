@@ -4,7 +4,7 @@ import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
 import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
 import { typeToClassification } from '@lib/viewRenderer/utils/archimateDomainUtils';
 import { generateGlyph } from '@lib/glyphGenerator/glyphGenerator';
-import { Style, ViewSetting } from '@lib/model/ViewSetting';
+import { Style, Version, ViewSetting } from '@lib/model/ViewSetting';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { Connectors } from '@lib/common/enums/connectors';
@@ -38,6 +38,7 @@ interface NodeAttributes extends BasicNodeAttributes {
  */
 export class NodeBuilder {
   private readonly style: Style;
+  private readonly archimateVersion: Version;
   private builder: ShapeBuilder;
 
   /**
@@ -46,9 +47,10 @@ export class NodeBuilder {
    * @param settings Node view settings
    */
   constructor(private graph: dia.Graph, settings: ViewSetting) {
-    const { style } = settings;
+    const { style, archimateVersion } = settings;
 
     this.style = style;
+    this.archimateVersion = archimateVersion;
     this.builder = new ShapeBuilder(settings);
   }
 
@@ -79,7 +81,10 @@ export class NodeBuilder {
       return this.builder.buildBasicRectangular(name, {
         width,
         height,
-        fillColor: typeToHexColor(nodeType, this.style),
+        fillColor: typeToHexColor(nodeType, {
+          style: this.style,
+          archimateVersion: this.archimateVersion,
+        }),
         ...attributes,
       });
     };
@@ -90,19 +95,28 @@ export class NodeBuilder {
         this.builder.buildBasicRounded(name, {
           width,
           height,
-          fillColor: typeToHexColor(type, this.style),
+          fillColor: typeToHexColor(type, {
+            style: this.style,
+            archimateVersion: this.archimateVersion,
+          }),
         }),
       [NodeShapeClassification.ImplementationAndMigration]: () =>
         this.builder.buildBasicRounded(name, {
           width,
           height,
-          fillColor: typeToHexColor(type, this.style),
+          fillColor: typeToHexColor(type, {
+            style: this.style,
+            archimateVersion: this.archimateVersion,
+          }),
         }),
       [NodeShapeClassification.Motivational]: () =>
         this.builder.buildBasicOctagonal(name, {
           width,
           height,
-          fillColor: typeToHexColor(type, this.style),
+          fillColor: typeToHexColor(type, {
+            style: this.style,
+            archimateVersion: this.archimateVersion,
+          }),
         }),
       [NodeType.Grouping]: () =>
         buildBasicRectangular(type, {
@@ -203,7 +217,7 @@ export class NodeBuilder {
       }
 
       // Creating element icon
-      const svgData = generateGlyph(type);
+      const svgData = generateGlyph(type, this.archimateVersion);
 
       if (svgData !== '') {
         const image = new shapes.standard.Image();

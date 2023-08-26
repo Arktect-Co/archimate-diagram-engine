@@ -1,5 +1,6 @@
 import { NodeType } from '@lib/common/enums/nodeType';
 import { GlyphSymbol } from '@lib/common/enums/glyphSymbol';
+import { ArchimateVersion } from '@lib/common/enums/archimateVersion';
 
 export const glyphs = {
   [NodeType.ApplicationComponent]:
@@ -90,4 +91,20 @@ export const glyphs = {
     'stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><g transform="matrix(1,0,0,1,-39,-153)"><g id="valuestream" transform="matrix(1,0,0,1,-135,153)"><rect x="174" y="0" width="16" height="16" style="fill:none;"/><clipPath id="_clip1"><rect x="174" y="0" width="16" height="16"/></clipPath><g clip-path="url(#_clip1)"><g transform="matrix(6.12323e-17,1,-1,6.12323e-17,331.5,-118.5)"><path d="M133,147L133,157L126.5,152L120,157L120,147L126.5,142L133,147Z" style="fill:none;stroke:rgb(13,13,13);stroke-width:1px;"/></g></g></g></g></svg>',
   [NodeType.WorkPackage]:
     'stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="workpackage" x="0" y="0" width="16" height="16" style="fill:none;"/><path d="M15.5,5.25c0,-1.518 -1.232,-2.75 -2.75,-2.75l-9.5,0c-1.518,0 -2.75,1.232 -2.75,2.75l0,5.5c0,1.518 1.232,2.75 2.75,2.75l9.5,0c1.518,0 2.75,-1.232 2.75,-2.75l0,-5.5Z" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/></svg>',
+};
+
+export const archimateGlyphs = {
+  [ArchimateVersion.LessThanOrEqualV3_1]: glyphs,
+  [ArchimateVersion.V3_2]: {
+    ...glyphs,
+    //TODO: Add new "meaning" Icon
+    [NodeType.Meaning]:
+      'stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="meaning" x="0" y="0" width="16" height="16" style="fill:none;"/><path d="M9.664,1c2.169,0 3.693,1.834 4.451,3.018c0.358,0.56 0.548,1.21 0.548,1.874c0.001,0.152 0.001,0.307 0.001,0.452c0,0.42 -0.167,0.823 -0.464,1.12c-0.591,0.591 -1.536,1.536 -1.536,1.536c0,0 0.386,0.193 0.818,0.409c0.653,0.326 0.918,1.12 0.591,1.773c-0.029,0.058 -0.057,0.114 -0.084,0.169c-0.215,0.43 -0.498,0.822 -0.838,1.162c-0.276,0.276 -0.619,0.619 -0.905,0.905c-0.385,0.386 -0.83,0.706 -1.318,0.95c-0.181,0.091 -0.375,0.188 -0.556,0.278c-0.43,0.215 -0.947,0.156 -1.317,-0.151c-0.716,-0.593 -1.805,-1.495 -1.805,-1.495c0,0 -0.379,0.477 -0.766,0.966c-0.478,0.602 -1.312,0.788 -2,0.444c-0.117,-0.059 -0.231,-0.116 -0.334,-0.167c-0.298,-0.149 -0.486,-0.453 -0.486,-0.786c0,-0.592 0,-1.457 0,-1.457c0,0 0,0.085 0,0.214c0,0.232 -0.13,0.444 -0.337,0.55c-0.207,0.105 -0.455,0.085 -0.642,-0.052c-0.191,-0.139 -0.397,-0.289 -0.604,-0.44c-0.976,-0.711 -1.219,-2.065 -0.551,-3.071c0.076,-0.113 0.125,-0.187 0.133,-0.199c0.001,-0.001 0.002,-0.003 0.002,-0.004c0.032,-0.047 0.671,-0.998 0.671,-0.998c0,0 -0.463,-0.554 -0.901,-1.078c-0.468,-0.56 -0.56,-1.344 -0.234,-1.997c0.237,-0.473 0.463,-0.925 0.463,-0.925c0,0 0.099,-0.147 0.221,-0.329c0.294,-0.438 0.709,-0.782 1.193,-0.99c0.05,-0.021 0.101,-0.043 0.152,-0.065c0.91,-0.391 1.945,-0.361 2.83,0.082c0.338,0.169 0.604,0.302 0.604,0.302l0,1c0,0 0.384,-0.655 0.712,-1.216c0.301,-0.513 0.735,-0.935 1.257,-1.22c0.493,-0.269 1.031,-0.564 1.031,-0.564" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/></svg>',
+    //TODO: Add new "Communication Network" Icon
+    [NodeType.CommunicationNetwork]:
+      'stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="network" x="0" y="0" width="16" height="16" style="fill:none;"/><g><path d="M10.625,10.188l1.75,-4.376l-1.75,4.376Z" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><path d="M7.125,4.063l4.375,0l-4.375,0Z" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><path d="M4.5,11.938l4.375,-0.001l-4.375,0Z" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><path d="M5.375,5.813l-1.75,4.375" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><circle cx="5.375" cy="4.063" r="1.75" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><circle cx="13.25" cy="4.063" r="1.75" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><circle cx="2.75" cy="11.938" r="1.75" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/><circle cx="10.625" cy="11.938" r="1.75" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/></g></svg>',
+    //TODO: Add new "Work Package" Icon
+    [NodeType.WorkPackage]:
+      'stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="workpackage" x="0" y="0" width="16" height="16" style="fill:none;"/><path d="M15.5,5.25c0,-1.518 -1.232,-2.75 -2.75,-2.75l-9.5,0c-1.518,0 -2.75,1.232 -2.75,2.75l0,5.5c0,1.518 1.232,2.75 2.75,2.75l9.5,0c1.518,0 2.75,-1.232 2.75,-2.75l0,-5.5Z" style="fill:none;stroke:#0d0d0d;stroke-width:1px;"/></svg>',
+  },
 };

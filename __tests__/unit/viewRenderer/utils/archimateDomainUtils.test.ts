@@ -6,125 +6,245 @@ import { expect } from 'chai';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { GlyphSymbol } from '@lib/common/enums/glyphSymbol';
+import { ArchimateVersion } from '@lib/common/enums/archimateVersion';
 
 describe('Archimate Domain Utils', () => {
   describe('typeToClassification', () => {
-    it('should return the input type if value not found', () => {
-      const type = 'unknown';
-      const classification = typeToClassification(type);
-
-      expect(classification).to.equal(type);
-    });
-
-    it('should return the "motivational" value if the type is related to classification', () => {
-      const types = [
-        NodeType.Requirement,
-        NodeType.Principle,
-        NodeType.Constraint,
-        NodeType.Goal,
-        NodeType.Outcome,
-        NodeType.Driver,
-        NodeType.Assessment,
-        NodeType.Stakeholder,
-        NodeType.Value,
-        NodeType.Meaning,
-      ];
-
-      types.forEach(type => {
+    describe('ArchiMate <=3.1', () => {
+      it('should return the input type if value not found', () => {
+        const type = 'unknown';
         const classification = typeToClassification(type);
 
-        expect(classification).to.equal(NodeShapeClassification.Motivational);
+        expect(classification).to.equal(type);
+      });
+
+      it('should return the "motivational" value if the type is related to classification', () => {
+        const types = [
+          NodeType.Requirement,
+          NodeType.Principle,
+          NodeType.Constraint,
+          NodeType.Goal,
+          NodeType.Outcome,
+          NodeType.Driver,
+          NodeType.Assessment,
+          NodeType.Stakeholder,
+          NodeType.Value,
+          NodeType.Meaning,
+        ];
+
+        types.forEach(type => {
+          const classification = typeToClassification(type);
+
+          expect(classification).to.equal(NodeShapeClassification.Motivational);
+        });
+      });
+
+      it('should return the "structure" value if the type is related to classification', () => {
+        const types = [
+          NodeType.BusinessCollaboration,
+          NodeType.BusinessActor,
+          NodeType.BusinessRole,
+          NodeType.BusinessInterface,
+          NodeType.BusinessObject,
+          NodeType.Representation,
+          NodeType.Product,
+          NodeType.Contract,
+          NodeType.ApplicationComponent,
+          NodeType.ApplicationCollaboration,
+          NodeType.ApplicationInterface,
+          NodeType.DataObject,
+          NodeType.Node,
+          NodeType.SystemSoftware,
+          NodeType.InfrastructureInterface,
+          NodeType.TechnologyInterface,
+          NodeType.TechnologyCollaboration,
+          NodeType.Artifact,
+          NodeType.CommunicationNetwork,
+          NodeType.Path,
+          NodeType.Device,
+          NodeType.Material,
+          NodeType.Facility,
+          NodeType.Equipment,
+          NodeType.DistributionNetwork,
+          NodeType.Resource,
+        ];
+
+        types.forEach(type => {
+          const classification = typeToClassification(type);
+
+          expect(classification).to.equal(NodeShapeClassification.Structure);
+        });
+      });
+
+      it('should return the "behaviour" value if the type is related to classification', () => {
+        const types = [
+          NodeType.BusinessInteraction,
+          NodeType.BusinessProcess,
+          NodeType.BusinessFunction,
+          NodeType.BusinessService,
+          NodeType.BusinessEvent,
+          NodeType.ApplicationInteraction,
+          NodeType.ApplicationFunction,
+          NodeType.ApplicationService,
+          NodeType.ApplicationProcess,
+          NodeType.ApplicationEvent,
+          NodeType.InfrastructureFunction,
+          NodeType.InfrastructureService,
+          NodeType.TechnologyFunction,
+          NodeType.TechnologyService,
+          NodeType.TechnologyProcess,
+          NodeType.TechnologyInteraction,
+          NodeType.Capability,
+          NodeType.CourseOfAction,
+          NodeType.ValueStream,
+        ];
+
+        types.forEach(type => {
+          const classification = typeToClassification(type);
+
+          expect(classification).to.equal(NodeShapeClassification.Behaviour);
+        });
+      });
+
+      it('should return the "implementation_and_migration" value if the type is related to classification', () => {
+        const types = [
+          NodeType.Plateau,
+          NodeType.WorkPackage,
+          NodeType.Deliverable,
+          NodeType.ImplementationEvent,
+          NodeType.Gap,
+        ];
+
+        types.forEach(type => {
+          const classification = typeToClassification(type);
+
+          expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
+        });
+      });
+
+      it('should return the "viewelement" value if the type is related to classification', () => {
+        const type = NodeType.Note;
+        const classification = typeToClassification(type);
+
+        expect(classification).to.equal(NodeShapeClassification.ViewElement);
       });
     });
 
-    it('should return the "structure" value if the type is related to classification', () => {
-      const types = [
-        NodeType.BusinessCollaboration,
-        NodeType.BusinessActor,
-        NodeType.BusinessRole,
-        NodeType.BusinessInterface,
-        NodeType.BusinessObject,
-        NodeType.Representation,
-        NodeType.Product,
-        NodeType.Contract,
-        NodeType.ApplicationComponent,
-        NodeType.ApplicationCollaboration,
-        NodeType.ApplicationInterface,
-        NodeType.DataObject,
-        NodeType.Node,
-        NodeType.SystemSoftware,
-        NodeType.InfrastructureInterface,
-        NodeType.TechnologyInterface,
-        NodeType.TechnologyCollaboration,
-        NodeType.Artifact,
-        NodeType.CommunicationNetwork,
-        NodeType.Path,
-        NodeType.Device,
-        NodeType.Material,
-        NodeType.Facility,
-        NodeType.Equipment,
-        NodeType.DistributionNetwork,
-        NodeType.Resource,
-      ];
+    describe('ArchiMate 3.2', () => {
+      it('should return the input type if value not found', () => {
+        const type = 'unknown';
+        const classification = typeToClassification(type, ArchimateVersion.V3_2);
 
-      types.forEach(type => {
-        const classification = typeToClassification(type);
-
-        expect(classification).to.equal(NodeShapeClassification.Structure);
+        expect(classification).to.equal(type);
       });
-    });
 
-    it('should return the "behaviour" value if the type is related to classification', () => {
-      const types = [
-        NodeType.BusinessInteraction,
-        NodeType.BusinessProcess,
-        NodeType.BusinessFunction,
-        NodeType.BusinessService,
-        NodeType.BusinessEvent,
-        NodeType.ApplicationInteraction,
-        NodeType.ApplicationFunction,
-        NodeType.ApplicationService,
-        NodeType.ApplicationProcess,
-        NodeType.ApplicationEvent,
-        NodeType.InfrastructureFunction,
-        NodeType.InfrastructureService,
-        NodeType.TechnologyFunction,
-        NodeType.TechnologyService,
-        NodeType.TechnologyProcess,
-        NodeType.TechnologyInteraction,
-        NodeType.Capability,
-        NodeType.CourseOfAction,
-        NodeType.ValueStream,
-      ];
+      it('should return the "motivational" value if the type is related to classification', () => {
+        const types = [
+          NodeType.Requirement,
+          NodeType.Principle,
+          NodeType.Constraint,
+          NodeType.Goal,
+          NodeType.Outcome,
+          NodeType.Driver,
+          NodeType.Assessment,
+          NodeType.Stakeholder,
+          NodeType.Value,
+          NodeType.Meaning,
+        ];
 
-      types.forEach(type => {
-        const classification = typeToClassification(type);
+        types.forEach(type => {
+          const classification = typeToClassification(type, ArchimateVersion.V3_2);
 
-        expect(classification).to.equal(NodeShapeClassification.Behaviour);
+          expect(classification).to.equal(NodeShapeClassification.Motivational);
+        });
       });
-    });
 
-    it('should return the "implementation_and_migration" value if the type is related to classification', () => {
-      const types = [
-        NodeType.Plateau,
-        NodeType.WorkPackage,
-        NodeType.Deliverable,
-        NodeType.ImplementationEvent,
-        NodeType.Gap,
-      ];
+      it('should return the "structure" value if the type is related to classification', () => {
+        const types = [
+          NodeType.BusinessCollaboration,
+          NodeType.BusinessActor,
+          NodeType.BusinessRole,
+          NodeType.BusinessInterface,
+          NodeType.BusinessObject,
+          NodeType.Representation,
+          NodeType.Product,
+          NodeType.Contract,
+          NodeType.ApplicationComponent,
+          NodeType.ApplicationCollaboration,
+          NodeType.ApplicationInterface,
+          NodeType.DataObject,
+          NodeType.Node,
+          NodeType.SystemSoftware,
+          NodeType.InfrastructureInterface,
+          NodeType.TechnologyInterface,
+          NodeType.TechnologyCollaboration,
+          NodeType.Artifact,
+          NodeType.CommunicationNetwork,
+          NodeType.Path,
+          NodeType.Device,
+          NodeType.Material,
+          NodeType.Facility,
+          NodeType.Equipment,
+          NodeType.DistributionNetwork,
+          NodeType.Resource,
+          NodeType.Gap,
+          NodeType.Plateau,
+          NodeType.Deliverable,
+        ];
 
-      types.forEach(type => {
-        const classification = typeToClassification(type);
+        types.forEach(type => {
+          const classification = typeToClassification(type, ArchimateVersion.V3_2);
 
-        expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
+          expect(classification).to.equal(NodeShapeClassification.Structure);
+        });
       });
-    });
 
-    it('should return the "viewelement" value if the type is related to classification', () => {
-      const type = NodeType.Note;
-      const classification = typeToClassification(type);
+      it('should return the "behaviour" value if the type is related to classification', () => {
+        const types = [
+          NodeType.BusinessInteraction,
+          NodeType.BusinessProcess,
+          NodeType.BusinessFunction,
+          NodeType.BusinessService,
+          NodeType.BusinessEvent,
+          NodeType.ApplicationInteraction,
+          NodeType.ApplicationFunction,
+          NodeType.ApplicationService,
+          NodeType.ApplicationProcess,
+          NodeType.ApplicationEvent,
+          NodeType.InfrastructureFunction,
+          NodeType.InfrastructureService,
+          NodeType.TechnologyFunction,
+          NodeType.TechnologyService,
+          NodeType.TechnologyProcess,
+          NodeType.TechnologyInteraction,
+          NodeType.Capability,
+          NodeType.CourseOfAction,
+          NodeType.ValueStream,
+        ];
 
-      expect(classification).to.equal(NodeShapeClassification.ViewElement);
+        types.forEach(type => {
+          const classification = typeToClassification(type, ArchimateVersion.V3_2);
+
+          expect(classification).to.equal(NodeShapeClassification.Behaviour);
+        });
+      });
+
+      it('should return the "implementation_and_migration" value if the type is related to classification', () => {
+        const types = [NodeType.WorkPackage, NodeType.ImplementationEvent];
+
+        types.forEach(type => {
+          const classification = typeToClassification(type, ArchimateVersion.V3_2);
+
+          expect(classification).to.equal(NodeShapeClassification.ImplementationAndMigration);
+        });
+      });
+
+      it('should return the "viewelement" value if the type is related to classification', () => {
+        const type = NodeType.Note;
+        const classification = typeToClassification(type, ArchimateVersion.V3_2);
+
+        expect(classification).to.equal(NodeShapeClassification.ViewElement);
+      });
     });
   });
 

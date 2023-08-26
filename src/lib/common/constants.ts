@@ -1,4 +1,7 @@
+import { ArchimateVersion } from '@lib/common/enums/archimateVersion';
+
 export const SETTINGS_DEFAULT = Object.freeze({
+  ARCHIMATE_VERSION: ArchimateVersion.LessThanOrEqualV3_1,
   STYLE: 'hybrid',
   DARK_COLOR: 'black',
   LIGHT_COLOR: 'white',

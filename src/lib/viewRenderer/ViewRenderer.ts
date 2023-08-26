@@ -1,9 +1,9 @@
 import { dia } from 'jointjs';
-import { ViewNode } from '@lib/model/ViewNode';
-import { ViewRelationship } from '@lib/model/ViewRelationship';
-import { ViewSetting } from '@lib/model/ViewSetting';
-import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
-import { RelationshipBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipBuilder';
+import { ViewNode } from '../model/ViewNode';
+import { ViewRelationship } from '../model/ViewRelationship';
+import { ViewSetting } from '../model/ViewSetting';
+import { NodeBuilder } from './nodeRendering/NodeBuilder';
+import { RelationshipBuilder } from './relationshipRendering/RelationshipBuilder';
 
 export const ViewRenderer = {
   /**

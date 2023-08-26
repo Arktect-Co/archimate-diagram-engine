@@ -5,7 +5,8 @@ import { NodeType } from '@lib/common/enums/nodeType';
 import { expect } from 'chai';
 import { NodeShapeClassification } from '@lib/common/enums/nodeShapeClassification';
 import { Connectors } from '@lib/common/enums/connectors';
-import { Position } from '../../../../lib/common/enums/position';
+import { Position } from '@lib/common/enums/position';
+import Themes from '@lib/viewRenderer/utils/style/styles';
 
 describe('NodeBuilder', () => {
   const settings = new ViewSettings({});
@@ -21,13 +22,141 @@ describe('NodeBuilder', () => {
     graph = null;
     nodeBuilder = null;
   });
+  const size = {
+    width: 100,
+    height: 80,
+  };
+
+  describe('ArchiMate 3.2 buildShape', () => {
+    const colors = Themes['COLOR_SCHEME_HYBRID'];
+    const nodeBuilderV3 = new NodeBuilder(graph, new ViewSettings({ archimateVersion: '3.2' }));
+
+    it('should return a basic rectangular shape if node type is a "Location"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Location,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.LOCATION);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic rectangular shape if node type is a "Gap"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Gap,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.IMPLEMENTATION_PROJECT);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic rectangular shape if node type is a "Plateau"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Plateau,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.IMPLEMENTATION_PROJECT);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic rectangular shape if node type is a "Deliverable"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Deliverable,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.IMPLEMENTATION_PROJECT);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic rectangular shape if node type is a "Contract"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Contract,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.BUSINESS_PASSIVE);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic rectangular shape if node type is a "Business Object"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.BusinessObject,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.BUSINESS_PASSIVE);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic rectangular shape if node type is a "Representation"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Representation,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.BUSINESS_PASSIVE);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic Octagonal shape if node type is a "Meaning"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Meaning,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Polygon');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.MOTIVATIONAL);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic Octagonal shape if node type is a "Value"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.Value,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Polygon');
+      expect(nodeShape.attributes.attrs.body.fill).to.equal(colors.MOTIVATIONAL);
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+
+    it('should return a basic Octagonal shape if node type is a "Work package"', () => {
+      const nodeShape = nodeBuilderV3.buildShape({
+        type: NodeType.WorkPackage,
+        name: 'Model Service',
+        ...size,
+      });
+
+      expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
+      expect(nodeShape.attributes.attrs.body).to.contain({
+        rx: 8,
+        ry: 8,
+        fill: colors.IMPLEMENTATION_PROJECT,
+      });
+      expect(nodeShape.attributes.size).to.contain(size);
+    });
+  });
 
   describe('buildShape', () => {
-    const size = {
-      width: 100,
-      height: 80,
-    };
-
     it('should return a node with rectangular shape if no classification exist', () => {
       const nodeShape = nodeBuilder.buildShape({
         type: 'unknown',
@@ -74,7 +203,7 @@ describe('NodeBuilder', () => {
       });
 
       expect(nodeShape.attributes.type).to.equal('standard.Rectangle');
-      expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8 });
+      expect(nodeShape.attributes.attrs.body).to.contain({ rx: 8, ry: 8, fill: '#a7ffeb' });
       expect(nodeShape.attributes.size).to.contain(size);
       expect(nodeShape.attributes.attrs.label).to.contain({
         textAnchor: Position.Middle,
