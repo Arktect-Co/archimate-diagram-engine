@@ -2,17 +2,38 @@
   "name": "@arktect-co/archimate-diagram-engine",
   "author": "diorbert.pereira",
   "repository": "github:Arktect-Co/archimate-diagram-engine",
-  "version": "0.1.2",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "@types/**/*"
+  ],
+  "types": "dist/@types/index.d.ts",
   "description": "Archimate 3.x diagram renderer",
   "dependencies": {
-    "jointjs": "^3.4.0"
+    "jointjs": "3.4.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "babel-plugin-module-resolver": "^5.0.0",
     "chai": "^4.2.0",
-    "mocha": "^7.1.1"
+    "mocha": "10.1.0",
+    "prettier": "2.8.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "nyc": "^15.1.0",
+    "typescript": "^5.1.6"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
+    "test:unique": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts --grep",
+    "test:cov": "nyc mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
+    "build": "npx babel src --extensions \\\".js,.ts\\\" --out-dir dist --copy-files --no-copy-ignored"
   },
   "license": "MIT",
   "keywords": [

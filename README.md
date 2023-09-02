@@ -51,6 +51,7 @@ ViewRenderer.renderToGraph(
     viewNodes,
     viewRelationships,
     new ViewSettings({
+        archimateVersion: '<=3.1',
         style: 'hibrid',
         darkColor: 'black',
         lightColor: 'white',
@@ -66,6 +67,7 @@ ViewRenderer.renderToGraph(
 
 ## Options
 
+* **archimateVersion**: Indicates the version of ArchiMate used to set default icons and colors. The default is '<=3.1'
 * **style**: Color style for nodes. There are three available styles:
     * Hybrid: This style combines active, behaviour and passive classification with layering.
     * Layered: Differentiate only between layers.
