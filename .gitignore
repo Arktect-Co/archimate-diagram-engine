@@ -107,3 +107,6 @@ dist
 /.idea/archimate-diagram-engine.iml
 /.idea/modules.xml
 /.idea/workspace.xml
+
+# OS
+.DS_Store
