@@ -1,15 +1,28 @@
 {
   "name": "@arktect-co/archimate-diagram-engine",
-  "author": "diorbert.pereira",
-  "repository": "github:Arktect-Co/archimate-diagram-engine",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "description": "Archimate 3.x diagram renderer",
+  "author": "diorbert.pereira",
+  "main": "dist/lib/index.js",
+  "types": "dist/@types/index.d.ts",
   "files": [
     "dist/**/*",
     "@types/**/*"
   ],
-  "types": "dist/@types/index.d.ts",
-  "description": "Archimate 3.x diagram renderer",
+  "repository": "github:Arktect-Co/archimate-diagram-engine",
+  "engines": {
+    "node": ">= 12"
+  },
+  "scripts": {
+    "test": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
+    "test:unique": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts --grep",
+    "test:cov": "nyc mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
+    "build": "tsc --project tsconfig.build.json && tscpaths -p tsconfig.build.json -s src -o ./dist/lib && tscpaths -p tsconfig.build.json -s src -o ./dist/@types"
+  },
+  "_moduleAliases": {
+    "@src": "src",
+    "@lib": "src/lib"
+  },
   "dependencies": {
     "jointjs": "3.4.2"
   },
@@ -23,17 +36,12 @@
     "babel-plugin-module-resolver": "^5.0.0",
     "chai": "^4.2.0",
     "mocha": "10.1.0",
+    "nyc": "^15.1.0",
     "prettier": "2.8.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "nyc": "^15.1.0",
+    "tscpaths": "^0.0.9",
     "typescript": "^5.1.6"
-  },
-  "scripts": {
-    "test": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
-    "test:unique": "mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts --grep",
-    "test:cov": "nyc mocha --require ts-node/register --require tsconfig-paths/register ./__tests__/**/*.test.ts",
-    "build": "npx babel src --extensions \\\".js,.ts\\\" --out-dir dist --copy-files --no-copy-ignored"
   },
   "license": "MIT",
   "keywords": [
