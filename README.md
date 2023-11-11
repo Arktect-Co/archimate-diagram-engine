@@ -88,9 +88,9 @@ ViewRenderer.renderToGraph(
 
 * **archimateVersion**: Indicates the version of ArchiMate used to set default icons and colors. The default is '<=3.1'
 * **style**: Color style for nodes. There are three available styles:
-    * Hybrid: This style combines active, behaviour and passive classification with layering.
-    * Layered: Differentiate only between layers.
-    * Element: Differentiate only between active, behaviour and passive elements.
+    * hybrid: This style combines active, behaviour and passive classification with layering.
+    * layered: Differentiate only between layers.
+    * element: Differentiate only between active, behaviour and passive elements.
 * **darkColor**: Color used for strokes (Hex colours are accepted). The default is 'black'
 * **lightColor**: Color used to fulfill relationship arrow shapes (Hex colours are accepted). The default is 'white'
 * **textColor**: Color used to fill texts. The default is 'black'
