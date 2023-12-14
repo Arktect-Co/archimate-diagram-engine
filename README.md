@@ -26,24 +26,43 @@ const {ViewRenderer, ViewSettings} = require("@arktect-co/archimate-diagram-engi
 
 let outputGraph = new joint.dia.Graph({}, {cellNamespace: joint.shapes});
 let viewNodes = [
-    {
-        "identifier": "40eb5bd6-4d7c-4c27-98a8-602f935ed405",
-        "name": "Resource",
-        "type": "resource"
-    },
-    {
-        "identifier": "6be02ba1-0489-4ea4-b62b-a22d302cbefe",
-        "name": "Capability",
-        "type": "capability"
-    }
+  {
+    "modelNodeId": "4ff521e69d724ae88c5a2324008613e7",
+    "viewNodeId": "222f9942c68e47d5a7167e64cc435b8a",
+    "name": "Node",
+    "type": "node",
+    "x": 240,
+    "y": 180,
+    "width": 145,
+    "height": 85,
+    "parent": null
+  },
+  {
+    "modelNodeId": "c66f4f1de7ef4b28a5aafdbd497a2aff",
+    "viewNodeId": "ea00a3ff03f541fabc96f78348b55955",
+    "name": "Equipment",
+    "type": "equipment",
+    "x": 36,
+    "y": 84,
+    "width": 109,
+    "height": 85,
+    "parent": null
+  }
 ];
 let viewRelationships = [
-    {
-        "identifier": "bc8c928b-dafb-4e61-91b3-7c3e5b93a900",
-        "sourceId": "40eb5bd6-4d7c-4c27-98a8-602f935ed405",
-        "targetId": "6be02ba1-0489-4ea4-b62b-a22d302cbefe",
-        "type": "assignmentrelationship"
-    }
+  {
+    "modelRelationshipId": "790f2145455347d089d7afc34f6fba45",
+    "sourceId": "222f9942c68e47d5a7167e64cc435b8a",
+    "targetId": "ea00a3ff03f541fabc96f78348b55955",
+    "viewRelationshipId": "c8684fc5137444c09ce193268abfcb97",
+    "type": "aggregation",
+    "bendpoints": [
+      {
+        "x": 204,
+        "y": 195
+      }
+    ]
+  }
 ];
 
 ViewRenderer.renderToGraph(
@@ -52,7 +71,7 @@ ViewRenderer.renderToGraph(
     viewRelationships,
     new ViewSettings({
         archimateVersion: '<=3.1',
-        style: 'hibrid',
+        style: 'hybrid',
         darkColor: 'black',
         lightColor: 'white',
         textColor: 'black',
@@ -69,9 +88,9 @@ ViewRenderer.renderToGraph(
 
 * **archimateVersion**: Indicates the version of ArchiMate used to set default icons and colors. The default is '<=3.1'
 * **style**: Color style for nodes. There are three available styles:
-    * Hybrid: This style combines active, behaviour and passive classification with layering.
-    * Layered: Differentiate only between layers.
-    * Element: Differentiate only between active, behaviour and passive elements.
+    * hybrid: This style combines active, behaviour and passive classification with layering.
+    * layered: Differentiate only between layers.
+    * element: Differentiate only between active, behaviour and passive elements.
 * **darkColor**: Color used for strokes (Hex colours are accepted). The default is 'black'
 * **lightColor**: Color used to fulfill relationship arrow shapes (Hex colours are accepted). The default is 'white'
 * **textColor**: Color used to fill texts. The default is 'black'
