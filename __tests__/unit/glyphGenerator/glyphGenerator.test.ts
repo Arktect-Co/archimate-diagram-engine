@@ -1,7 +1,7 @@
 import { generateGlyph } from '@lib/glyphGenerator/glyphGenerator';
 import { NodeType } from '@lib/common/enums/nodeType';
 import { expect } from 'chai';
-import { glyphs } from '@lib/glyphGenerator/glyphsDescriptions/glyphs';
+import { archimateGlyphs, glyphs } from '@lib/glyphGenerator/glyphsDescriptions/glyphs';
 import { ArchimateVersion } from '@lib/common/enums/archimateVersion';
 
 const baseSvgDescription =
@@ -18,7 +18,7 @@ describe('glyphGenerator', () => {
     });
 
     it('should return empty string if type does not contain glyph', () => {
-      const glyph = generateGlyph('unknow');
+      const glyph = generateGlyph('unknown');
 
       expect(glyph).to.equal('');
     });
@@ -27,14 +27,14 @@ describe('glyphGenerator', () => {
   describe('Archimate 3.2', () => {
     it('should return a glyph if type contains glyph', () => {
       const type = NodeType.WorkPackage;
-      const mainSvgDescription = glyphs[type];
+      const mainSvgDescription = archimateGlyphs[ArchimateVersion.V3_2][type];
       const glyph = generateGlyph(type, ArchimateVersion.V3_2);
 
       expect(glyph).to.equal(baseSvgDescription + mainSvgDescription);
     });
 
     it('should return empty string if type does not contain glyph', () => {
-      const glyph = generateGlyph('unknow', ArchimateVersion.V3_2);
+      const glyph = generateGlyph('unknown', ArchimateVersion.V3_2);
 
       expect(glyph).to.equal('');
     });
