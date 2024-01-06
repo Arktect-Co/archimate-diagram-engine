@@ -1,6 +1,6 @@
 {
   "name": "@arktect-co/archimate-diagram-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Archimate 3.x diagram renderer",
   "author": "diorbert.pereira",
   "main": "dist/lib/index.js",

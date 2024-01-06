@@ -95,10 +95,8 @@ export const ViewRenderer = {
 
         // Must add relationship only if all parties are defined and are nodes
         if (
-          source !== undefined &&
-          source.attributes.type !== 'standard.Link' &&
-          target !== undefined &&
-          target.attributes.type !== 'standard.Link'
+          source?.attributes.type !== 'standard.Link' &&
+          target?.attributes.type !== 'standard.Link'
         ) {
           // Relationships with embedded nodes should not be visible
           if (parent === null || parent !== source.id) {

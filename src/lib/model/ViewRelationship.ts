@@ -4,7 +4,7 @@ export interface BendPoint {
 }
 
 export interface ViewRelationship {
-  _id: string;
+  _id?: string;
   modelRelationshipId: string;
   sourceId: string;
   targetId: string;
