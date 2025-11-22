@@ -108,7 +108,7 @@ export const ViewRenderer = {
               bendpoints: rel.bendpoints,
               sourceNode: source,
               targetNode: target,
-              label: '',
+              label: rel.label,
             });
           }
         }
