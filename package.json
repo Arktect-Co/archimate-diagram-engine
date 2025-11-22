@@ -24,7 +24,7 @@
     "@lib": "src/lib"
   },
   "dependencies": {
-    "@joint/core": "4.0.1"
+    "@joint/core": "4.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.9",
