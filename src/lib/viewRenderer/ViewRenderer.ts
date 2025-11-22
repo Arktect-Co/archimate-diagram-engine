@@ -1,4 +1,4 @@
-import { dia } from 'jointjs';
+import { dia } from '@joint/core';
 import { ViewNode } from '../model/ViewNode';
 import { ViewRelationship } from '../model/ViewRelationship';
 import { ViewSetting } from '../model/ViewSetting';
@@ -16,7 +16,7 @@ export const ViewRenderer = {
    * @param settings Node view settings
    * @example
    * import { ViewRenderer, ViewSettings } from '../../../index';
-   * import { dia, shapes } from 'jointjs';
+   * import { dia, shapes } from '@joint/core';
    *
    * let outputGraph = new dia.Graph({}, {cellNamespace: shapes});
    * let viewNodes = [

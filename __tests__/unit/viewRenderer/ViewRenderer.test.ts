@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { dia, shapes } from 'jointjs';
+import { dia, shapes } from '@joint/core';
 import { ViewRenderer, ViewSettings } from '../../../src';
 import { example_view } from '../__fixtures__';
 

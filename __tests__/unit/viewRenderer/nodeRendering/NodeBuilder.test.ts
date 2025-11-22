@@ -1,4 +1,4 @@
-import { dia, shapes } from 'jointjs';
+import { dia, shapes } from '@joint/core';
 import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { NodeType } from '@lib/common/enums/nodeType';

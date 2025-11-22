@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { dia, shapes } from 'jointjs';
+import { dia, shapes } from '@joint/core';
 import { ViewRenderer, ViewSettings } from '../../../src';
 import { checkModelsEquality } from '../utils/equality_checker';
 import { referenceView } from '../__fixtures__';

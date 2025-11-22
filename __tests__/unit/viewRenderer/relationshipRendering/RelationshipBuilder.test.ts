@@ -1,4 +1,4 @@
-import { dia, shapes } from 'jointjs';
+import { dia, shapes } from '@joint/core';
 import { expect } from 'chai';
 import { RelationshipBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipBuilder';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';

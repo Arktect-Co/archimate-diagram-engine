@@ -1,4 +1,4 @@
-import { dia } from 'jointjs';
+import { dia } from '@joint/core';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
