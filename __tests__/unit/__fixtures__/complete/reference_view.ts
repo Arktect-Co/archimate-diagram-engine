@@ -1,4 +1,4 @@
-{
+export const referenceView = {
   "_id": "61d0cb11-2tr4frgcogl1p7pumn",
   "bounds": {
     "vertical": {

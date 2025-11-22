@@ -5,6 +5,8 @@ import { ViewSetting } from '../model/ViewSetting';
 import { NodeBuilder } from './nodeRendering/NodeBuilder';
 import { RelationshipBuilder } from './relationshipRendering/RelationshipBuilder';
 
+const STANDARD_LINK_REL_TYPE = 'standard.Link';
+
 export const ViewRenderer = {
   /**
    * Converts all node and relationship views to graph
@@ -95,8 +97,8 @@ export const ViewRenderer = {
 
         // Must add relationship only if all parties are defined and are nodes
         if (
-          source?.attributes.type !== 'standard.Link' &&
-          target?.attributes.type !== 'standard.Link'
+          source?.attributes.type !== STANDARD_LINK_REL_TYPE &&
+          target?.attributes.type !== STANDARD_LINK_REL_TYPE
         ) {
           // Relationships with embedded nodes should not be visible
           if (parent === null || parent !== source.id) {

@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { dia, shapes } from 'jointjs';
 import { ViewRenderer, ViewSettings } from '../../../src';
 import { checkModelsEquality } from '../utils/equality_checker';
-import referenceView from '../data/complete/reference_view.json';
+import { referenceView } from '../__fixtures__';
 
 describe('Diagram Rendering', () => {
   describe('Complete Rendering', () => {
