@@ -13,12 +13,16 @@ interface Data<T> {
  * @param cell Cell of graph output
  * @return boolean
  */
-const isNodeAttributesEquality = (node: ViewNode, cell: Cell): boolean =>
-  cell.attrs.label.textWrap.text !== node.name ||
-  cell.modelElementType !== node.type ||
-  cell.size.width !== node.width ||
-  cell.size.height !== node.height ||
-  cell.parent !== node.parent;
+const isNodeAttributesEqual = (node: ViewNode, cell: Cell): boolean => {
+  const hasSameParent = cell.parent === null ? node.parent === null : cell.parent.id === node.parent;
+  return (
+    cell.attrs.label.textWrap.text === node.name &&
+    cell.modelElementType === node.type &&
+    cell.size.width === node.width &&
+    cell.size.height === node.height &&
+    hasSameParent
+  );
+};
 
 /**
  * Checks attributes equality
@@ -26,10 +30,10 @@ const isNodeAttributesEquality = (node: ViewNode, cell: Cell): boolean =>
  * @param cell Cell of graph output
  * @return boolean
  */
-const isRelationshipAttributesEquality = (rel: ViewRelationship, cell: Cell): boolean =>
-  cell.source.id !== rel.sourceId ||
-  cell.target.id !== rel.targetId ||
-  cell.relationshipType !== rel.type;
+const isRelationshipAttributesEqual = (rel: ViewRelationship, cell: Cell): boolean =>
+  cell.source.id === rel.sourceId &&
+  cell.target.id === rel.targetId &&
+  cell.relationshipType === rel.type;
 
 /**
  * Verifies if a graph represents a view correctly
@@ -68,7 +72,7 @@ export function checkModelsEquality(viewInput: ReferenceView, graphOutput: Graph
         }
 
         // Checking attributes equality
-        if (isNodeAttributesEquality(node, cell)) {
+        if (!isNodeAttributesEqual(node, cell)) {
           return false;
         }
 
@@ -93,7 +97,7 @@ export function checkModelsEquality(viewInput: ReferenceView, graphOutput: Graph
         }
 
         // Checking attributes equality
-        if (isRelationshipAttributesEquality(rel, cell)) {
+        if (!isRelationshipAttributesEqual(rel, cell)) {
           return false;
         }
       }

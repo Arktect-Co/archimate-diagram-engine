@@ -1,4 +1,4 @@
-import { dia, attributes } from "jointjs";
+import { dia, attributes } from "@joint/core";
 
 export interface BendPoint {
   x: number;

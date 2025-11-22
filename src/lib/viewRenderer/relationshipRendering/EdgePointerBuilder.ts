@@ -1,6 +1,6 @@
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
 import { ViewSetting } from '@lib/model/ViewSetting';
-import { attributes } from 'jointjs';
+import { attributes } from '@joint/core';
 import { PointerType } from '@lib/common/enums/pointerType';
 
 /**

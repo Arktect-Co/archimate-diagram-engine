@@ -23,8 +23,8 @@ export interface ReferenceView {
   bounds: Bounds;
   viewNodes: Array<ViewNode>;
   viewRelationships: Array<ViewRelationship>;
-  date: string;
-  complexity: string;
-  purpose: string;
+  date?: string;
+  complexity?: string;
+  purpose?: string;
   hash: Hash;
 }

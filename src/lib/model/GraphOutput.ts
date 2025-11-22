@@ -1,4 +1,4 @@
-import { dia } from 'jointjs';
+import { dia } from '@joint/core';
 
 interface Position {
   x: number;
@@ -24,7 +24,7 @@ export interface Cell {
   target: Relationship;
   modelRelationshipId: string;
   relationshipType: string;
-  parent?: string;
+  parent?: { id: string } | null;
 }
 
 export interface GraphOutput {

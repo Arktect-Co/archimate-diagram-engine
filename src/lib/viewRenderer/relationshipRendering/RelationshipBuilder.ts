@@ -1,4 +1,4 @@
-import { shapes, dia } from 'jointjs';
+import { shapes, dia } from '@joint/core';
 import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipAttributesBuilder';
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
 import { ViewSetting } from '@lib/model/ViewSetting';
@@ -27,7 +27,7 @@ interface RelationshipSettings extends BaseRelationshipSettings {
 /**
  * Relationship builder class
  * @example
- * import { dia } from 'jointjs';
+ * import { dia } from '@joint/core';
  * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/RelationshipBuilder";
  * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
  *
@@ -53,7 +53,7 @@ export class RelationshipBuilder {
    * @param settings.type Relationship type
    * @param settings.isBidirectional Indicates whether the relationship is bidirectional or not
    * @example
-   * import { dia } from 'jointjs';
+   * import { dia } from '@joint/core';
    * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/RelationshipBuilder";
    * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
    *
@@ -106,7 +106,7 @@ export class RelationshipBuilder {
    * @param settings.targetNode Target Node
    * @param settings.label Relationship label
    * @example
-   * import { dia } from 'jointjs';
+   * import { dia } from '@joint/core';
    * import { RelationshipBuilder } from "@lib/viewRenderer/relationshipRendering/RelationshipBuilder";
    * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
    *

@@ -1,4 +1,4 @@
-import { dia, shapes } from 'jointjs';
+import { dia, shapes } from '@joint/core';
 import { expect } from 'chai';
 import { RelationshipBuilder } from '@lib/viewRenderer/relationshipRendering/RelationshipBuilder';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
@@ -8,7 +8,7 @@ import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
 import { ViewRelationship } from '@lib/model/ViewRelationship';
 import { ViewNode } from '@lib/model/ViewNode';
 import { SETTINGS_DEFAULT } from '@lib/common/constants';
-import referenceView from '../../data/complete/reference_view.json';
+import { referenceView } from '../../__fixtures__';
 
 describe('RelationshipBuilder', () => {
   const viewRelationship: ViewRelationship = referenceView.viewRelationships[0];

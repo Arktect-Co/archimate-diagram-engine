@@ -1,4 +1,4 @@
-import { dia, shapes } from 'jointjs';
+import { dia, shapes } from '@joint/core';
 
 import { ShapeBuilder } from '@lib/viewRenderer/nodeRendering/ShapeBuilder';
 import { typeToHexColor } from '@lib/viewRenderer/utils/colorUtility';
@@ -29,7 +29,7 @@ interface NodeAttributes extends BasicNodeAttributes {
  * Class with functionality to build a node
  *
  * @example
- * import { dia } from 'jointjs';
+ * import { dia } from '@joint/core';
  * import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
  * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
  *
@@ -63,7 +63,7 @@ export class NodeBuilder {
    * @param attributes.height Node height
    * @return Node shape
    * @example
-   * import { dia } from 'jointjs';
+   * import { dia } from '@joint/core';
    * import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
    * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
    *
@@ -163,7 +163,7 @@ export class NodeBuilder {
    * @param attributes.posY Position of the node on the y-axis
    * @param attributes.parentElement Node parent
    * @example
-   * import { dia } from 'jointjs';
+   * import { dia } from '@joint/core';
    * import { NodeBuilder } from '@lib/viewRenderer/nodeRendering/NodeBuilder';
    * import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
    *
@@ -211,9 +211,11 @@ export class NodeBuilder {
 
       // Nesting the element with parent
       if (parentElement !== null && parentElement !== undefined) {
-        parentElement.embed(shape);
+        shape.addTo(this.graph, { parent: parentElement.id });
 
         shape.position(x, y, { parentRelative: true });
+      } else {
+        shape.addTo(this.graph);
       }
 
       // Creating element icon
@@ -229,9 +231,7 @@ export class NodeBuilder {
           },
         });
 
-        image.addTo(this.graph);
-        shape.embed(image);
-
+        image.addTo(this.graph, { parent: shape.id });
         image.position(width - 24, 8, { parentRelative: true });
       }
     } else {
