@@ -3,7 +3,7 @@ import { RelationshipAttributesBuilder } from '@lib/viewRenderer/relationshipRen
 import { EdgePointerBuilder } from '@lib/viewRenderer/relationshipRendering/EdgePointerBuilder';
 import { ViewSetting } from '@lib/model/ViewSetting';
 import { RelationshipType } from '@lib/common/enums/relationshipType';
-import { BendPoint } from '@lib/model/ViewRelationship';
+import { BendPoint, LabelMarkup } from '@lib/model/ViewRelationship';
 
 interface BaseRelationshipSettings {
   type: string;
@@ -16,7 +16,12 @@ interface RelationshipSettings extends BaseRelationshipSettings {
   bendpoints: Array<BendPoint>;
   sourceNode: dia.Cell;
   targetNode: dia.Cell;
-  label: string;
+  label: {
+    text: string;
+    markup?: LabelMarkup;
+    position?: dia.Link.LabelPosition;
+    size?: dia.Size;
+  };
 }
 
 /**
@@ -118,7 +123,24 @@ export class RelationshipBuilder {
    *  relationshipModelId: "f43b1bb0-ed2e-42e0-b94a-786223b20beb",
    *  relationshipViewId: "a4da7d5b-b482-45dc-87e3-161787e15435",
    *  bendpoints: [{x: 432, y: 12}],
-   *  label: "",
+   *  label: {
+   *    text: "test",
+   *    position: {
+   *      distance: 10,
+   *      offset: { x: 10, y: 10 },
+   *      angle: 45,
+   *    },
+   *    size: {
+   *      width: 100,
+   *      height: 20,
+   *    },
+   *    markup: {
+   *      tagName: 'text',
+   *      style: {
+   *        fill: 'red',
+   *      },
+   *    },
+   *  },
    *  sourceNode,
    *  targetNode,
    * });
@@ -153,10 +175,17 @@ export class RelationshipBuilder {
       link.appendLabel({
         attrs: {
           text: {
-            text: label,
+            text: label.text || '',
           },
         },
+        ...(label.markup && { markup: [{
+          tagName: 'text',
+          ...label.markup[0],
+        }], }),
+        ...(label.position && { position: label.position }),
+        ...(label.size && { size: label.size }),
       });
+
       link.source(sourceNode, {
         anchor: {
           name: 'perpendicular',
