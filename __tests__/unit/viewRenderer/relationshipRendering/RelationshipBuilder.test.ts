@@ -261,7 +261,9 @@ describe('RelationshipBuilder', () => {
       bendpoints: viewRelationship.bendpoints,
       sourceNode: graph.getCell(viewRelationship.sourceId),
       targetNode: graph.getCell(viewRelationship.targetId),
-      label: '',
+      label: {
+        text: '',
+      },
     };
     const errorMessage =
       'Invalid relationship: Relationships must have type, sourceNode and targetNode defined.';
