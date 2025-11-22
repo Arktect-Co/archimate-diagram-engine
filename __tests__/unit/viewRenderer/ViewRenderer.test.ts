@@ -1,16 +1,13 @@
 import { expect } from 'chai';
-import { dia, shapes } from '@joint/core';
 import { ViewRenderer } from '@lib/viewRenderer/ViewRenderer';
 import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
 import { ReferenceView } from '@lib/model/ReferenceView';
 import { example_view } from '../__fixtures__';
 
 describe('ViewRenderer', () => {
-  let graph: dia.Graph;
   let viewSettings: ViewSettings;
 
   beforeEach(() => {
-    graph = new dia.Graph({}, { cellNamespace: shapes });
     viewSettings = new ViewSettings({});
   });
 
