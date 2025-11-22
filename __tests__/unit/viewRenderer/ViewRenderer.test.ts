@@ -1,6 +1,8 @@
 import { expect } from 'chai';
 import { dia, shapes } from '@joint/core';
-import { ViewRenderer, ViewSettings } from '../../../src';
+import { ViewRenderer } from '@lib/viewRenderer/ViewRenderer';
+import { ViewSettings } from '@lib/viewRenderer/ViewSettings';
+import { ReferenceView } from '@lib/model/ReferenceView';
 import { example_view } from '../__fixtures__';
 
 describe('ViewRenderer', () => {
@@ -14,7 +16,7 @@ describe('ViewRenderer', () => {
 
   describe('render', () => {
     it('should render relationship even when type is invalid (default case)', () => {
-      const invalidRelationship: any = {
+      const invalidRelationship: ReferenceView = {
         ...example_view,
         viewRelationships: [
           {
@@ -23,6 +25,7 @@ describe('ViewRenderer', () => {
             sourceId: 'd96a2985',
             targetId: '36534983',
             type: 'invalid',
+            bendpoints: []
           },
         ],
       };
